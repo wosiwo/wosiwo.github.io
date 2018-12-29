@@ -14,11 +14,31 @@
     
     <item>
       <title>sync.map与自建hashmap支持并发安全</title>
+      <link>https://onceme.me/post/syncmap-hashmap/</link>
+      <pubDate>Mon, 03 Dec 2018 00:00:00 +0800</pubDate>
+      
+      <guid>https://onceme.me/post/syncmap-hashmap/</guid>
+      <description>&lt;p&gt;sync.map与自建hashmap支持并发安全&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>sync.map与自建hashmap支持并发安全</title>
       <link>https://onceme.me/posts/syncmap-hashmap/</link>
       <pubDate>Mon, 03 Dec 2018 00:00:00 +0800</pubDate>
       
       <guid>https://onceme.me/posts/syncmap-hashmap/</guid>
       <description>&lt;p&gt;sync.map与自建hashmap支持并发安全&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>redis,gedis性能瓶颈探索</title>
+      <link>https://onceme.me/post/redis-gedis/</link>
+      <pubDate>Sun, 18 Nov 2018 00:00:00 +0800</pubDate>
+      
+      <guid>https://onceme.me/post/redis-gedis/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;最近对自己写的nosql数据&lt;a href=&#34;https://github.com/wosiwo/gedis&#34;&gt;gedis&lt;/a&gt;和redis做了性能对比压测，碰到一些问题，做了一些思考和尝试，这里做个记录&lt;/li&gt;
+&lt;/ul&gt;</description>
     </item>
     
     <item>
@@ -30,6 +50,15 @@
       <description>&lt;ul&gt;
 &lt;li&gt;最近对自己写的nosql数据&lt;a href=&#34;https://github.com/wosiwo/gedis&#34;&gt;gedis&lt;/a&gt;和redis做了性能对比压测，碰到一些问题，做了一些思考和尝试，这里做个记录&lt;/li&gt;
 &lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>redis有续集的实现方式</title>
+      <link>https://onceme.me/post/redis-zset/</link>
+      <pubDate>Sun, 23 Sep 2018 00:00:00 +0800</pubDate>
+      
+      <guid>https://onceme.me/post/redis-zset/</guid>
+      <description>&lt;p&gt;redis有续集由压缩列表与跳跃表两种方式实现，这里主要说跳跃表&lt;/p&gt;</description>
     </item>
     
     <item>

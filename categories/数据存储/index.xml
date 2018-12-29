@@ -14,6 +14,21 @@
     
     <item>
       <title>mysql,innodb内部实现</title>
+      <link>https://onceme.me/post/mysql-index/</link>
+      <pubDate>Mon, 01 Oct 2018 00:00:00 +0800</pubDate>
+      
+      <guid>https://onceme.me/post/mysql-index/</guid>
+      <description>&lt;h2 id=&#34;mysql存储结构&#34;&gt;mysql存储结构&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;1. B-tree 是平衡的多路查找树。&lt;/li&gt;
+&lt;li&gt;2. 涉及到磁盘的查找需要设法减少磁盘 I/O 次数。&lt;/li&gt;
+&lt;li&gt;3. B-tree 就是为解决这个问题而引入的数据结构。&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>mysql,innodb内部实现</title>
       <link>https://onceme.me/posts/mysql-index/</link>
       <pubDate>Mon, 01 Oct 2018 00:00:00 +0800</pubDate>
       

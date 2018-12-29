@@ -14,6 +14,17 @@
     
     <item>
       <title>slim使用swoole进行服务化</title>
+      <link>https://onceme.me/post/slim-swoole/</link>
+      <pubDate>Sun, 26 Aug 2018 00:00:00 +0800</pubDate>
+      
+      <guid>https://onceme.me/post/slim-swoole/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;继续之前工作，抽离出与swoole扩展对接的一层接口后，可以方便的对接各种php扩展&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>slim使用swoole进行服务化</title>
       <link>https://onceme.me/posts/slim-swoole/</link>
       <pubDate>Sun, 26 Aug 2018 00:00:00 +0800</pubDate>
       
