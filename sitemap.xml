@@ -3,213 +3,213 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://wosiwo.github.io/post/go-practice/</loc>
+    <loc>https://onceme.me/post/go-practice/</loc>
     <lastmod>2018-12-03T00:00:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://wosiwo.github.io/post/syncmap-hashmap/</loc>
+    <loc>https://onceme.me/post/syncmap-hashmap/</loc>
     <lastmod>2018-12-03T00:00:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://wosiwo.github.io/post/redis-gedis/</loc>
+    <loc>https://onceme.me/post/redis-gedis/</loc>
     <lastmod>2018-11-18T00:00:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://wosiwo.github.io/post/mysql-index/</loc>
+    <loc>https://onceme.me/post/mysql-index/</loc>
     <lastmod>2018-10-01T00:00:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://wosiwo.github.io/post/redis-zset/</loc>
+    <loc>https://onceme.me/post/redis-zset/</loc>
     <lastmod>2018-09-23T00:00:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://wosiwo.github.io/post/mysql-redis/</loc>
+    <loc>https://onceme.me/post/mysql-redis/</loc>
     <lastmod>2018-09-19T00:00:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://wosiwo.github.io/post/gedis-redis-like-demo-with-go/</loc>
+    <loc>https://onceme.me/post/gedis-redis-like-demo-with-go/</loc>
     <lastmod>2018-09-02T10:00:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://wosiwo.github.io/post/slim-swoole/</loc>
+    <loc>https://onceme.me/post/slim-swoole/</loc>
     <lastmod>2018-08-26T00:00:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://wosiwo.github.io/post/java-maven/</loc>
+    <loc>https://onceme.me/post/java-maven/</loc>
     <lastmod>2018-08-16T00:00:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://wosiwo.github.io/post/lnmp-stress-test/</loc>
+    <loc>https://onceme.me/post/lnmp-stress-test/</loc>
     <lastmod>2014-04-14T00:00:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://wosiwo.github.io/post/another-world/</loc>
+    <loc>https://onceme.me/post/another-world/</loc>
   </url>
   
   <url>
-    <loc>https://wosiwo.github.io/about/desc/</loc>
+    <loc>https://onceme.me/about/desc/</loc>
   </url>
   
   <url>
-    <loc>https://wosiwo.github.io/about/</loc>
+    <loc>https://onceme.me/about/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://wosiwo.github.io/categories/algorithm/</loc>
+    <loc>https://onceme.me/categories/algorithm/</loc>
     <lastmod>2018-09-19T00:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://wosiwo.github.io/categories/</loc>
+    <loc>https://onceme.me/categories/</loc>
     <lastmod>2018-09-19T00:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://wosiwo.github.io/tags/codis/</loc>
+    <loc>https://onceme.me/tags/codis/</loc>
     <lastmod>2014-04-14T00:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://wosiwo.github.io/tags/gedis/</loc>
+    <loc>https://onceme.me/tags/gedis/</loc>
     <lastmod>2018-09-02T10:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://wosiwo.github.io/tags/golang/</loc>
+    <loc>https://onceme.me/tags/golang/</loc>
     <lastmod>2018-12-03T00:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://wosiwo.github.io/tags/java/</loc>
+    <loc>https://onceme.me/tags/java/</loc>
     <lastmod>2018-08-16T00:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://wosiwo.github.io/tags/mysql/</loc>
+    <loc>https://onceme.me/tags/mysql/</loc>
     <lastmod>2018-10-01T00:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://wosiwo.github.io/tags/network/</loc>
+    <loc>https://onceme.me/tags/network/</loc>
     <lastmod>2018-11-18T00:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://wosiwo.github.io/tags/nosql/</loc>
+    <loc>https://onceme.me/tags/nosql/</loc>
     <lastmod>2018-12-03T00:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://wosiwo.github.io/categories/nosql/</loc>
+    <loc>https://onceme.me/categories/nosql/</loc>
     <lastmod>2018-12-03T00:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://wosiwo.github.io/post/</loc>
+    <loc>https://onceme.me/post/</loc>
     <lastmod>2018-12-03T00:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://wosiwo.github.io/tags/redis/</loc>
+    <loc>https://onceme.me/tags/redis/</loc>
     <lastmod>2018-11-18T00:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://wosiwo.github.io/tags/slim/</loc>
+    <loc>https://onceme.me/tags/slim/</loc>
     <lastmod>2018-08-26T00:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://wosiwo.github.io/tags/swoole/</loc>
+    <loc>https://onceme.me/tags/swoole/</loc>
     <lastmod>2018-08-26T00:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://wosiwo.github.io/categories/swoole/</loc>
+    <loc>https://onceme.me/categories/swoole/</loc>
     <lastmod>2018-08-26T00:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://wosiwo.github.io/tags/</loc>
+    <loc>https://onceme.me/tags/</loc>
     <lastmod>2014-04-14T00:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://wosiwo.github.io/tags/zset/</loc>
+    <loc>https://onceme.me/tags/zset/</loc>
     <lastmod>2018-09-23T00:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://wosiwo.github.io/</loc>
+    <loc>https://onceme.me/</loc>
     <lastmod>2018-12-03T00:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://wosiwo.github.io/categories/%E5%90%8E%E7%AB%AF%E8%AF%AD%E8%A8%80/</loc>
+    <loc>https://onceme.me/categories/%E5%90%8E%E7%AB%AF%E8%AF%AD%E8%A8%80/</loc>
     <lastmod>2018-12-03T00:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://wosiwo.github.io/categories/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/</loc>
+    <loc>https://onceme.me/categories/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/</loc>
     <lastmod>2018-09-02T10:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://wosiwo.github.io/categories/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/</loc>
+    <loc>https://onceme.me/categories/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/</loc>
     <lastmod>2014-04-14T00:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://wosiwo.github.io/tags/%E6%80%A7%E8%83%BD%E7%93%B6%E9%A2%88/</loc>
+    <loc>https://onceme.me/tags/%E6%80%A7%E8%83%BD%E7%93%B6%E9%A2%88/</loc>
     <lastmod>2018-11-18T00:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://wosiwo.github.io/categories/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/</loc>
+    <loc>https://onceme.me/categories/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/</loc>
     <lastmod>2018-10-01T00:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://wosiwo.github.io/categories/%E6%96%87/</loc>
+    <loc>https://onceme.me/categories/%E6%96%87/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://wosiwo.github.io/tags/%E8%AF%97/</loc>
+    <loc>https://onceme.me/tags/%E8%AF%97/</loc>
     <priority>0</priority>
   </url>
   
