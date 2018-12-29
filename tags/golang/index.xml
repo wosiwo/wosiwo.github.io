@@ -14,28 +14,28 @@
     
     <item>
       <title>go语言实践笔记</title>
-      <link>https://onceme.me/post/go-practice/</link>
+      <link>https://onceme.me/posts/go-practice/</link>
       <pubDate>Mon, 03 Dec 2018 00:00:00 +0800</pubDate>
       
-      <guid>https://onceme.me/post/go-practice/</guid>
+      <guid>https://onceme.me/posts/go-practice/</guid>
       <description>使用recover()捕捉panic时，只能捕捉直接调用的方法，通过go命令调用的代码块中抛出的panic，则无法捕捉 package main import ( &amp;quot;fmt&amp;quot; &amp;quot;errors&amp;quot; ) func main() { fmt.Println(&amp;quot;Enter</description>
     </item>
     
     <item>
       <title>sync.map与自建hashmap支持并发安全</title>
-      <link>https://onceme.me/post/syncmap-hashmap/</link>
+      <link>https://onceme.me/posts/syncmap-hashmap/</link>
       <pubDate>Mon, 03 Dec 2018 00:00:00 +0800</pubDate>
       
-      <guid>https://onceme.me/post/syncmap-hashmap/</guid>
+      <guid>https://onceme.me/posts/syncmap-hashmap/</guid>
       <description>&lt;p&gt;sync.map与自建hashmap支持并发安全&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>gedis-redis-like-demo-with-go</title>
-      <link>https://onceme.me/post/gedis-redis-like-demo-with-go/</link>
+      <link>https://onceme.me/posts/gedis-redis-like-demo-with-go/</link>
       <pubDate>Sun, 02 Sep 2018 10:00:00 +0800</pubDate>
       
-      <guid>https://onceme.me/post/gedis-redis-like-demo-with-go/</guid>
+      <guid>https://onceme.me/posts/gedis-redis-like-demo-with-go/</guid>
       <description>&lt;p&gt;最近在重新看redis的内部实现，因此准备用go和c自己简单实现一遍，加深对redis内部设计结构的理解&lt;/p&gt;</description>
     </item>
     

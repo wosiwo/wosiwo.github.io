@@ -14,10 +14,10 @@
     
     <item>
       <title>sync.map与自建hashmap支持并发安全</title>
-      <link>https://onceme.me/post/syncmap-hashmap/</link>
+      <link>https://onceme.me/posts/syncmap-hashmap/</link>
       <pubDate>Mon, 03 Dec 2018 00:00:00 +0800</pubDate>
       
-      <guid>https://onceme.me/post/syncmap-hashmap/</guid>
+      <guid>https://onceme.me/posts/syncmap-hashmap/</guid>
       <description>&lt;p&gt;sync.map与自建hashmap支持并发安全&lt;/p&gt;</description>
     </item>
     

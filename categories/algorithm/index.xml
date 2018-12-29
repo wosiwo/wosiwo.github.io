@@ -14,10 +14,10 @@
     
     <item>
       <title>mysql-redis</title>
-      <link>https://onceme.me/post/mysql-redis/</link>
+      <link>https://onceme.me/posts/mysql-redis/</link>
       <pubDate>Wed, 19 Sep 2018 00:00:00 +0800</pubDate>
       
-      <guid>https://onceme.me/post/mysql-redis/</guid>
+      <guid>https://onceme.me/posts/mysql-redis/</guid>
       <description>&lt;h1 id=&#34;mysql-b-树&#34;&gt;mysql B+树&lt;/h1&gt;
 
 &lt;p&gt;到叶子节点的高度固定，数据按顺序存储在叶子节点上，叶子节点通过指针互相连接ei

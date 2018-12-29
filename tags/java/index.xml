@@ -14,10 +14,10 @@
     
     <item>
       <title>java 使用maven编译碰到的问题</title>
-      <link>https://onceme.me/post/java-maven/</link>
+      <link>https://onceme.me/posts/java-maven/</link>
       <pubDate>Thu, 16 Aug 2018 00:00:00 +0800</pubDate>
       
-      <guid>https://onceme.me/post/java-maven/</guid>
+      <guid>https://onceme.me/posts/java-maven/</guid>
       <description>&lt;p&gt;今天尝试跑个java的demo，执行 mvn exec:java 命令运行时碰到报错&lt;/p&gt;</description>
     </item>
     

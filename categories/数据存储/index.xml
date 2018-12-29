@@ -14,10 +14,10 @@
     
     <item>
       <title>mysql,innodb内部实现</title>
-      <link>https://onceme.me/post/mysql-index/</link>
+      <link>https://onceme.me/posts/mysql-index/</link>
       <pubDate>Mon, 01 Oct 2018 00:00:00 +0800</pubDate>
       
-      <guid>https://onceme.me/post/mysql-index/</guid>
+      <guid>https://onceme.me/posts/mysql-index/</guid>
       <description>&lt;h2 id=&#34;mysql存储结构&#34;&gt;mysql存储结构&lt;/h2&gt;
 
 &lt;ul&gt;

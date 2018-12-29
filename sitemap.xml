@@ -3,57 +3,57 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://onceme.me/post/go-practice/</loc>
+    <loc>https://onceme.me/posts/go-practice/</loc>
     <lastmod>2018-12-03T00:00:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://onceme.me/post/syncmap-hashmap/</loc>
+    <loc>https://onceme.me/posts/syncmap-hashmap/</loc>
     <lastmod>2018-12-03T00:00:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://onceme.me/post/redis-gedis/</loc>
+    <loc>https://onceme.me/posts/redis-gedis/</loc>
     <lastmod>2018-11-18T00:00:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://onceme.me/post/mysql-index/</loc>
+    <loc>https://onceme.me/posts/mysql-index/</loc>
     <lastmod>2018-10-01T00:00:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://onceme.me/post/redis-zset/</loc>
+    <loc>https://onceme.me/posts/redis-zset/</loc>
     <lastmod>2018-09-23T00:00:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://onceme.me/post/mysql-redis/</loc>
+    <loc>https://onceme.me/posts/mysql-redis/</loc>
     <lastmod>2018-09-19T00:00:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://onceme.me/post/gedis-redis-like-demo-with-go/</loc>
+    <loc>https://onceme.me/posts/gedis-redis-like-demo-with-go/</loc>
     <lastmod>2018-09-02T10:00:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://onceme.me/post/slim-swoole/</loc>
+    <loc>https://onceme.me/posts/slim-swoole/</loc>
     <lastmod>2018-08-26T00:00:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://onceme.me/post/java-maven/</loc>
+    <loc>https://onceme.me/posts/java-maven/</loc>
     <lastmod>2018-08-16T00:00:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://onceme.me/post/lnmp-stress-test/</loc>
+    <loc>https://onceme.me/posts/lnmp-stress-test/</loc>
     <lastmod>2014-04-14T00:00:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://onceme.me/post/another-world/</loc>
+    <loc>https://onceme.me/posts/another-world/</loc>
   </url>
   
   <url>
@@ -126,7 +126,7 @@
   </url>
   
   <url>
-    <loc>https://onceme.me/post/</loc>
+    <loc>https://onceme.me/posts/</loc>
     <lastmod>2018-12-03T00:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>

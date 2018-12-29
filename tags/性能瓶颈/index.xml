@@ -14,10 +14,10 @@
     
     <item>
       <title>redis,gedis性能瓶颈探索</title>
-      <link>https://onceme.me/post/redis-gedis/</link>
+      <link>https://onceme.me/posts/redis-gedis/</link>
       <pubDate>Sun, 18 Nov 2018 00:00:00 +0800</pubDate>
       
-      <guid>https://onceme.me/post/redis-gedis/</guid>
+      <guid>https://onceme.me/posts/redis-gedis/</guid>
       <description>&lt;ul&gt;
 &lt;li&gt;最近对自己写的nosql数据&lt;a href=&#34;https://github.com/wosiwo/gedis&#34;&gt;gedis&lt;/a&gt;和redis做了性能对比压测，碰到一些问题，做了一些思考和尝试，这里做个记录&lt;/li&gt;
 &lt;/ul&gt;</description>
