@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Redis on onceme&#39;s blog</title>
-    <link>https://onceme.me/tags/redis/</link>
+    <link>http://onceme.me/tags/redis/</link>
     <description>Recent content in Redis on onceme&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a rel=&#34;license&#34; href=&#34;http://creativecommons.org/licenses/by-nc-sa/4.0/&#34;&gt;&lt;img alt=&#34;知识共享许可协议&#34; style=&#34;border-width:0&#34; src=&#34;https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png&#34; /&gt;&lt;/a&gt;&lt;br /&gt;本作品采用&lt;a rel=&#34;license&#34; href=&#34;http://creativecommons.org/licenses/by-nc-sa/4.0/&#34;&gt;知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议&lt;/a&gt;进行许可。</copyright>
     <lastBuildDate>Sun, 18 Nov 2018 00:00:00 +0800</lastBuildDate>
     
-	<atom:link href="https://onceme.me/tags/redis/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://onceme.me/tags/redis/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>redis,gedis性能瓶颈探索</title>
-      <link>https://onceme.me/post/redis-gedis/</link>
+      <link>http://onceme.me/post/redis-gedis/</link>
       <pubDate>Sun, 18 Nov 2018 00:00:00 +0800</pubDate>
       
-      <guid>https://onceme.me/post/redis-gedis/</guid>
+      <guid>http://onceme.me/post/redis-gedis/</guid>
       <description>&lt;ul&gt;
 &lt;li&gt;最近对自己写的nosql数据&lt;a href=&#34;https://github.com/wosiwo/gedis&#34;&gt;gedis&lt;/a&gt;和redis做了性能对比压测，碰到一些问题，做了一些思考和尝试，这里做个记录&lt;/li&gt;
 &lt;/ul&gt;</description>
@@ -25,10 +25,10 @@
     
     <item>
       <title>redis,gedis性能瓶颈探索</title>
-      <link>https://onceme.me/posts/redis-gedis/</link>
+      <link>http://onceme.me/posts/redis-gedis/</link>
       <pubDate>Sun, 18 Nov 2018 00:00:00 +0800</pubDate>
       
-      <guid>https://onceme.me/posts/redis-gedis/</guid>
+      <guid>http://onceme.me/posts/redis-gedis/</guid>
       <description>&lt;ul&gt;
 &lt;li&gt;最近对自己写的nosql数据&lt;a href=&#34;https://github.com/wosiwo/gedis&#34;&gt;gedis&lt;/a&gt;和redis做了性能对比压测，碰到一些问题，做了一些思考和尝试，这里做个记录&lt;/li&gt;
 &lt;/ul&gt;</description>
@@ -36,28 +36,28 @@
     
     <item>
       <title>redis有续集的实现方式</title>
-      <link>https://onceme.me/post/redis-zset/</link>
+      <link>http://onceme.me/post/redis-zset/</link>
       <pubDate>Sun, 23 Sep 2018 00:00:00 +0800</pubDate>
       
-      <guid>https://onceme.me/post/redis-zset/</guid>
+      <guid>http://onceme.me/post/redis-zset/</guid>
       <description>&lt;p&gt;redis有续集由压缩列表与跳跃表两种方式实现，这里主要说跳跃表&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>redis有续集的实现方式</title>
-      <link>https://onceme.me/posts/redis-zset/</link>
+      <link>http://onceme.me/posts/redis-zset/</link>
       <pubDate>Sun, 23 Sep 2018 00:00:00 +0800</pubDate>
       
-      <guid>https://onceme.me/posts/redis-zset/</guid>
+      <guid>http://onceme.me/posts/redis-zset/</guid>
       <description>&lt;p&gt;redis有续集由压缩列表与跳跃表两种方式实现，这里主要说跳跃表&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>mysql-redis</title>
-      <link>https://onceme.me/post/mysql-redis/</link>
+      <link>http://onceme.me/post/mysql-redis/</link>
       <pubDate>Wed, 19 Sep 2018 00:00:00 +0800</pubDate>
       
-      <guid>https://onceme.me/post/mysql-redis/</guid>
+      <guid>http://onceme.me/post/mysql-redis/</guid>
       <description>&lt;h1 id=&#34;mysql-b-树&#34;&gt;mysql B+树&lt;/h1&gt;
 
 &lt;p&gt;到叶子节点的高度固定，数据按顺序存储在叶子节点上，叶子节点通过指针互相连接ei
@@ -66,10 +66,10 @@ B+数由B树和索引按顺序查找演化而来&lt;/p&gt;</description>
     
     <item>
       <title>mysql-redis</title>
-      <link>https://onceme.me/posts/mysql-redis/</link>
+      <link>http://onceme.me/posts/mysql-redis/</link>
       <pubDate>Wed, 19 Sep 2018 00:00:00 +0800</pubDate>
       
-      <guid>https://onceme.me/posts/mysql-redis/</guid>
+      <guid>http://onceme.me/posts/mysql-redis/</guid>
       <description>&lt;h1 id=&#34;mysql-b-树&#34;&gt;mysql B+树&lt;/h1&gt;
 
 &lt;p&gt;到叶子节点的高度固定，数据按顺序存储在叶子节点上，叶子节点通过指针互相连接ei

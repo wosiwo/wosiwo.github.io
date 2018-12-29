@@ -3,273 +3,273 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://onceme.me/post/go-practice/</loc>
+    <loc>http://onceme.me/post/go-practice/</loc>
     <lastmod>2018-12-03T00:00:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://onceme.me/posts/go-practice/</loc>
+    <loc>http://onceme.me/posts/go-practice/</loc>
     <lastmod>2018-12-03T00:00:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://onceme.me/post/syncmap-hashmap/</loc>
+    <loc>http://onceme.me/post/syncmap-hashmap/</loc>
     <lastmod>2018-12-03T00:00:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://onceme.me/posts/syncmap-hashmap/</loc>
+    <loc>http://onceme.me/posts/syncmap-hashmap/</loc>
     <lastmod>2018-12-03T00:00:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://onceme.me/post/redis-gedis/</loc>
+    <loc>http://onceme.me/post/redis-gedis/</loc>
     <lastmod>2018-11-18T00:00:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://onceme.me/posts/redis-gedis/</loc>
+    <loc>http://onceme.me/posts/redis-gedis/</loc>
     <lastmod>2018-11-18T00:00:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://onceme.me/post/mysql-index/</loc>
+    <loc>http://onceme.me/post/mysql-index/</loc>
     <lastmod>2018-10-01T00:00:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://onceme.me/posts/mysql-index/</loc>
+    <loc>http://onceme.me/posts/mysql-index/</loc>
     <lastmod>2018-10-01T00:00:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://onceme.me/post/redis-zset/</loc>
+    <loc>http://onceme.me/post/redis-zset/</loc>
     <lastmod>2018-09-23T00:00:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://onceme.me/posts/redis-zset/</loc>
+    <loc>http://onceme.me/posts/redis-zset/</loc>
     <lastmod>2018-09-23T00:00:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://onceme.me/post/mysql-redis/</loc>
+    <loc>http://onceme.me/post/mysql-redis/</loc>
     <lastmod>2018-09-19T00:00:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://onceme.me/posts/mysql-redis/</loc>
+    <loc>http://onceme.me/posts/mysql-redis/</loc>
     <lastmod>2018-09-19T00:00:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://onceme.me/post/gedis-redis-like-demo-with-go/</loc>
+    <loc>http://onceme.me/post/gedis-redis-like-demo-with-go/</loc>
     <lastmod>2018-09-02T10:00:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://onceme.me/posts/gedis-redis-like-demo-with-go/</loc>
+    <loc>http://onceme.me/posts/gedis-redis-like-demo-with-go/</loc>
     <lastmod>2018-09-02T10:00:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://onceme.me/post/slim-swoole/</loc>
+    <loc>http://onceme.me/post/slim-swoole/</loc>
     <lastmod>2018-08-26T00:00:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://onceme.me/posts/slim-swoole/</loc>
+    <loc>http://onceme.me/posts/slim-swoole/</loc>
     <lastmod>2018-08-26T00:00:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://onceme.me/post/java-maven/</loc>
+    <loc>http://onceme.me/post/java-maven/</loc>
     <lastmod>2018-08-16T00:00:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://onceme.me/posts/java-maven/</loc>
+    <loc>http://onceme.me/posts/java-maven/</loc>
     <lastmod>2018-08-16T00:00:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://onceme.me/post/lnmp-stress-test/</loc>
+    <loc>http://onceme.me/post/lnmp-stress-test/</loc>
     <lastmod>2014-04-14T00:00:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://onceme.me/posts/lnmp-stress-test/</loc>
+    <loc>http://onceme.me/posts/lnmp-stress-test/</loc>
     <lastmod>2014-04-14T00:00:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://onceme.me/post/another-world/</loc>
+    <loc>http://onceme.me/post/another-world/</loc>
   </url>
   
   <url>
-    <loc>https://onceme.me/posts/another-world/</loc>
+    <loc>http://onceme.me/posts/another-world/</loc>
   </url>
   
   <url>
-    <loc>https://onceme.me/about/desc/</loc>
+    <loc>http://onceme.me/about/desc/</loc>
   </url>
   
   <url>
-    <loc>https://onceme.me/about/</loc>
+    <loc>http://onceme.me/about/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://onceme.me/categories/algorithm/</loc>
+    <loc>http://onceme.me/categories/algorithm/</loc>
     <lastmod>2018-09-19T00:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://onceme.me/categories/</loc>
+    <loc>http://onceme.me/categories/</loc>
     <lastmod>2018-09-19T00:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://onceme.me/tags/codis/</loc>
+    <loc>http://onceme.me/tags/codis/</loc>
     <lastmod>2014-04-14T00:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://onceme.me/tags/gedis/</loc>
+    <loc>http://onceme.me/tags/gedis/</loc>
     <lastmod>2018-09-02T10:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://onceme.me/tags/golang/</loc>
+    <loc>http://onceme.me/tags/golang/</loc>
     <lastmod>2018-12-03T00:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://onceme.me/tags/java/</loc>
+    <loc>http://onceme.me/tags/java/</loc>
     <lastmod>2018-08-16T00:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://onceme.me/tags/mysql/</loc>
+    <loc>http://onceme.me/tags/mysql/</loc>
     <lastmod>2018-10-01T00:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://onceme.me/tags/network/</loc>
+    <loc>http://onceme.me/tags/network/</loc>
     <lastmod>2018-11-18T00:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://onceme.me/tags/nosql/</loc>
+    <loc>http://onceme.me/tags/nosql/</loc>
     <lastmod>2018-12-03T00:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://onceme.me/categories/nosql/</loc>
+    <loc>http://onceme.me/categories/nosql/</loc>
     <lastmod>2018-12-03T00:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://onceme.me/post/</loc>
+    <loc>http://onceme.me/post/</loc>
     <lastmod>2018-12-03T00:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://onceme.me/posts/</loc>
+    <loc>http://onceme.me/posts/</loc>
     <lastmod>2018-12-03T00:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://onceme.me/tags/redis/</loc>
+    <loc>http://onceme.me/tags/redis/</loc>
     <lastmod>2018-11-18T00:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://onceme.me/tags/slim/</loc>
+    <loc>http://onceme.me/tags/slim/</loc>
     <lastmod>2018-08-26T00:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://onceme.me/tags/swoole/</loc>
+    <loc>http://onceme.me/tags/swoole/</loc>
     <lastmod>2018-08-26T00:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://onceme.me/categories/swoole/</loc>
+    <loc>http://onceme.me/categories/swoole/</loc>
     <lastmod>2018-08-26T00:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://onceme.me/tags/</loc>
+    <loc>http://onceme.me/tags/</loc>
     <lastmod>2014-04-14T00:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://onceme.me/tags/zset/</loc>
+    <loc>http://onceme.me/tags/zset/</loc>
     <lastmod>2018-09-23T00:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://onceme.me/</loc>
+    <loc>http://onceme.me/</loc>
     <lastmod>2018-12-03T00:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://onceme.me/categories/%E5%90%8E%E7%AB%AF%E8%AF%AD%E8%A8%80/</loc>
+    <loc>http://onceme.me/categories/%E5%90%8E%E7%AB%AF%E8%AF%AD%E8%A8%80/</loc>
     <lastmod>2018-12-03T00:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://onceme.me/categories/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/</loc>
+    <loc>http://onceme.me/categories/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/</loc>
     <lastmod>2018-09-02T10:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://onceme.me/categories/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/</loc>
+    <loc>http://onceme.me/categories/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/</loc>
     <lastmod>2014-04-14T00:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://onceme.me/tags/%E6%80%A7%E8%83%BD%E7%93%B6%E9%A2%88/</loc>
+    <loc>http://onceme.me/tags/%E6%80%A7%E8%83%BD%E7%93%B6%E9%A2%88/</loc>
     <lastmod>2018-11-18T00:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://onceme.me/categories/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/</loc>
+    <loc>http://onceme.me/categories/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/</loc>
     <lastmod>2018-10-01T00:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://onceme.me/categories/%E6%96%87/</loc>
+    <loc>http://onceme.me/categories/%E6%96%87/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://onceme.me/tags/%E8%AF%97/</loc>
+    <loc>http://onceme.me/tags/%E8%AF%97/</loc>
     <priority>0</priority>
   </url>
   

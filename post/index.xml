@@ -2,40 +2,40 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on onceme&#39;s blog</title>
-    <link>https://onceme.me/post/</link>
+    <link>http://onceme.me/post/</link>
     <description>Recent content in Posts on onceme&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a rel=&#34;license&#34; href=&#34;http://creativecommons.org/licenses/by-nc-sa/4.0/&#34;&gt;&lt;img alt=&#34;知识共享许可协议&#34; style=&#34;border-width:0&#34; src=&#34;https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png&#34; /&gt;&lt;/a&gt;&lt;br /&gt;本作品采用&lt;a rel=&#34;license&#34; href=&#34;http://creativecommons.org/licenses/by-nc-sa/4.0/&#34;&gt;知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议&lt;/a&gt;进行许可。</copyright>
     <lastBuildDate>Mon, 03 Dec 2018 00:00:00 +0800</lastBuildDate>
     
-	<atom:link href="https://onceme.me/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://onceme.me/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>go语言实践笔记</title>
-      <link>https://onceme.me/post/go-practice/</link>
+      <link>http://onceme.me/post/go-practice/</link>
       <pubDate>Mon, 03 Dec 2018 00:00:00 +0800</pubDate>
       
-      <guid>https://onceme.me/post/go-practice/</guid>
+      <guid>http://onceme.me/post/go-practice/</guid>
       <description>使用recover()捕捉panic时，只能捕捉直接调用的方法，通过go命令调用的代码块中抛出的panic，则无法捕捉 package main import ( &amp;quot;fmt&amp;quot; &amp;quot;errors&amp;quot; ) func main() { fmt.Println(&amp;quot;Enter</description>
     </item>
     
     <item>
       <title>sync.map与自建hashmap支持并发安全</title>
-      <link>https://onceme.me/post/syncmap-hashmap/</link>
+      <link>http://onceme.me/post/syncmap-hashmap/</link>
       <pubDate>Mon, 03 Dec 2018 00:00:00 +0800</pubDate>
       
-      <guid>https://onceme.me/post/syncmap-hashmap/</guid>
+      <guid>http://onceme.me/post/syncmap-hashmap/</guid>
       <description>&lt;p&gt;sync.map与自建hashmap支持并发安全&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>redis,gedis性能瓶颈探索</title>
-      <link>https://onceme.me/post/redis-gedis/</link>
+      <link>http://onceme.me/post/redis-gedis/</link>
       <pubDate>Sun, 18 Nov 2018 00:00:00 +0800</pubDate>
       
-      <guid>https://onceme.me/post/redis-gedis/</guid>
+      <guid>http://onceme.me/post/redis-gedis/</guid>
       <description>&lt;ul&gt;
 &lt;li&gt;最近对自己写的nosql数据&lt;a href=&#34;https://github.com/wosiwo/gedis&#34;&gt;gedis&lt;/a&gt;和redis做了性能对比压测，碰到一些问题，做了一些思考和尝试，这里做个记录&lt;/li&gt;
 &lt;/ul&gt;</description>
@@ -43,10 +43,10 @@
     
     <item>
       <title>mysql,innodb内部实现</title>
-      <link>https://onceme.me/post/mysql-index/</link>
+      <link>http://onceme.me/post/mysql-index/</link>
       <pubDate>Mon, 01 Oct 2018 00:00:00 +0800</pubDate>
       
-      <guid>https://onceme.me/post/mysql-index/</guid>
+      <guid>http://onceme.me/post/mysql-index/</guid>
       <description>&lt;h2 id=&#34;mysql存储结构&#34;&gt;mysql存储结构&lt;/h2&gt;
 
 &lt;ul&gt;
@@ -58,19 +58,19 @@
     
     <item>
       <title>redis有续集的实现方式</title>
-      <link>https://onceme.me/post/redis-zset/</link>
+      <link>http://onceme.me/post/redis-zset/</link>
       <pubDate>Sun, 23 Sep 2018 00:00:00 +0800</pubDate>
       
-      <guid>https://onceme.me/post/redis-zset/</guid>
+      <guid>http://onceme.me/post/redis-zset/</guid>
       <description>&lt;p&gt;redis有续集由压缩列表与跳跃表两种方式实现，这里主要说跳跃表&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>mysql-redis</title>
-      <link>https://onceme.me/post/mysql-redis/</link>
+      <link>http://onceme.me/post/mysql-redis/</link>
       <pubDate>Wed, 19 Sep 2018 00:00:00 +0800</pubDate>
       
-      <guid>https://onceme.me/post/mysql-redis/</guid>
+      <guid>http://onceme.me/post/mysql-redis/</guid>
       <description>&lt;h1 id=&#34;mysql-b-树&#34;&gt;mysql B+树&lt;/h1&gt;
 
 &lt;p&gt;到叶子节点的高度固定，数据按顺序存储在叶子节点上，叶子节点通过指针互相连接ei
@@ -79,19 +79,19 @@ B+数由B树和索引按顺序查找演化而来&lt;/p&gt;</description>
     
     <item>
       <title>gedis-redis-like-demo-with-go</title>
-      <link>https://onceme.me/post/gedis-redis-like-demo-with-go/</link>
+      <link>http://onceme.me/post/gedis-redis-like-demo-with-go/</link>
       <pubDate>Sun, 02 Sep 2018 10:00:00 +0800</pubDate>
       
-      <guid>https://onceme.me/post/gedis-redis-like-demo-with-go/</guid>
+      <guid>http://onceme.me/post/gedis-redis-like-demo-with-go/</guid>
       <description>&lt;p&gt;最近在重新看redis的内部实现，因此准备用go和c自己简单实现一遍，加深对redis内部设计结构的理解&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>slim使用swoole进行服务化</title>
-      <link>https://onceme.me/post/slim-swoole/</link>
+      <link>http://onceme.me/post/slim-swoole/</link>
       <pubDate>Sun, 26 Aug 2018 00:00:00 +0800</pubDate>
       
-      <guid>https://onceme.me/post/slim-swoole/</guid>
+      <guid>http://onceme.me/post/slim-swoole/</guid>
       <description>&lt;ul&gt;
 &lt;li&gt;继续之前工作，抽离出与swoole扩展对接的一层接口后，可以方便的对接各种php扩展&lt;/li&gt;
 &lt;/ul&gt;</description>
@@ -99,28 +99,28 @@ B+数由B树和索引按顺序查找演化而来&lt;/p&gt;</description>
     
     <item>
       <title>java 使用maven编译碰到的问题</title>
-      <link>https://onceme.me/post/java-maven/</link>
+      <link>http://onceme.me/post/java-maven/</link>
       <pubDate>Thu, 16 Aug 2018 00:00:00 +0800</pubDate>
       
-      <guid>https://onceme.me/post/java-maven/</guid>
+      <guid>http://onceme.me/post/java-maven/</guid>
       <description>&lt;p&gt;今天尝试跑个java的demo，执行 mvn exec:java 命令运行时碰到报错&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>lnmp环境&#43;codis压力测试</title>
-      <link>https://onceme.me/post/lnmp-stress-test/</link>
+      <link>http://onceme.me/post/lnmp-stress-test/</link>
       <pubDate>Mon, 14 Apr 2014 00:00:00 +0800</pubDate>
       
-      <guid>https://onceme.me/post/lnmp-stress-test/</guid>
+      <guid>http://onceme.me/post/lnmp-stress-test/</guid>
       <description>&lt;p&gt;lnmp环境压力测试&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>是仙凡</title>
-      <link>https://onceme.me/post/another-world/</link>
+      <link>http://onceme.me/post/another-world/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://onceme.me/post/another-world/</guid>
+      <guid>http://onceme.me/post/another-world/</guid>
       <description>&lt;p&gt;十年梦魇终有期，青春将过无还日，
 周天斗转期一载，他朝逢君是仙凡。&lt;/p&gt;</description>
     </item>

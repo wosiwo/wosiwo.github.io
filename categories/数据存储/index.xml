@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>数据存储 on onceme&#39;s blog</title>
-    <link>https://onceme.me/categories/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/</link>
+    <link>http://onceme.me/categories/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/</link>
     <description>Recent content in 数据存储 on onceme&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a rel=&#34;license&#34; href=&#34;http://creativecommons.org/licenses/by-nc-sa/4.0/&#34;&gt;&lt;img alt=&#34;知识共享许可协议&#34; style=&#34;border-width:0&#34; src=&#34;https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png&#34; /&gt;&lt;/a&gt;&lt;br /&gt;本作品采用&lt;a rel=&#34;license&#34; href=&#34;http://creativecommons.org/licenses/by-nc-sa/4.0/&#34;&gt;知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议&lt;/a&gt;进行许可。</copyright>
     <lastBuildDate>Mon, 01 Oct 2018 00:00:00 +0800</lastBuildDate>
     
-	<atom:link href="https://onceme.me/categories/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://onceme.me/categories/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>mysql,innodb内部实现</title>
-      <link>https://onceme.me/post/mysql-index/</link>
+      <link>http://onceme.me/post/mysql-index/</link>
       <pubDate>Mon, 01 Oct 2018 00:00:00 +0800</pubDate>
       
-      <guid>https://onceme.me/post/mysql-index/</guid>
+      <guid>http://onceme.me/post/mysql-index/</guid>
       <description>&lt;h2 id=&#34;mysql存储结构&#34;&gt;mysql存储结构&lt;/h2&gt;
 
 &lt;ul&gt;
@@ -29,10 +29,10 @@
     
     <item>
       <title>mysql,innodb内部实现</title>
-      <link>https://onceme.me/posts/mysql-index/</link>
+      <link>http://onceme.me/posts/mysql-index/</link>
       <pubDate>Mon, 01 Oct 2018 00:00:00 +0800</pubDate>
       
-      <guid>https://onceme.me/posts/mysql-index/</guid>
+      <guid>http://onceme.me/posts/mysql-index/</guid>
       <description>&lt;h2 id=&#34;mysql存储结构&#34;&gt;mysql存储结构&lt;/h2&gt;
 
 &lt;ul&gt;
