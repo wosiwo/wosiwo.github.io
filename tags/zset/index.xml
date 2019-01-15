@@ -21,14 +21,5 @@
       <description>&lt;p&gt;redis有续集由压缩列表与跳跃表两种方式实现，这里主要说跳跃表&lt;/p&gt;</description>
     </item>
     
-    <item>
-      <title>redis有续集的实现方式</title>
-      <link>http://onceme.me/posts/redis-zset/</link>
-      <pubDate>Sun, 23 Sep 2018 00:00:00 +0800</pubDate>
-      
-      <guid>http://onceme.me/posts/redis-zset/</guid>
-      <description>&lt;p&gt;redis有续集由压缩列表与跳跃表两种方式实现，这里主要说跳跃表&lt;/p&gt;</description>
-    </item>
-    
   </channel>
 </rss>

@@ -12,7 +12,8 @@ redis,gedis性能瓶颈探索
   
   
   <meta name="author" content="onceme" />
-  <meta name="description" content=" 最近对自己写的nosql数据gedis和redis做了性能对比压测，碰到一些问题，做了一些思考和尝试，这里做个记录 " />
+  <meta name="description" content=" 最近对自己写的nosql数据gedis和redis做了性能对比压测，碰到一些问题，做了一些思考和尝试，这里做个记录
+" />
 
 
 
@@ -59,12 +60,13 @@ redis,gedis性能瓶颈探索
           <div class="sub header">@ onceme · Nov 18, 2018 · 2 min read · Update at Nov 18, 2018</div>
         </h1>
       </header>
-      <article class="post-content" style="margin-top: 2rem; font-size: 1.4rem;"><ul>
-<li>最近对自己写的nosql数据<a href="https://github.com/wosiwo/gedis">gedis</a>和redis做了性能对比压测，碰到一些问题，做了一些思考和尝试，这里做个记录</li>
-</ul>
+      <article class="post-content" style="margin-top: 2rem; font-size: 1.4rem;"><blockquote>
+<p>最近对自己写的nosql数据<a href="https://github.com/wosiwo/gedis">gedis</a>和redis做了性能对比压测，碰到一些问题，做了一些思考和尝试，这里做个记录</p>
+</blockquote>
 
 <blockquote>
 <p><a href="https://github.com/wosiwo/gedis">https://github.com/wosiwo/gedis</a></p>
+</blockquote>
 
 <h3 id="长连接">长连接</h3>
 
@@ -75,21 +77,16 @@ redis,gedis性能瓶颈探索
 
 <li><p>使用 unixsocket qps对比长连接模式提升超过50%</p></li>
 
-<li><p>mac系统下 从37446.17qps 到58360.08</p>
-
-<h4 id="本地循环地址-127-0-0-1">本地循环地址 127.0.0.1</h4></li>
-
-<li><p>不走网卡</p></li>
-
-<li><p>本机的报文的路径是这样的：</p></li>
-
-<li><p>应用层-&gt; socket接口 -&gt; 传输层（tcp/udp报文） -&gt; 网络层 -&gt; back to 传输层 -&gt; backto socket接口 -.&gt; 传回应用程序</p></li>
+<li><p>mac系统下 从37446.17qps 到58360.08</p></li>
 </ul>
 
-<p><a href="https://blog.csdn.net/weiyuefei/article/details/78796781">https://blog.csdn.net/weiyuefei/article/details/78796781</a></p>
-</blockquote>
+<h4 id="本地循环地址-127-0-0-1">本地循环地址 127.0.0.1</h4>
 
-<h4 id="异步io">异步io</h4>
+<ul>
+<li>不走网卡</li>
+<li>本机的报文的路径是这样的：</li>
+<li>应用层-&gt; socket接口 -&gt; 传输层（tcp/udp报文） -&gt; 网络层 -&gt; back to 传输层 -&gt; backto socket接口 -.&gt; 传回应用程序</li>
+</ul>
 
 <h3 id="redis-benchmark">redis-benchmark</h3>
 
@@ -136,39 +133,39 @@ ifconfig eth1 mtu 9000 up
 <li>gedis 5个端口监听实例<br /></li>
 <li>最后的实践与思考发现，当前压测的redis始终高于gedis的原因在于redis-benchmark是单线程，无法充分测试并发服务端的性能瓶颈</li>
 <li>多个监听实例在长连接场景下的价值有限</li>
-<li>TODO 后面继续测试多个监听实例对大量短连接的意义</li>
-</ul>
 
-<pre  class="prettyprint">
-```
-diff --git a/src/pkg/net/sockopt_linux.go b/src/pkg/net/sockopt_linux.go
+<li><p>TODO 后面继续测试多个监听实例对大量短连接的意义</p>
+
+<pre><code>diff --git a/src/pkg/net/sockopt_linux.go b/src/pkg/net/sockopt_linux.go
 --- a/src/pkg/net/sockopt_linux.go
 +++ b/src/pkg/net/sockopt_linux.go
 @@ -9,6 +9,10 @@
- 	"syscall"
- )
+	&quot;syscall&quot;
+)
  
 +const SO_REUSEPORT = 15
 +
 +var USE_SO_REUSEPORT bool
 +
- func setDefaultSockopts(s, family, sotype int, ipv6only bool) error {
- 	if family == syscall.AF_INET6 && sotype != syscall.SOCK_RAW {
- 		// Allow both IP versions even if the OS default
+func setDefaultSockopts(s, family, sotype int, ipv6only bool) error {
+	if family == syscall.AF_INET6 &amp;&amp; sotype != syscall.SOCK_RAW {
+		// Allow both IP versions even if the OS default
 @@ -21,6 +25,11 @@
- }
+}
  
- func setDefaultListenerSockopts(s int) error {
+func setDefaultListenerSockopts(s int) error {
 +	if USE_SO_REUSEPORT {
 +		if err := syscall.SetsockoptInt(s, syscall.SOL_SOCKET, SO_REUSEPORT, 1); err != nil {
-+			return os.NewSyscallError("setsockopt", err)
++			return os.NewSyscallError(&quot;setsockopt&quot;, err)
 +		}
 +	}
- 	// Allow reuse of recently-used addresses.
- 	return os.NewSyscallError("setsockopt", syscall.SetsockoptInt(s, syscall.SOL_SOCKET, syscall.SO_REUSEADDR, 1))
- }
-```
-</pre></article>
+	// Allow reuse of recently-used addresses.
+	return os.NewSyscallError(&quot;setsockopt&quot;, syscall.SetsockoptInt(s, syscall.SOL_SOCKET, syscall.SO_REUSEADDR, 1))
+}
+</code></pre></li>
+</ul>
+
+<h5 id="todo-尝试linux下的异步io">TODO 尝试linux下的异步io</h5></article>
     </section>
 
     <footer class="ui secondary attached segment dream-tags">
@@ -248,11 +245,15 @@ diff --git a/src/pkg/net/sockopt_linux.go b/src/pkg/net/sockopt_linux.go
 
 <section class="ui attached center aligned inverted segment dream-header-tags dream-tags">
   
+  <a class="ui label" href="/tags/bigdata" title="bigdata">bigdata</a>
+  
   <a class="ui label" href="/tags/codis" title="codis">codis</a>
   
   <a class="ui label" href="/tags/gedis" title="gedis">gedis</a>
   
   <a class="ui label" href="/tags/golang" title="golang">golang</a>
+  
+  <a class="ui label" href="/tags/hadoop" title="hadoop">hadoop</a>
   
   <a class="ui label" href="/tags/java" title="java">java</a>
   
@@ -295,13 +296,6 @@ diff --git a/src/pkg/net/sockopt_linux.go b/src/pkg/net/sockopt_linux.go
         </div>
       </div>
       
-      <div class="item" style="padding-left: 24px;">
-        <i class="cocktail icon"></i>
-        <div class="content">
-          <a href="http://onceme.me/posts/mysql-redis/" class="item">mysql-redis</a>
-        </div>
-      </div>
-      
       </div>
     </div>
     
@@ -315,14 +309,21 @@ diff --git a/src/pkg/net/sockopt_linux.go b/src/pkg/net/sockopt_linux.go
       <div class="item" style="padding-left: 24px;">
         <i class="cocktail icon"></i>
         <div class="content">
-          <a href="http://onceme.me/post/syncmap-hashmap/" class="item">sync.map与自建hashmap支持并发安全</a>
+          <a href="http://onceme.me/post/bigdata/" class="item">梳理bigdata大数据工具，及其定位</a>
         </div>
       </div>
       
       <div class="item" style="padding-left: 24px;">
         <i class="cocktail icon"></i>
         <div class="content">
-          <a href="http://onceme.me/posts/syncmap-hashmap/" class="item">sync.map与自建hashmap支持并发安全</a>
+          <a href="http://onceme.me/post/concurrency_map/" class="item">sync.map与手动维护的并发安全map</a>
+        </div>
+      </div>
+      
+      <div class="item" style="padding-left: 24px;">
+        <i class="cocktail icon"></i>
+        <div class="content">
+          <a href="http://onceme.me/post/syncmap-hashmap/" class="item">sync.map与自建hashmap支持并发安全</a>
         </div>
       </div>
       
@@ -336,21 +337,7 @@ diff --git a/src/pkg/net/sockopt_linux.go b/src/pkg/net/sockopt_linux.go
       <div class="item" style="padding-left: 24px;">
         <i class="cocktail icon"></i>
         <div class="content">
-          <a href="http://onceme.me/posts/redis-gedis/" class="item">redis,gedis性能瓶颈探索</a>
-        </div>
-      </div>
-      
-      <div class="item" style="padding-left: 24px;">
-        <i class="cocktail icon"></i>
-        <div class="content">
           <a href="http://onceme.me/post/redis-zset/" class="item">redis有续集的实现方式</a>
-        </div>
-      </div>
-      
-      <div class="item" style="padding-left: 24px;">
-        <i class="cocktail icon"></i>
-        <div class="content">
-          <a href="http://onceme.me/posts/redis-zset/" class="item">redis有续集的实现方式</a>
         </div>
       </div>
       
@@ -368,13 +355,6 @@ diff --git a/src/pkg/net/sockopt_linux.go b/src/pkg/net/sockopt_linux.go
         <i class="cocktail icon"></i>
         <div class="content">
           <a href="http://onceme.me/post/slim-swoole/" class="item">slim使用swoole进行服务化</a>
-        </div>
-      </div>
-      
-      <div class="item" style="padding-left: 24px;">
-        <i class="cocktail icon"></i>
-        <div class="content">
-          <a href="http://onceme.me/posts/slim-swoole/" class="item">slim使用swoole进行服务化</a>
         </div>
       </div>
       
@@ -398,21 +378,7 @@ diff --git a/src/pkg/net/sockopt_linux.go b/src/pkg/net/sockopt_linux.go
       <div class="item" style="padding-left: 24px;">
         <i class="cocktail icon"></i>
         <div class="content">
-          <a href="http://onceme.me/posts/go-practice/" class="item">go语言实践笔记</a>
-        </div>
-      </div>
-      
-      <div class="item" style="padding-left: 24px;">
-        <i class="cocktail icon"></i>
-        <div class="content">
           <a href="http://onceme.me/post/java-maven/" class="item">java 使用maven编译碰到的问题</a>
-        </div>
-      </div>
-      
-      <div class="item" style="padding-left: 24px;">
-        <i class="cocktail icon"></i>
-        <div class="content">
-          <a href="http://onceme.me/posts/java-maven/" class="item">java 使用maven编译碰到的问题</a>
         </div>
       </div>
       
@@ -433,13 +399,6 @@ diff --git a/src/pkg/net/sockopt_linux.go b/src/pkg/net/sockopt_linux.go
         </div>
       </div>
       
-      <div class="item" style="padding-left: 24px;">
-        <i class="cocktail icon"></i>
-        <div class="content">
-          <a href="http://onceme.me/posts/gedis-redis-like-demo-with-go/" class="item">gedis-redis-like-demo-with-go</a>
-        </div>
-      </div>
-      
       </div>
     </div>
     
@@ -454,13 +413,6 @@ diff --git a/src/pkg/net/sockopt_linux.go b/src/pkg/net/sockopt_linux.go
         <i class="cocktail icon"></i>
         <div class="content">
           <a href="http://onceme.me/post/lnmp-stress-test/" class="item">lnmp环境&#43;codis压力测试</a>
-        </div>
-      </div>
-      
-      <div class="item" style="padding-left: 24px;">
-        <i class="cocktail icon"></i>
-        <div class="content">
-          <a href="http://onceme.me/posts/lnmp-stress-test/" class="item">lnmp环境&#43;codis压力测试</a>
         </div>
       </div>
       
@@ -481,13 +433,6 @@ diff --git a/src/pkg/net/sockopt_linux.go b/src/pkg/net/sockopt_linux.go
         </div>
       </div>
       
-      <div class="item" style="padding-left: 24px;">
-        <i class="cocktail icon"></i>
-        <div class="content">
-          <a href="http://onceme.me/posts/mysql-index/" class="item">mysql,innodb内部实现</a>
-        </div>
-      </div>
-      
       </div>
     </div>
     
@@ -505,13 +450,6 @@ diff --git a/src/pkg/net/sockopt_linux.go b/src/pkg/net/sockopt_linux.go
         </div>
       </div>
       
-      <div class="item" style="padding-left: 24px;">
-        <i class="cocktail icon"></i>
-        <div class="content">
-          <a href="http://onceme.me/posts/another-world/" class="item">是仙凡</a>
-        </div>
-      </div>
-      
       </div>
     </div>
     
@@ -521,7 +459,7 @@ diff --git a/src/pkg/net/sockopt_linux.go b/src/pkg/net/sockopt_linux.go
 
 <section class="ui bottom attached center aligned inverted segment">
     
-    <p>© 2018 onceme&#39;s blog</p>
+    <p>© 2019 onceme&#39;s blog</p>
     
     <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/g1eny0ung/hugo-theme-dream" target="_blank">Dream</a>.</p>
 </section>

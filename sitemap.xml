@@ -3,12 +3,17 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://onceme.me/post/go-practice/</loc>
-    <lastmod>2018-12-03T00:00:00+08:00</lastmod>
+    <loc>http://onceme.me/post/bigdata/</loc>
+    <lastmod>2019-01-15T21:02:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>http://onceme.me/posts/go-practice/</loc>
+    <loc>http://onceme.me/post/concurrency_map/</loc>
+    <lastmod>2019-01-01T22:04:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://onceme.me/post/go-practice/</loc>
     <lastmod>2018-12-03T00:00:00+08:00</lastmod>
   </url>
   
@@ -18,17 +23,7 @@
   </url>
   
   <url>
-    <loc>http://onceme.me/posts/syncmap-hashmap/</loc>
-    <lastmod>2018-12-03T00:00:00+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>http://onceme.me/post/redis-gedis/</loc>
-    <lastmod>2018-11-18T00:00:00+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://onceme.me/posts/redis-gedis/</loc>
     <lastmod>2018-11-18T00:00:00+08:00</lastmod>
   </url>
   
@@ -38,17 +33,7 @@
   </url>
   
   <url>
-    <loc>http://onceme.me/posts/mysql-index/</loc>
-    <lastmod>2018-10-01T00:00:00+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>http://onceme.me/post/redis-zset/</loc>
-    <lastmod>2018-09-23T00:00:00+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://onceme.me/posts/redis-zset/</loc>
     <lastmod>2018-09-23T00:00:00+08:00</lastmod>
   </url>
   
@@ -58,17 +43,7 @@
   </url>
   
   <url>
-    <loc>http://onceme.me/posts/mysql-redis/</loc>
-    <lastmod>2018-09-19T00:00:00+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>http://onceme.me/post/gedis-redis-like-demo-with-go/</loc>
-    <lastmod>2018-09-02T10:00:00+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://onceme.me/posts/gedis-redis-like-demo-with-go/</loc>
     <lastmod>2018-09-02T10:00:00+08:00</lastmod>
   </url>
   
@@ -78,17 +53,7 @@
   </url>
   
   <url>
-    <loc>http://onceme.me/posts/slim-swoole/</loc>
-    <lastmod>2018-08-26T00:00:00+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>http://onceme.me/post/java-maven/</loc>
-    <lastmod>2018-08-16T00:00:00+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://onceme.me/posts/java-maven/</loc>
     <lastmod>2018-08-16T00:00:00+08:00</lastmod>
   </url>
   
@@ -98,16 +63,7 @@
   </url>
   
   <url>
-    <loc>http://onceme.me/posts/lnmp-stress-test/</loc>
-    <lastmod>2014-04-14T00:00:00+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>http://onceme.me/post/another-world/</loc>
-  </url>
-  
-  <url>
-    <loc>http://onceme.me/posts/another-world/</loc>
   </url>
   
   <url>
@@ -122,6 +78,12 @@
   <url>
     <loc>http://onceme.me/categories/algorithm/</loc>
     <lastmod>2018-09-19T00:00:00+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://onceme.me/tags/bigdata/</loc>
+    <lastmod>2019-01-15T21:02:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -145,7 +107,13 @@
   
   <url>
     <loc>http://onceme.me/tags/golang/</loc>
-    <lastmod>2018-12-03T00:00:00+08:00</lastmod>
+    <lastmod>2019-01-01T22:04:00+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://onceme.me/tags/hadoop/</loc>
+    <lastmod>2019-01-15T21:02:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -168,26 +136,20 @@
   </url>
   
   <url>
-    <loc>http://onceme.me/tags/nosql/</loc>
-    <lastmod>2018-12-03T00:00:00+08:00</lastmod>
+    <loc>http://onceme.me/categories/nosql/</loc>
+    <lastmod>2019-01-15T21:02:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://onceme.me/categories/nosql/</loc>
-    <lastmod>2018-12-03T00:00:00+08:00</lastmod>
+    <loc>http://onceme.me/tags/nosql/</loc>
+    <lastmod>2019-01-01T22:04:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://onceme.me/post/</loc>
-    <lastmod>2018-12-03T00:00:00+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://onceme.me/posts/</loc>
-    <lastmod>2018-12-03T00:00:00+08:00</lastmod>
+    <lastmod>2019-01-15T21:02:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -204,20 +166,20 @@
   </url>
   
   <url>
-    <loc>http://onceme.me/tags/swoole/</loc>
-    <lastmod>2018-08-26T00:00:00+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>http://onceme.me/categories/swoole/</loc>
     <lastmod>2018-08-26T00:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
+    <loc>http://onceme.me/tags/swoole/</loc>
+    <lastmod>2018-08-26T00:00:00+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://onceme.me/tags/</loc>
-    <lastmod>2014-04-14T00:00:00+08:00</lastmod>
+    <lastmod>2019-01-15T21:02:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -229,7 +191,7 @@
   
   <url>
     <loc>http://onceme.me/</loc>
-    <lastmod>2018-12-03T00:00:00+08:00</lastmod>
+    <lastmod>2019-01-15T21:02:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   

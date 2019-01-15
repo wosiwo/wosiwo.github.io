@@ -18,20 +18,9 @@
       <pubDate>Sun, 18 Nov 2018 00:00:00 +0800</pubDate>
       
       <guid>http://onceme.me/post/redis-gedis/</guid>
-      <description>&lt;ul&gt;
-&lt;li&gt;最近对自己写的nosql数据&lt;a href=&#34;https://github.com/wosiwo/gedis&#34;&gt;gedis&lt;/a&gt;和redis做了性能对比压测，碰到一些问题，做了一些思考和尝试，这里做个记录&lt;/li&gt;
-&lt;/ul&gt;</description>
-    </item>
-    
-    <item>
-      <title>redis,gedis性能瓶颈探索</title>
-      <link>http://onceme.me/posts/redis-gedis/</link>
-      <pubDate>Sun, 18 Nov 2018 00:00:00 +0800</pubDate>
-      
-      <guid>http://onceme.me/posts/redis-gedis/</guid>
-      <description>&lt;ul&gt;
-&lt;li&gt;最近对自己写的nosql数据&lt;a href=&#34;https://github.com/wosiwo/gedis&#34;&gt;gedis&lt;/a&gt;和redis做了性能对比压测，碰到一些问题，做了一些思考和尝试，这里做个记录&lt;/li&gt;
-&lt;/ul&gt;</description>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;最近对自己写的nosql数据&lt;a href=&#34;https://github.com/wosiwo/gedis&#34;&gt;gedis&lt;/a&gt;和redis做了性能对比压测，碰到一些问题，做了一些思考和尝试，这里做个记录&lt;/p&gt;
+&lt;/blockquote&gt;</description>
     </item>
     
     <item>
@@ -44,32 +33,11 @@
     </item>
     
     <item>
-      <title>redis有续集的实现方式</title>
-      <link>http://onceme.me/posts/redis-zset/</link>
-      <pubDate>Sun, 23 Sep 2018 00:00:00 +0800</pubDate>
-      
-      <guid>http://onceme.me/posts/redis-zset/</guid>
-      <description>&lt;p&gt;redis有续集由压缩列表与跳跃表两种方式实现，这里主要说跳跃表&lt;/p&gt;</description>
-    </item>
-    
-    <item>
       <title>mysql-redis</title>
       <link>http://onceme.me/post/mysql-redis/</link>
       <pubDate>Wed, 19 Sep 2018 00:00:00 +0800</pubDate>
       
       <guid>http://onceme.me/post/mysql-redis/</guid>
-      <description>&lt;h1 id=&#34;mysql-b-树&#34;&gt;mysql B+树&lt;/h1&gt;
-
-&lt;p&gt;到叶子节点的高度固定，数据按顺序存储在叶子节点上，叶子节点通过指针互相连接ei
-B+数由B树和索引按顺序查找演化而来&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>mysql-redis</title>
-      <link>http://onceme.me/posts/mysql-redis/</link>
-      <pubDate>Wed, 19 Sep 2018 00:00:00 +0800</pubDate>
-      
-      <guid>http://onceme.me/posts/mysql-redis/</guid>
       <description>&lt;h1 id=&#34;mysql-b-树&#34;&gt;mysql B+树&lt;/h1&gt;
 
 &lt;p&gt;到叶子节点的高度固定，数据按顺序存储在叶子节点上，叶子节点通过指针互相连接ei
