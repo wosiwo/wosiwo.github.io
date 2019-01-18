@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://onceme.me/post/google-bigdata-paper/</loc>
+    <lastmod>2019-01-17T16:06:00+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://onceme.me/post/bigdata/</loc>
     <lastmod>2019-01-15T21:02:00+08:00</lastmod>
   </url>
@@ -83,7 +88,7 @@
   
   <url>
     <loc>http://onceme.me/tags/bigdata/</loc>
-    <lastmod>2019-01-15T21:02:00+08:00</lastmod>
+    <lastmod>2019-01-17T16:06:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -112,6 +117,12 @@
   </url>
   
   <url>
+    <loc>http://onceme.me/tags/google/</loc>
+    <lastmod>2019-01-17T16:06:00+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://onceme.me/tags/hadoop/</loc>
     <lastmod>2019-01-15T21:02:00+08:00</lastmod>
     <priority>0</priority>
@@ -136,20 +147,20 @@
   </url>
   
   <url>
-    <loc>http://onceme.me/categories/nosql/</loc>
-    <lastmod>2019-01-15T21:02:00+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>http://onceme.me/tags/nosql/</loc>
     <lastmod>2019-01-01T22:04:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
+    <loc>http://onceme.me/categories/nosql/</loc>
+    <lastmod>2019-01-17T16:06:00+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://onceme.me/post/</loc>
-    <lastmod>2019-01-15T21:02:00+08:00</lastmod>
+    <lastmod>2019-01-17T16:06:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -166,20 +177,20 @@
   </url>
   
   <url>
-    <loc>http://onceme.me/categories/swoole/</loc>
-    <lastmod>2018-08-26T00:00:00+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>http://onceme.me/tags/swoole/</loc>
     <lastmod>2018-08-26T00:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
+    <loc>http://onceme.me/categories/swoole/</loc>
+    <lastmod>2018-08-26T00:00:00+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://onceme.me/tags/</loc>
-    <lastmod>2019-01-15T21:02:00+08:00</lastmod>
+    <lastmod>2019-01-17T16:06:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -191,7 +202,7 @@
   
   <url>
     <loc>http://onceme.me/</loc>
-    <lastmod>2019-01-15T21:02:00+08:00</lastmod>
+    <lastmod>2019-01-17T16:06:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   

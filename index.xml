@@ -7,10 +7,21 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a rel=&#34;license&#34; href=&#34;http://creativecommons.org/licenses/by-nc-sa/4.0/&#34;&gt;&lt;img alt=&#34;知识共享许可协议&#34; style=&#34;border-width:0&#34; src=&#34;https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png&#34; /&gt;&lt;/a&gt;&lt;br /&gt;本作品采用&lt;a rel=&#34;license&#34; href=&#34;http://creativecommons.org/licenses/by-nc-sa/4.0/&#34;&gt;知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议&lt;/a&gt;进行许可。</copyright>
-    <lastBuildDate>Tue, 15 Jan 2019 21:02:00 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 17 Jan 2019 16:06:00 +0800</lastBuildDate>
     
 	<atom:link href="http://onceme.me/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>对谷歌大数据&#34;老三篇&#34;论文的理解</title>
+      <link>http://onceme.me/post/google-bigdata-paper/</link>
+      <pubDate>Thu, 17 Jan 2019 16:06:00 +0800</pubDate>
+      
+      <guid>http://onceme.me/post/google-bigdata-paper/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;这篇文章整理的是对整个大数据领域的起点，谷歌04年发表的Google File System,Google Bigdata,以及MapReduce三篇论文的理解与思考&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+    </item>
     
     <item>
       <title>梳理bigdata大数据工具，及其定位</title>

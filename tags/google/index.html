@@ -6,14 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>
-sync.map与手动维护的并发安全map
+
+tag | google
+
 </title>
 
   
   
   <meta name="author" content="onceme" />
-  <meta name="description" content="sync.map与手动维护的并发安全map
-" />
+  <meta name="description" content="onceme的技术笔记" />
 
 
 
@@ -22,7 +23,7 @@ sync.map与手动维护的并发安全map
 <meta name="generator" content="Hugo 0.54-DEV" />
 
 
-<link rel="canonical" href="http://onceme.me/post/concurrency_map/" />
+<link rel="canonical" href="http://onceme.me/tags/google/" />
 <link rel="alternative" href="/index.xml" title="onceme&#39;s blog" type="application/atom+xml" />
 
 <link href="/css/semantic.min.css" rel="stylesheet" />
@@ -36,110 +37,27 @@ sync.map与手动维护的并发安全map
     <div class="flipper">
       <section class="front">
         
-<nav class="ui top secondary menu">
+
+<nav class="ui top secondary menu" style="overflow-x: auto">
   <div class="item">
     <i class="inverted big link bullseye icon dream-flip-toggle" title="Flip it!"></i>
   </div>
   <div class="item">
-    <a href="/">
-      <i class="inverted big link home icon" title="Home"></i>
-    </a>
+    <a href="/"><i class="inverted big link home icon" title="Home"></i></a>
+  </div>
+  <div class="item">
+    
+    <i class="disabled inverted big arrow alternate circle outline left icon" title="Previous page"></i>
+    
+  </div>
+  <div class="item">
+    
+    <i class="disabled inverted big arrow alternate circle outline right icon" title="Next page"></i>
+    
   </div>
 </nav>
  
 <div class="ui centered grid">
-  <div class="fifteen wide mobile fifteen wide tablet eleven wide computer column post-list post-single-main">
-
-    <section class="ui secondary top attached black segment">
-      <a class="ui black right corner label" href="javascript:void(0)" onclick="savePostAsImg()">
-        <i class="save icon"></i>
-      </a>
-      <header>
-        <h1 class="ui header">
-          sync.map与手动维护的并发安全map
-          <div class="sub header">@ onceme · Jan 1, 2019 · 1 min read · Update at Jan 1, 2019</div>
-        </h1>
-      </header>
-      <article class="post-content" style="margin-top: 2rem; font-size: 1.4rem;"><p>sync.map与手动维护的并发安全map</p>
-
-<p>? 原子操作能否并发
-* sync.map 使用 read map与dity map
-    * read map 将整个map存入atom.value中，同时value是额外封装了一层数据结构，它先把value值转换为了unsafe.Pointer类型的值，然后再把后者封装，并储存在其中的原生字典中,因此可以用原子操作，并发的修改read map中的不同key
-    * 不过read map新增键值对是需要加互斥锁的，所以不能并发插入
-    * dity map就是一个元素的map</p>
-
-<ul>
-<li><p>使用指针来实现并发的读取以及不同key的并发修改</p>
-
-<ul>
-<li><pre><code>//创建一个map值对象类型
-type ValueObj struct {
-Val interface{}
-}
-//定义扩展后的哈希表
-MapDemo map[string]*ValueObj
-
-//初始化已知key，并创建空值
-for _,key := range keys{
- MapDemo[key] = &amp;ValueObj{}
-}
-//之后就可通过 MapDemo[key].Val = &quot;a&quot; 等语句对哈希表的val所指向的变量进行修改
-
-</code></pre>
-
-<ul>
-<li>使用这种方式实现扩展之后的哈希表</li>
-<li>只有在创建新key的时候才需要串行执行</li>
-<li>读与读的并发请求没有任何限制</li>
-<li>读与写的并发，达到了类似mysql行锁的效果，对一个key的修改，只会锁住这个key本身，并不会影响其他key的读写操作</li>
-<li>在key的生存时间较长的应用场景下都可以显著提高map的并发性能，使其不再是一个瓶颈</li>
-</ul></li>
-</ul></li>
-</ul></article>
-    </section>
-
-    <footer class="ui secondary attached segment dream-tags">
-      
-      
-      <a class="ui label" href="/tags/golang" title="golang">golang</a>
-      
-      <a class="ui label" href="/tags/nosql" title="nosql">nosql</a>
-      
-      
-    </footer>
-
-    
-    <footer class="ui secondary attached segment">
-      <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />本作品采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。
-    </footer>
-    
-
-    
-    <footer class="ui secondary bottom attached stacked segment post-disqus-area" data-html2canvas-ignore="true">
-      <div id="disqus_thread"></div>
-      <script>
-      
-
-      
-
-
-      var disqus_config = function () {
-      this.page.url = 'http:\/\/onceme.me\/post\/concurrency_map\/';  
-      this.page.identifier = '\/post\/concurrency_map\/'; 
-      };
-
-      (function() { 
-      var d = document, s = d.createElement('script');
-      s.src = 'https://' + 'oncemes-blog' + '.disqus.com/embed.js';
-      s.setAttribute('data-timestamp', +new Date());
-      (d.head || d.body).appendChild(s);
-      })();
-      </script>
-      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    </footer>
-    
-
-  </div>
   <div class="fifteen wide mobile fifteen wide tablet four wide computer column">
 
     <section class="ui top attached center aligned inverted segment">
@@ -403,6 +321,41 @@ for _,key := range keys{
 
 
   </div>
+  <div class="fifteen wide mobile fifteen wide tablet eleven wide computer column post-list">
+
+    <div class="ui two stackable cards">
+      
+      
+
+        <article class="black card">
+  <div class="image">
+    <div class="ui dimmer">
+      <div class="content">
+        <div class="center">
+          <div class="display-content">
+            <a href="http://onceme.me/post/google-bigdata-paper/">
+              <h2 class="ui header" style="color: white;">对谷歌大数据&#34;老三篇&#34;论文的理解</h2>
+            </a>
+            <p style="padding: 5px;"> 这篇文章整理的是对整个大数据领域的起点，谷歌04年发表的Google File System,Google Bigdata,以及MapReduce三篇论文的理解与思考
+</p>
+            <p>@ onceme</p>
+          </div>
+          <div class="ui top right attached black label">4 min read</div>
+          <div class="ui bottom left attached black label">Jan 17, 2019</div>
+        </div>
+      </div>
+    </div>
+    
+    <img src="/img/default6.jpg" alt="对谷歌大数据&#34;老三篇&#34;论文的理解">
+    
+  </div>
+</article>
+
+
+      
+    </div>
+
+  </div>
 </div>
 
       </section>
@@ -465,6 +418,30 @@ for _,key := range keys{
       
 
       
+        
+        <footer class="ui secondary segment">
+          <div id="disqus_thread"></div>
+          <script>
+          
+
+          
+
+
+          var disqus_config = function () {
+          this.page.url = 'http:\/\/onceme.me\/tags\/google\/about';  
+          this.page.identifier = '/about'; 
+          };
+
+          (function() { 
+          var d = document, s = d.createElement('script');
+          s.src = 'https://' + 'oncemes-blog' + '.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+          })();
+          </script>
+          <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </footer>
+        
       
     </section>
 

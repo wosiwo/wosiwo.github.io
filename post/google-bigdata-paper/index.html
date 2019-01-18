@@ -6,13 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>
-sync.map与手动维护的并发安全map
+对谷歌大数据&#34;老三篇&#34;论文的理解
 </title>
 
   
   
   <meta name="author" content="onceme" />
-  <meta name="description" content="sync.map与手动维护的并发安全map
+  <meta name="description" content=" 这篇文章整理的是对整个大数据领域的起点，谷歌04年发表的Google File System,Google Bigdata,以及MapReduce三篇论文的理解与思考
 " />
 
 
@@ -22,7 +22,7 @@ sync.map与手动维护的并发安全map
 <meta name="generator" content="Hugo 0.54-DEV" />
 
 
-<link rel="canonical" href="http://onceme.me/post/concurrency_map/" />
+<link rel="canonical" href="http://onceme.me/post/google-bigdata-paper/" />
 <link rel="alternative" href="/index.xml" title="onceme&#39;s blog" type="application/atom+xml" />
 
 <link href="/css/semantic.min.css" rel="stylesheet" />
@@ -56,54 +56,106 @@ sync.map与手动维护的并发安全map
       </a>
       <header>
         <h1 class="ui header">
-          sync.map与手动维护的并发安全map
-          <div class="sub header">@ onceme · Jan 1, 2019 · 1 min read · Update at Jan 1, 2019</div>
+          对谷歌大数据&#34;老三篇&#34;论文的理解
+          <div class="sub header">@ onceme · Jan 17, 2019 · 4 min read · Update at Jan 17, 2019</div>
         </h1>
       </header>
-      <article class="post-content" style="margin-top: 2rem; font-size: 1.4rem;"><p>sync.map与手动维护的并发安全map</p>
+      <article class="post-content" style="margin-top: 2rem; font-size: 1.4rem;"><blockquote>
+<p>这篇文章整理的是对整个大数据领域的起点，谷歌04年发表的Google File System,Google Bigdata,以及MapReduce三篇论文的理解与思考</p>
+</blockquote>
 
-<p>? 原子操作能否并发
-* sync.map 使用 read map与dity map
-    * read map 将整个map存入atom.value中，同时value是额外封装了一层数据结构，它先把value值转换为了unsafe.Pointer类型的值，然后再把后者封装，并储存在其中的原生字典中,因此可以用原子操作，并发的修改read map中的不同key
-    * 不过read map新增键值对是需要加互斥锁的，所以不能并发插入
-    * dity map就是一个元素的map</p>
+<h5 id="google-file-system">Google File System</h5>
 
 <ul>
-<li><p>使用指针来实现并发的读取以及不同key的并发修改</p>
+<li>有master节点，且master节点只存储元数据，极大降低了master节点的负担，使得只需要普通配置的机器，就可以在一个庞大分布式系统中使用统一的master节点</li>
+<li>数据块大小为64M</li>
+<li>每个数据块都会在另外的节点中有指定数量的副本</li>
+<li>节点会与分布式文件锁系统挂钩，占用特定的文件锁，来表示节点的存活</li>
+<li>节点失效后，master节点会从其他备份节点恢复出一个新的节点</li>
+<li>节点维持着一个seq写入序号，当序号与master节点存储的不一致时，认为节点跟不上进度，将被认为是失效节点，被清理  (这样跟不上就丢弃的处理刚觉是不是过于粗暴)</li>
+<li>数据的不同副本的存储策略问题，尽量分散在物理距离远的地方？（不同交换机，机柜，机房）</li>
+<li>客户端缓存路径与存储节点的元数据信息</li>
+</ul>
+
+<h5 id="google-bigdata">Google Bigdata</h5>
 
 <ul>
-<li><pre><code>//创建一个map值对象类型
-type ValueObj struct {
-Val interface{}
-}
-//定义扩展后的哈希表
-MapDemo map[string]*ValueObj
+<li>结构化分布式数据存储系统(TODO 确认是结构化还是半结构化)</li>
+<li>依托于GFS</li>
+<li>目的：适用性广泛、可扩展、高性能和高可用性</li>
+<li>类似于一种在nosql基础上实现的简单的行列逻辑的表（TiDB的实现也可以看到这篇论文的影子， TiDB的存储层也是TiKV这样的Nosql，）</li>
+<li>行表示与列标识都保存在kv数据结构的key上</li>
+<li>根据一些条件判断数据是存在内存还是硬盘</li>
+<li>每个列可以保存不同限定条件下的不同版本形成列簇（如时间戳）</li>
 
-//初始化已知key，并创建空值
-for _,key := range keys{
- MapDemo[key] = &amp;ValueObj{}
-}
-//之后就可通过 MapDemo[key].Val = &quot;a&quot; 等语句对哈希表的val所指向的变量进行修改
+<li><p>通过行关键字来排序</p></li>
 
-</code></pre>
+<li><p>Bigtable 是一个稀疏的、分布式的、持久化存储的多维度排序 Map5。Map 的索引是行关键字、列关键字
+以及时间戳；Map 中的每个 value 都是一个未经解析的 byte 数组。
+&gt;(row:string, column:string,time:int64)-&gt;stri</p></li>
+
+<li><p>master负责对tablet节点的调度管理，对保存在GFS上的文件进行垃圾收集，以及对存储数据的模式进行维护(类似于表结构)</p></li>
+
+<li><p>tablet节点管理一定数量的tablet</p></li>
+
+<li><p>和GFS类似，bigdata的数据读取不经过master节点，而是由客户端直接与tablet节点通信</p></li>
+
+<li><p>SSTable是一系列数据块(每块默认64k),然后使用块索引来定位到具体的数据块，而块索引存储在SSTable末尾</p></li>
+
+<li><p>Bigdata 包含一个master服务器和多个Tablet服务器</p></li>
+
+<li><p>Bigdata 使用一个 METADATA 表 存储所有tablet的位置信息</p></li>
+
+<li><p>METADATA 表 的第一个tablet是root table，其存储了METADATA表各个tablet的位置信息</p></li>
+
+<li><p>METADATA表的其他tablet都存储了一个用户tablet的集合的位置信息</p></li>
+
+<li><p>root tablet信息不分割，保证了tablet位置信息存储始终是三层</p></li>
+
+<li><p>对同一个行关键字的读或者写操作都是原子的（不管读或者写这一行里多少个不同列），这个
+设计决策能够使用户很容易的理解程序在对同一个行进行并发更新操作时的行为。</p></li>
+
+<li><p>表中的每个行都可以动态分区。每个分区叫做一个”Tablet”，Tablet 是数据分布和负载均衡调整的最小单位</p></li>
+
+<li><p>(一行就可以有多个分区？)即按什么规则拆分tablet</p>
 
 <ul>
-<li>使用这种方式实现扩展之后的哈希表</li>
-<li>只有在创建新key的时候才需要串行执行</li>
-<li>读与读的并发请求没有任何限制</li>
-<li>读与写的并发，达到了类似mysql行锁的效果，对一个key的修改，只会锁住这个key本身，并不会影响其他key的读写操作</li>
-<li>在key的生存时间较长的应用场景下都可以显著提高map的并发性能，使其不再是一个瓶颈</li>
+<li>一个表的初始状态是一个tablet,</li>
+<li>同一行是否会被分割为两个tablet?</li>
 </ul></li>
-</ul></li>
+
+<li><p>tablet服务器恢复时，会从元信息表中读取元信息。</p></li>
+
+<li><p>元信息，是由多个SSTables组成。SSTable由一个tablet和一系列的重做点（redo points）组成。</p></li>
+
+<li><p>BigTable 内部存储数据的文件是 Google SSTable 格式的。SSTable 是一个持久化的、排序的、不可更改的
+Map 结构，</p></li>
+
+<li><p>BigTable 还依赖一个高可用的、序列化的分布式锁服务组件，叫做 Chubby</p></li>
+</ul>
+
+<h5 id="map-reduce">Map Reduce</h5>
+
+<ul>
+<li>一种简化分布式程序编写的编程模型与计算框架、</li>
+<li>同样有一个master节点负责调度</li>
+<li>一定数量的map节点与一定数量的reduce节点</li>
+<li>原始数据打散分发到各个map节点</li>
+<li>map节点将原始数据进行初步的加工，得到一组key以及对应的val</li>
+<li>master节点按就近原则，将中间结果发送给reduce节点</li>
+<li>reduce节点分别计算，最后将结果汇总</li>
+<li>map节点与reduce节点都是无状态的，任意节点执行失败，都可以将该节点的任务调度到其他节点，而且只需要执行失败的部分</li>
+<li>在大部分任务完成时，总的运行时间可能会被个别节点所拖延，所以对于执行时间过长的任务，master节点会在其他节点重新执行一次相同任务</li>
+<li>这两个流程不论哪个先完成，整个任务都算完成了</li>
 </ul></article>
     </section>
 
     <footer class="ui secondary attached segment dream-tags">
       
       
-      <a class="ui label" href="/tags/golang" title="golang">golang</a>
+      <a class="ui label" href="/tags/bigdata" title="bigdata">bigdata</a>
       
-      <a class="ui label" href="/tags/nosql" title="nosql">nosql</a>
+      <a class="ui label" href="/tags/google" title="google">google</a>
       
       
     </footer>
@@ -124,8 +176,8 @@ for _,key := range keys{
 
 
       var disqus_config = function () {
-      this.page.url = 'http:\/\/onceme.me\/post\/concurrency_map\/';  
-      this.page.identifier = '\/post\/concurrency_map\/'; 
+      this.page.url = 'http:\/\/onceme.me\/post\/google-bigdata-paper\/';  
+      this.page.identifier = '\/post\/google-bigdata-paper\/'; 
       };
 
       (function() { 
