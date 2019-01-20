@@ -6,13 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>
-go语言实践笔记
+
+tag | php
+
 </title>
 
   
   
   <meta name="author" content="onceme" />
-  <meta name="description" content="使用recover()捕捉panic时，只能捕捉直接调用的方法，通过go命令调用的代码块中抛出的panic，则无法捕捉 package main import ( &amp;quot;fmt&amp;quot; &amp;quot;errors&amp;quot; ) func main() { fmt.Println(&amp;quot;Enter" />
+  <meta name="description" content="onceme的技术笔记" />
 
 
 
@@ -21,7 +23,7 @@ go语言实践笔记
 <meta name="generator" content="Hugo 0.54-DEV" />
 
 
-<link rel="canonical" href="http://onceme.me/post/go-practice/" />
+<link rel="canonical" href="http://onceme.me/tags/php/" />
 <link rel="alternative" href="/index.xml" title="onceme&#39;s blog" type="application/atom+xml" />
 
 <link href="/css/semantic.min.css" rel="stylesheet" />
@@ -35,100 +37,27 @@ go语言实践笔记
     <div class="flipper">
       <section class="front">
         
-<nav class="ui top secondary menu">
+
+<nav class="ui top secondary menu" style="overflow-x: auto">
   <div class="item">
     <i class="inverted big link bullseye icon dream-flip-toggle" title="Flip it!"></i>
   </div>
   <div class="item">
-    <a href="/">
-      <i class="inverted big link home icon" title="Home"></i>
-    </a>
+    <a href="/"><i class="inverted big link home icon" title="Home"></i></a>
+  </div>
+  <div class="item">
+    
+    <i class="disabled inverted big arrow alternate circle outline left icon" title="Previous page"></i>
+    
+  </div>
+  <div class="item">
+    
+    <i class="disabled inverted big arrow alternate circle outline right icon" title="Next page"></i>
+    
   </div>
 </nav>
  
 <div class="ui centered grid">
-  <div class="fifteen wide mobile fifteen wide tablet eleven wide computer column post-list post-single-main">
-
-    <section class="ui secondary top attached black segment">
-      <a class="ui black right corner label" href="javascript:void(0)" onclick="savePostAsImg()">
-        <i class="save icon"></i>
-      </a>
-      <header>
-        <h1 class="ui header">
-          go语言实践笔记
-          <div class="sub header">@ onceme · Dec 3, 2018 · 1 min read · Update at Dec 3, 2018</div>
-        </h1>
-      </header>
-      <article class="post-content" style="margin-top: 2rem; font-size: 1.4rem;"><ul>
-<li><p>使用recover()捕捉panic时，只能捕捉直接调用的方法，通过go命令调用的代码块中抛出的panic，则无法捕捉</p>
-
-<pre><code>package main
-
-import (
-&quot;fmt&quot;
-&quot;errors&quot;
-)
-
-func main() {
-fmt.Println(&quot;Enter function main.&quot;)
-defer func(){
-fmt.Println(&quot;Enter defer function.&quot;)
-if p := recover(); p != nil {
-fmt.Printf(&quot;panic: %s\n&quot;, p)
-}
-fmt.Println(&quot;Exit defer function.&quot;)
-}()
-// 引发 panic。
-go func() {
-	panic(errors.New(&quot;something wrong&quot;))
-}()
-fmt.Println(&quot;Exit function main.&quot;)
-}
-</code></pre></li>
-</ul>
-</article>
-    </section>
-
-    <footer class="ui secondary attached segment dream-tags">
-      
-      
-      <a class="ui label" href="/tags/golang" title="golang">golang</a>
-      
-      
-    </footer>
-
-    
-    <footer class="ui secondary attached segment">
-      <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />本作品采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。
-    </footer>
-    
-
-    
-    <footer class="ui secondary bottom attached stacked segment post-disqus-area" data-html2canvas-ignore="true">
-      <div id="disqus_thread"></div>
-      <script>
-      
-
-      
-
-
-      var disqus_config = function () {
-      this.page.url = 'http:\/\/onceme.me\/post\/go-practice\/';  
-      this.page.identifier = '\/post\/go-practice\/'; 
-      };
-
-      (function() { 
-      var d = document, s = d.createElement('script');
-      s.src = 'https://' + 'oncemes-blog' + '.disqus.com/embed.js';
-      s.setAttribute('data-timestamp', +new Date());
-      (d.head || d.body).appendChild(s);
-      })();
-      </script>
-      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    </footer>
-    
-
-  </div>
   <div class="fifteen wide mobile fifteen wide tablet four wide computer column">
 
     <section class="ui top attached center aligned inverted segment">
@@ -401,6 +330,41 @@ fmt.Println(&quot;Exit function main.&quot;)
 
 
   </div>
+  <div class="fifteen wide mobile fifteen wide tablet eleven wide computer column post-list">
+
+    <div class="ui two stackable cards">
+      
+      
+
+        <article class="black card">
+  <div class="image">
+    <div class="ui dimmer">
+      <div class="content">
+        <div class="center">
+          <div class="display-content">
+            <a href="http://onceme.me/post/php-memery/">
+              <h2 class="ui header" style="color: white;">对PHP变量的实现方式以及内存管理的梳理</h2>
+            </a>
+            <p style="padding: 5px;"> 对PHP变量的实现方式以及内存管理的梳理
+</p>
+            <p>@ onceme</p>
+          </div>
+          <div class="ui top right attached black label">8 min read</div>
+          <div class="ui bottom left attached black label">Jan 20, 2019</div>
+        </div>
+      </div>
+    </div>
+    
+    <img src="/img/default5.jpg" alt="对PHP变量的实现方式以及内存管理的梳理">
+    
+  </div>
+</article>
+
+
+      
+    </div>
+
+  </div>
 </div>
 
       </section>
@@ -463,6 +427,30 @@ fmt.Println(&quot;Exit function main.&quot;)
       
 
       
+        
+        <footer class="ui secondary segment">
+          <div id="disqus_thread"></div>
+          <script>
+          
+
+          
+
+
+          var disqus_config = function () {
+          this.page.url = 'http:\/\/onceme.me\/tags\/php\/about';  
+          this.page.identifier = '/about'; 
+          };
+
+          (function() { 
+          var d = document, s = d.createElement('script');
+          s.src = 'https://' + 'oncemes-blog' + '.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+          })();
+          </script>
+          <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </footer>
+        
       
     </section>
 
