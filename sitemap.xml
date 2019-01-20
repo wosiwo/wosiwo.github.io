@@ -23,6 +23,11 @@
   </url>
   
   <url>
+    <loc>http://onceme.me/post/know_kubernetes/</loc>
+    <lastmod>2018-12-09T15:56:00+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://onceme.me/post/go-practice/</loc>
     <lastmod>2018-12-03T00:00:00+08:00</lastmod>
   </url>
@@ -74,6 +79,7 @@
   
   <url>
     <loc>http://onceme.me/post/another-world/</loc>
+    <lastmod>2014-02-24T11:18:15+08:00</lastmod>
   </url>
   
   <url>
@@ -110,6 +116,12 @@
   </url>
   
   <url>
+    <loc>http://onceme.me/tags/docker/</loc>
+    <lastmod>2018-12-09T15:56:00+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://onceme.me/tags/gedis/</loc>
     <lastmod>2018-09-02T10:00:00+08:00</lastmod>
     <priority>0</priority>
@@ -136,6 +148,12 @@
   <url>
     <loc>http://onceme.me/tags/java/</loc>
     <lastmod>2018-08-16T00:00:00+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://onceme.me/tags/k8s/</loc>
+    <lastmod>2018-12-09T15:56:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -249,11 +267,13 @@
   
   <url>
     <loc>http://onceme.me/categories/%E6%96%87/</loc>
+    <lastmod>2014-02-24T11:18:15+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://onceme.me/tags/%E8%AF%97/</loc>
+    <lastmod>2014-02-24T11:18:15+08:00</lastmod>
     <priority>0</priority>
   </url>
   

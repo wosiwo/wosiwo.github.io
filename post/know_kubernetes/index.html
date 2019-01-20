@@ -6,13 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>
-slim使用swoole进行服务化
+kubernetes教程阅读笔记
 </title>
 
   
   
   <meta name="author" content="onceme" />
-  <meta name="description" content=" 继续之前工作，抽离出与swoole扩展对接的一层接口后，可以方便的对接各种php扩展 " />
+  <meta name="description" content="概述理解  kubernetes 就是一个分布式操作系统 container容器可以理解为这个操作系统里的一个进程 pod对象可以理解为操作系统里面的进程组(应用) " />
 
 
 
@@ -21,7 +21,7 @@ slim使用swoole进行服务化
 <meta name="generator" content="Hugo 0.54-DEV" />
 
 
-<link rel="canonical" href="http://onceme.me/post/slim-swoole/" />
+<link rel="canonical" href="http://onceme.me/post/know_kubernetes/" />
 <link rel="alternative" href="/index.xml" title="onceme&#39;s blog" type="application/atom+xml" />
 
 <link href="/css/semantic.min.css" rel="stylesheet" />
@@ -55,28 +55,104 @@ slim使用swoole进行服务化
       </a>
       <header>
         <h1 class="ui header">
-          slim使用swoole进行服务化
-          <div class="sub header">@ onceme · Aug 26, 2018 · 1 min read · Update at Aug 26, 2018</div>
+          kubernetes教程阅读笔记
+          <div class="sub header">@ onceme · Dec 9, 2018 · 4 min read · Update at Dec 9, 2018</div>
         </h1>
       </header>
-      <article class="post-content" style="margin-top: 2rem; font-size: 1.4rem;"><ul>
-<li>继续之前工作，抽离出与swoole扩展对接的一层接口后，可以方便的对接各种php扩展</li>
-</ul>
+      <article class="post-content" style="margin-top: 2rem; font-size: 1.4rem;"><h4 id="概述理解">概述理解</h4>
 
 <ul>
-<li>今天尝试对接了slim框架，兼容原来的http接口，可以将原有的http接口瞬间服务化</li>
+<li>kubernetes 就是一个分布式操作系统</li>
+<li>container容器可以理解为这个操作系统里的一个进程</li>
+<li>pod对象可以理解为操作系统里面的进程组(应用)</li>
 </ul>
 
-<p>具体可以看github上的代码
-<a href="slim-swoole-service">https://github.com/wosiwo/slim-swoole-service</a></p></article>
+<h3 id="pod">pod</h3>
+
+<p>首先， Pod它只是一个逻辑概念。</p>
+
+<p>也就是说，Kubernetes 真正处理的，还是宿主机操作系统上 Linux 容器的 Namespace 和 Cgroups，而并不存在一个所谓的 Pod 的边界或者隔离环境。</p>
+
+<ul>
+<li><p>Pod，其实是一组共享了某些资源的容器</p></li>
+
+<li><p>Pod 里的所有容器，共享的是同一个 Network Namespace，并且可以声明共享同一个 Volume。</p></li>
+
+<li><p>Pod 这种“超亲密关系”容器的设计思想，实际上就是希望，当用户想在一个容器里跑多个功能并不相关的应用时，应该优先考虑它们是不是更应该被描述成一个 Pod 里的多个容器。</p></li>
+
+<li><p>你就可以把整个虚拟机想象成为一个 Pod，把这些进程分别做成容器镜像，把有顺序关系的容器，定义为 Init Container。这才是更加合理的、松耦合的容器编排诀窍，也是从传统应用架构，到“微服务架构”最自然的过渡方式。</p></li>
+
+<li></li>
+</ul>
+
+<h4 id="service">service</h4>
+
+<ul>
+<li>实际上，Service 是由 kube-proxy 组件，加上 iptables 来共同实现的。</li>
+<li>不难想到，当你的宿主机上有大量 Pod 的时候，成百上千条 iptables 规则不断地被刷新，会大量占用该宿主机的 CPU 资源，甚至会让宿主机“卡”在这个过程中。所以说，一直以来，基于 iptables 的 Service 实现，都是制约 Kubernetes 项目承载更多量级的 Pod 的主要障碍。</li>
+
+<li><p>而 IPVS 模式的 Service，就是解决这个问题的一个行之有效的方法。</p></li>
+
+<li><p>IPVS 模式的工作原理，其实跟 iptables 模式类似。当我们创建了前面的 Service 之后，kube-proxy 首先会在宿主机上创建一个虚拟网卡（叫作：kube-ipvs0），并为它分配 Service VIP 作为 IP 地址</p></li>
+
+<li><p>而相比于 iptables，IPVS 在内核中的实现其实也是基于 Netfilter 的 NAT 模式，所以在转发这一层上，理论上 IPVS 并没有显著的性能提升。但是，IPVS 并不需要在宿主机上为每个 Pod 设置 iptables 规则，而是把对这些“规则”的处理放到了内核态，从而极大地降低了维护这些规则的代价。这也正印证了我在前面提到过的，“将重要操作放入内核态”是提高性能的重要手段。</p></li>
+
+<li><p>此外，我在前面的文章中还介绍过 Service 与 DNS 的关系。</p></li>
+</ul>
+
+<h4 id="如何从外部-kubernetes-集群之外-访问到-kubernetes-里创建的-service">如何从外部（Kubernetes 集群之外），访问到 Kubernetes 里创建的 Service？</h4>
+
+<ul>
+<li><p>最常用的一种方式就是：NodePort</p>
+
+<pre><code>apiVersion: v1
+kind: Service
+metadata:
+name: my-nginx
+labels:
+run: my-nginx
+spec:
+type: NodePort
+ports:
+- nodePort: 8080
+targetPort: 80
+protocol: TCP
+name: http
+- nodePort: 443
+protocol: TCP
+name: https
+selector:
+run: my-nginx
+</code></pre></li>
+
+<li><p>在这个 Service 的定义里，我们声明它的类型是，type=NodePort。然后，我在 ports 字段里声明了 Service 的 8080 端口代理 Pod 的 80 端口，Service 的 443 端口代理 Pod 的 443 端口。</p></li>
+
+<li><p>而在理解了我在上一篇文章中讲解的 Service 的工作原理之后，NodePort 模式也就非常容易理解了。显然，kube-proxy 要做的，就是在每台宿主机上生成这样一条 iptables 规则：</p></li>
+</ul>
+
+<blockquote>
+<p>当一个外部的 client 通过 node 2 的地址访问一个 Service 的时候，node 2 上的负载均衡规则，就可能把这个 IP 包转发给一个在 node 1 上的 Pod。这里没有任何问题。</p>
+</blockquote>
+
+<p>而当 node 1 上的这个 Pod 处理完请求之后，它就会按照这个 IP 包的源地址发出回复。</p>
+
+<p>可是，如果没有做 SNAT 操作的话，这时候，被转发来的 IP 包的源地址就是 client 的 IP 地址。所以此时，Pod 就会直接将回复发给client。对于 client 来说，它的请求明明发给了 node 2，收到的回复却来自 node 1，这个 client 很可能会报错。</p>
+
+<p>所以，在上图中，当 IP 包离开 node 2 之后，它的源 IP 地址就会被 SNAT 改成 node 2 的 CNI 网桥地址或者 node 2 自己的地址。这样，Pod 在处理完成之后就会先回复给 node 2（而不是 client），然后再由 node 2 发送给 client。</p>
+
+<p>当然，这也就意味着这个 Pod 只知道该 IP 包来自于 node 2，而不是外部的 client。对于 Pod 需要明确知道所有请求来源的场景来说，这是不可以的。</p>
+
+<p>所以这时候，你就可以将 Service 的 spec.externalTrafficPolicy 字段设置为 local，这就保证了所有 Pod 通过 Service 收到请求之后，一定可以看到真正的、外部 client 的源地址。</p>
+
+<p>而这个机制的实现原理也非常简单：这时候，一台宿主机上的 iptables 规则，会设置为只将 IP 包转发给运行在这台宿主机上的 Pod。所以这时候，Pod 就可以直接使用源地址将回复包发出，不需要事先进行 SNAT 了。这个流程，如下所示：</p></article>
     </section>
 
     <footer class="ui secondary attached segment dream-tags">
       
       
-      <a class="ui label" href="/tags/slim" title="slim">slim</a>
+      <a class="ui label" href="/tags/k8s" title="k8s">k8s</a>
       
-      <a class="ui label" href="/tags/swoole" title="swoole">swoole</a>
+      <a class="ui label" href="/tags/docker" title="docker">docker</a>
       
       
     </footer>
@@ -97,8 +173,8 @@ slim使用swoole进行服务化
 
 
       var disqus_config = function () {
-      this.page.url = 'http:\/\/onceme.me\/post\/slim-swoole\/';  
-      this.page.identifier = '\/post\/slim-swoole\/'; 
+      this.page.url = 'http:\/\/onceme.me\/post\/know_kubernetes\/';  
+      this.page.identifier = '\/post\/know_kubernetes\/'; 
       };
 
       (function() { 

@@ -24,6 +24,21 @@
     </item>
     
     <item>
+      <title>kubernetes教程阅读笔记</title>
+      <link>http://onceme.me/post/know_kubernetes/</link>
+      <pubDate>Sun, 09 Dec 2018 15:56:00 +0800</pubDate>
+      
+      <guid>http://onceme.me/post/know_kubernetes/</guid>
+      <description>&lt;h4 id=&#34;概述理解&#34;&gt;概述理解&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;kubernetes 就是一个分布式操作系统&lt;/li&gt;
+&lt;li&gt;container容器可以理解为这个操作系统里的一个进程&lt;/li&gt;
+&lt;li&gt;pod对象可以理解为操作系统里面的进程组(应用)&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
       <title>go语言实践笔记</title>
       <link>http://onceme.me/post/go-practice/</link>
       <pubDate>Mon, 03 Dec 2018 00:00:00 +0800</pubDate>

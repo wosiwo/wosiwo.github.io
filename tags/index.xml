@@ -31,6 +31,15 @@
     </item>
     
     <item>
+      <title>Docker</title>
+      <link>http://onceme.me/tags/docker/</link>
+      <pubDate>Sun, 09 Dec 2018 15:56:00 +0800</pubDate>
+      
+      <guid>http://onceme.me/tags/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Gedis</title>
       <link>http://onceme.me/tags/gedis/</link>
       <pubDate>Sun, 02 Sep 2018 10:00:00 +0800</pubDate>
@@ -72,6 +81,15 @@
       <pubDate>Thu, 16 Aug 2018 00:00:00 +0800</pubDate>
       
       <guid>http://onceme.me/tags/java/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>K8s</title>
+      <link>http://onceme.me/tags/k8s/</link>
+      <pubDate>Sun, 09 Dec 2018 15:56:00 +0800</pubDate>
+      
+      <guid>http://onceme.me/tags/k8s/</guid>
       <description></description>
     </item>
     
@@ -159,7 +177,7 @@
     <item>
       <title>诗</title>
       <link>http://onceme.me/tags/%E8%AF%97/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 24 Feb 2014 11:18:15 +0800</pubDate>
       
       <guid>http://onceme.me/tags/%E8%AF%97/</guid>
       <description></description>
