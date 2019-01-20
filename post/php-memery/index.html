@@ -27,6 +27,9 @@
 
 <link href="/css/semantic.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="/css/site.css" />
+<link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/monokai.min.css" rel="stylesheet">
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
 
 
 </head>
@@ -76,7 +79,7 @@ PHP中局部变量分配在zend_execute_data结构上，每次执行zend_op_arra
 静态变量通过哈希表保存，这就使得能像普通变量那样有一个固定的编号
 编译时先判断zend_op_array-&gt;static_variables 是否已创建，然后将静态变量插入哈希表</p>
 
-<pre><code>//zend_compile_static_var_common():
+<pre><code class="language-c">//zend_compile_static_var_common():
 if (!CG(active_op_array)-&gt;static_variables) {
 ALLOC_HASHTABLE(CG(active_op_array)-&gt;static_variables);
 zend_hash_init(CG(active_op_array)-&gt;static_variables, 8, NULL, ZVAL_P
@@ -95,7 +98,7 @@ constant), value);
     也就是说static $count = 4; 包含了两个操作，严格的讲 $count 并不是真正的静态变量，它只是一个指向静态变量的局部变量，执行时实际操作是：
     $count = &amp; static_variables[&ldquo;count&rdquo;]; 。</p>
 
-<pre><code>//生成一条ZEND_FETCH_W的opcode
+<pre><code class="language-c">//生成一条ZEND_FETCH_W的opcode
 opline = zend_emit_op(&amp;result, by_ref ? ZEND_FETCH_W : ZEND_FETCH_R, &amp;var
 _node, NULL);
 opline-&gt;extended_value = ZEND_FETCH_STATIC;
