@@ -7,10 +7,21 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a rel=&#34;license&#34; href=&#34;http://creativecommons.org/licenses/by-nc-sa/4.0/&#34;&gt;&lt;img alt=&#34;知识共享许可协议&#34; style=&#34;border-width:0&#34; src=&#34;https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png&#34; /&gt;&lt;/a&gt;&lt;br /&gt;本作品采用&lt;a rel=&#34;license&#34; href=&#34;http://creativecommons.org/licenses/by-nc-sa/4.0/&#34;&gt;知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议&lt;/a&gt;进行许可。</copyright>
-    <lastBuildDate>Sun, 20 Jan 2019 09:56:00 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 17 Feb 2019 14:56:00 +0800</lastBuildDate>
     
 	<atom:link href="http://onceme.me/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>对redis cluster的实现原理的理解，以及与codis,corvus的对比</title>
+      <link>http://onceme.me/post/redis-cluster-codis-corvus/</link>
+      <pubDate>Sun, 17 Feb 2019 14:56:00 +0800</pubDate>
+      
+      <guid>http://onceme.me/post/redis-cluster-codis-corvus/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;Redis Cluster是一个分布式系统。由多个Redis实例组成的整体，数据按照Slot存储分布在多个Redis实例上，通过Gossip协议来进行节点之间通信。&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+    </item>
     
     <item>
       <title>对PHP变量的实现方式以及内存管理的梳理</title>
@@ -20,6 +31,17 @@
       <guid>http://onceme.me/post/php-memery/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;对PHP变量的实现方式以及内存管理的梳理&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+    </item>
+    
+    <item>
+      <title>对PHP内核的再梳理</title>
+      <link>http://onceme.me/post/php-kernel/</link>
+      <pubDate>Sat, 19 Jan 2019 16:06:00 +0800</pubDate>
+      
+      <guid>http://onceme.me/post/php-kernel/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;这篇文章是对PHP内核的重新梳理，尽量用简单的语言来描述清楚PHP内核的机制，一次请求下来所经过的流程,PHP5与PHP7内核对比，PHP的优势以及它的局限&lt;/p&gt;
 &lt;/blockquote&gt;</description>
     </item>
     

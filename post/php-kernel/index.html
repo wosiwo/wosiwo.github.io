@@ -6,15 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>
-
-tag | network
-
+对PHP内核的再梳理
 </title>
 
   
   
   <meta name="author" content="onceme" />
-  <meta name="description" content="onceme的技术笔记" />
+  <meta name="description" content=" 这篇文章是对PHP内核的重新梳理，尽量用简单的语言来描述清楚PHP内核的机制，一次请求下来所经过的流程,PHP5与PHP7内核对比，PHP的优势以及它的局限
+" />
 
 
 
@@ -23,7 +22,7 @@ tag | network
 <meta name="generator" content="Hugo 0.54-DEV" />
 
 
-<link rel="canonical" href="http://onceme.me/tags/network/" />
+<link rel="canonical" href="http://onceme.me/post/php-kernel/" />
 <link rel="alternative" href="/index.xml" title="onceme&#39;s blog" type="application/atom+xml" />
 
 <link href="/css/semantic.min.css" rel="stylesheet" />
@@ -40,27 +39,133 @@ tag | network
     <div class="flipper">
       <section class="front">
         
-
-<nav class="ui top secondary menu" style="overflow-x: auto">
+<nav class="ui top secondary menu">
   <div class="item">
     <i class="inverted big link bullseye icon dream-flip-toggle" title="Flip it!"></i>
   </div>
   <div class="item">
-    <a href="/"><i class="inverted big link home icon" title="Home"></i></a>
-  </div>
-  <div class="item">
-    
-    <i class="disabled inverted big arrow alternate circle outline left icon" title="Previous page"></i>
-    
-  </div>
-  <div class="item">
-    
-    <i class="disabled inverted big arrow alternate circle outline right icon" title="Next page"></i>
-    
+    <a href="/">
+      <i class="inverted big link home icon" title="Home"></i>
+    </a>
   </div>
 </nav>
  
 <div class="ui centered grid">
+  <div class="fifteen wide mobile fifteen wide tablet eleven wide computer column post-list post-single-main">
+
+    <section class="ui secondary top attached black segment">
+      <a class="ui black right corner label" href="javascript:void(0)" onclick="savePostAsImg()">
+        <i class="save icon"></i>
+      </a>
+      <header>
+        <h1 class="ui header">
+          对PHP内核的再梳理
+          <div class="sub header">@ onceme · Jan 19, 2019 · 2 min read · Update at Jan 19, 2019</div>
+        </h1>
+      </header>
+      <article class="post-content" style="margin-top: 2rem; font-size: 1.4rem;"><blockquote>
+<p>这篇文章是对PHP内核的重新梳理，尽量用简单的语言来描述清楚PHP内核的机制，一次请求下来所经过的流程,PHP5与PHP7内核对比，PHP的优势以及它的局限</p>
+</blockquote>
+
+<h5 id="首先介绍php的基本结构">首先介绍PHP的基本结构</h5>
+
+<ul>
+<li>PHP本身没有与外界交互的能力，所以需要一种类似于shell壳程序的东西，叫做SAPI
+<img src="https://raw.githubusercontent.com/wosiwo/wosiwo.github.io/master/post/img/02-02-01-sapi.png" alt="" /></li>
+<li>PHP常见的几种API机制
+
+<ul>
+<li>以动态链接库的形式嵌入apache的module进程</li>
+<li>cgi方式，web前端服务器(apache/nginx)每次请求都发送给PHP服务器，php服务器则每次都fork一个进程来执行这个请求</li>
+<li>fast-cgi方式， PHP服务器提前启动好一定数量的，每次web服务器发送的请求都会倍分配给其中某一个worker进程，避免了每次初始化进程与销毁进程的开销</li>
+</ul></li>
+<li>总的来说，PHP选择以外挂服务管理程序的方式来让PHP对外提供服务</li>
+
+<li><p>Zend引擎</p>
+
+<ul>
+<li>编译器： 负责将PHP代码编译为抽象语法树，然后进一步编译为可执行的opcodes，这
+个过程相当于GCC的工作，编译器是一个语言实现的基础</li>
+<li>执行器： 负责执行编译器输出的opcodes，也就是执行PHP脚本中编写的代码逻辑</li>
+</ul></li>
+
+<li><p>PHP扩展</p></li>
+</ul>
+
+<h5 id="php-fpm的多进程模型">PHP-FPM的多进程模型</h5>
+
+<ul>
+<li>首先有一个master管理进程</li>
+<li>按照static,dynamic,ondemand等模式对worker进程进行管理</li>
+</ul>
+
+<h5 id="php的执行过程">PHP的执行过程</h5>
+
+<ul>
+<li>php_module_startup() PHP运行环境的初始化，以及扩展的加载</li>
+<li>php_request_startup() gc_rest() 重置上次请求后产生的所有变量</li>
+<li>php_excute_script()  编译并执行php代码</li>
+<li>php_request_shutdown()  依次调用各扩展的RSHUTDOWN函数</li>
+</ul>
+
+<p><img src="https://raw.githubusercontent.com/wosiwo/wosiwo.github.io/master/post/img/php_exec_flow.png" alt="" /></p>
+
+<h5 id="变量">变量</h5>
+
+<ul>
+<li>变量由zval与zend_val实现，zval中包含zend_val类型的成员变量</li>
+<li>PHP中局部变量分配在zend_execute_data结构上</li>
+<li>局部变量在执行之初分配，然后在执行结束时释放，这是局部变
+量的生命周期，</li>
+<li>局部变量中有一种特殊的类型：静态变量，它们不会在函数执行完后释放，当程序执行离开函数域时静态变量的值被保留下来</li>
+<li>静态变量保存在zend_op_array-&gt;static_variables</li>
+<li>静态变量只会初始化一次，注意：它的初始化发生在编译阶段而不是执行阶段</li>
+<li>这个特性也意味着静态变量初始的值不能是变量，比如： static $count = $xxx;这样定义将会报错</li>
+</ul></article>
+    </section>
+
+    <footer class="ui secondary attached segment dream-tags">
+      
+      
+      <a class="ui label" href="/tags/php" title="php">php</a>
+      
+      <a class="ui label" href="/tags/php%E5%86%85%E6%A0%B8" title="php内核">php内核</a>
+      
+      
+    </footer>
+
+    
+    <footer class="ui secondary attached segment">
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />本作品采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。
+    </footer>
+    
+
+    
+    <footer class="ui secondary bottom attached stacked segment post-disqus-area" data-html2canvas-ignore="true">
+      <div id="disqus_thread"></div>
+      <script>
+      
+
+      
+
+
+      var disqus_config = function () {
+      this.page.url = 'http:\/\/onceme.me\/post\/php-kernel\/';  
+      this.page.identifier = '\/post\/php-kernel\/'; 
+      };
+
+      (function() { 
+      var d = document, s = d.createElement('script');
+      s.src = 'https://' + 'oncemes-blog' + '.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+      })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </footer>
+    
+
+  </div>
   <div class="fifteen wide mobile fifteen wide tablet four wide computer column">
 
     <section class="ui top attached center aligned inverted segment">
@@ -360,41 +465,6 @@ tag | network
 
 
   </div>
-  <div class="fifteen wide mobile fifteen wide tablet eleven wide computer column post-list">
-
-    <div class="ui two stackable cards">
-      
-      
-
-        <article class="black card">
-  <div class="image">
-    <div class="ui dimmer">
-      <div class="content">
-        <div class="center">
-          <div class="display-content">
-            <a href="http://onceme.me/post/redis-gedis/">
-              <h2 class="ui header" style="color: white;">redis,gedis性能瓶颈探索</h2>
-            </a>
-            <p style="padding: 5px;"> 最近对自己写的nosql数据gedis和redis做了性能对比压测，碰到一些问题，做了一些思考和尝试，这里做个记录
-</p>
-            <p>@ onceme</p>
-          </div>
-          <div class="ui top right attached black label">2 min read</div>
-          <div class="ui bottom left attached black label">Nov 18, 2018</div>
-        </div>
-      </div>
-    </div>
-    
-    <img src="/img/default3.jpg" alt="redis,gedis性能瓶颈探索">
-    
-  </div>
-</article>
-
-
-      
-    </div>
-
-  </div>
 </div>
 
       </section>
@@ -457,30 +527,6 @@ tag | network
       
 
       
-        
-        <footer class="ui secondary segment">
-          <div id="disqus_thread"></div>
-          <script>
-          
-
-          
-
-
-          var disqus_config = function () {
-          this.page.url = 'http:\/\/onceme.me\/tags\/network\/about';  
-          this.page.identifier = '/about'; 
-          };
-
-          (function() { 
-          var d = document, s = d.createElement('script');
-          s.src = 'https://' + 'oncemes-blog' + '.disqus.com/embed.js';
-          s.setAttribute('data-timestamp', +new Date());
-          (d.head || d.body).appendChild(s);
-          })();
-          </script>
-          <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-        </footer>
-        
       
     </section>
 
