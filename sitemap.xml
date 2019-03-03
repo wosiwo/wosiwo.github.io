@@ -89,7 +89,7 @@
   
   <url>
     <loc>http://onceme.me/post/lnmp-stress-test/</loc>
-    <lastmod>2018-04-18T00:00:00+08:00</lastmod>
+    <lastmod>2014-04-14T00:00:00+08:00</lastmod>
   </url>
   
   <url>
@@ -142,7 +142,7 @@
   
   <url>
     <loc>http://onceme.me/tags/codis/</loc>
-    <lastmod>2018-04-18T00:00:00+08:00</lastmod>
+    <lastmod>2014-04-14T00:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -201,14 +201,14 @@
   </url>
   
   <url>
-    <loc>http://onceme.me/tags/nosql/</loc>
-    <lastmod>2019-01-01T22:04:00+08:00</lastmod>
+    <loc>http://onceme.me/categories/nosql/</loc>
+    <lastmod>2019-01-17T16:06:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://onceme.me/categories/nosql/</loc>
-    <lastmod>2019-01-17T16:06:00+08:00</lastmod>
+    <loc>http://onceme.me/tags/nosql/</loc>
+    <lastmod>2019-01-01T22:04:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -243,13 +243,13 @@
   </url>
   
   <url>
-    <loc>http://onceme.me/tags/swoole/</loc>
+    <loc>http://onceme.me/categories/swoole/</loc>
     <lastmod>2018-08-26T00:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://onceme.me/categories/swoole/</loc>
+    <loc>http://onceme.me/tags/swoole/</loc>
     <lastmod>2018-08-26T00:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -274,7 +274,7 @@
   
   <url>
     <loc>http://onceme.me/categories/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/</loc>
-    <lastmod>2018-04-18T00:00:00+08:00</lastmod>
+    <lastmod>2014-04-14T00:00:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   

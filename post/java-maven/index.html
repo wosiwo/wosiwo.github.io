@@ -24,9 +24,9 @@
     
 
     
-    <meta name="description" content="今天尝试跑个java的demo，执行 mvn exec:java 命令运行时碰到报错">
-    <meta property="og:description" content="今天尝试跑个java的demo，执行 mvn exec:java 命令运行时碰到报错" />
-    <meta property="twitter:description" content="今天尝试跑个java的demo，执行 mvn exec:java 命令运行时碰到报错" />
+    <meta name="description" content="java">
+    <meta property="og:description" content="java" />
+    <meta property="twitter:description" content="java" />
     
 
     
@@ -34,10 +34,10 @@
     
     
 
-    <meta name="keyword"  content="博客, 互联网, Web, Mysql, PaaS, Redis cluster,分布式,大数据, Kubernetes, 微服务">
+    <meta name="keyword"  content="博客, 互联网, Web, Mysql, Redis Cluster,分布式, 大数据, Kubernetes, 微服务, Microservice">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>java 使用maven编译碰到的问题-我是我的博客 | Onceme Blog</title>
+    <title>java 使用maven编译碰到的问题-Onceme Blog</title>
 
     <link rel="canonical" href="/post/java-maven/">
 
@@ -130,9 +130,13 @@
                     
                     
 		    
-                        <li><a href="/about/desc/">ABOUT</a></li>
+                        <li><a href="/about/desc">ABOUT</a></li>
                     
 
+                    
+		    <li>
+                        <a href="/search">SEARCH <img src="/img/search.png" height="15" style="cursor: pointer;" alt="Search"></a>
+		    </li>
                     
                 </ul>
             </div>
@@ -262,6 +266,27 @@ mvn exec:java -X -Dexec.mainClass="api.mengkang.net.netty.HttpServer" -Ddetail=t
 
                 
 <div id="disqus-comment"></div>
+
+<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "oncemes-blog" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
 
 
