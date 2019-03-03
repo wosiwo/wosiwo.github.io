@@ -6,7 +6,7 @@
     <description>Recent content in 后端语言 on Onceme Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 17 Feb 2019 14:56:00 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 02 Mar 2019 14:56:00 +0800</lastBuildDate>
     
 	<atom:link href="http://onceme.me/categories/%E5%90%8E%E7%AB%AF%E8%AF%AD%E8%A8%80/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +14,7 @@
     <item>
       <title>python的作用范围</title>
       <link>http://onceme.me/post/python-summary/</link>
-      <pubDate>Sun, 17 Feb 2019 14:56:00 +0800</pubDate>
+      <pubDate>Sat, 02 Mar 2019 14:56:00 +0800</pubDate>
       
       <guid>http://onceme.me/post/python-summary/</guid>
       <description>&lt;p&gt;对python在web开发，大数据分析，机器学习相关领域应用，以及python的性能局限的理解&lt;/p&gt;</description>
