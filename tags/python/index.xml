@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>python on Onceme Blog</title>
+    <link>http://onceme.me/tags/python/</link>
+    <description>Recent content in python on Onceme Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 17 Feb 2019 14:56:00 +0800</lastBuildDate>
+    
+	<atom:link href="http://onceme.me/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>python的作用范围</title>
+      <link>http://onceme.me/post/python-summary/</link>
+      <pubDate>Sun, 17 Feb 2019 14:56:00 +0800</pubDate>
+      
+      <guid>http://onceme.me/post/python-summary/</guid>
+      <description>&lt;p&gt;对python在web开发，大数据分析，机器学习相关领域应用，以及python的性能局限的理解&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

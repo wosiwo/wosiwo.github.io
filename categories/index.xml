@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Categories on onceme&#39;s blog</title>
+    <title>Categories on Onceme Blog</title>
     <link>http://onceme.me/categories/</link>
-    <description>Recent content in Categories on onceme&#39;s blog</description>
+    <description>Recent content in Categories on Onceme Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>&lt;a rel=&#34;license&#34; href=&#34;http://creativecommons.org/licenses/by-nc-sa/4.0/&#34;&gt;&lt;img alt=&#34;知识共享许可协议&#34; style=&#34;border-width:0&#34; src=&#34;https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png&#34; /&gt;&lt;/a&gt;&lt;br /&gt;本作品采用&lt;a rel=&#34;license&#34; href=&#34;http://creativecommons.org/licenses/by-nc-sa/4.0/&#34;&gt;知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议&lt;/a&gt;进行许可。</copyright>
-    <lastBuildDate>Wed, 19 Sep 2018 00:00:00 +0800</lastBuildDate>
     
 	<atom:link href="http://onceme.me/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Algorithm</title>
+      <title>algorithm</title>
       <link>http://onceme.me/categories/algorithm/</link>
       <pubDate>Wed, 19 Sep 2018 00:00:00 +0800</pubDate>
       
@@ -22,7 +20,7 @@
     </item>
     
     <item>
-      <title>Nosql</title>
+      <title>nosql</title>
       <link>http://onceme.me/categories/nosql/</link>
       <pubDate>Thu, 17 Jan 2019 16:06:00 +0800</pubDate>
       
@@ -31,7 +29,7 @@
     </item>
     
     <item>
-      <title>Swoole</title>
+      <title>swoole</title>
       <link>http://onceme.me/categories/swoole/</link>
       <pubDate>Sun, 26 Aug 2018 00:00:00 +0800</pubDate>
       

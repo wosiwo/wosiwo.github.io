@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on onceme&#39;s blog</title>
+    <title>Tags on Onceme Blog</title>
     <link>http://onceme.me/tags/</link>
-    <description>Recent content in Tags on onceme&#39;s blog</description>
+    <description>Recent content in Tags on Onceme Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>&lt;a rel=&#34;license&#34; href=&#34;http://creativecommons.org/licenses/by-nc-sa/4.0/&#34;&gt;&lt;img alt=&#34;知识共享许可协议&#34; style=&#34;border-width:0&#34; src=&#34;https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png&#34; /&gt;&lt;/a&gt;&lt;br /&gt;本作品采用&lt;a rel=&#34;license&#34; href=&#34;http://creativecommons.org/licenses/by-nc-sa/4.0/&#34;&gt;知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议&lt;/a&gt;进行许可。</copyright>
-    <lastBuildDate>Thu, 17 Jan 2019 16:06:00 +0800</lastBuildDate>
     
 	<atom:link href="http://onceme.me/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Bigdata</title>
+      <title>bigdata</title>
       <link>http://onceme.me/tags/bigdata/</link>
       <pubDate>Thu, 17 Jan 2019 16:06:00 +0800</pubDate>
       
@@ -22,7 +20,7 @@
     </item>
     
     <item>
-      <title>Codis</title>
+      <title>codis</title>
       <link>http://onceme.me/tags/codis/</link>
       <pubDate>Mon, 14 Apr 2014 00:00:00 +0800</pubDate>
       
@@ -31,7 +29,7 @@
     </item>
     
     <item>
-      <title>Docker</title>
+      <title>docker</title>
       <link>http://onceme.me/tags/docker/</link>
       <pubDate>Sun, 09 Dec 2018 15:56:00 +0800</pubDate>
       
@@ -40,7 +38,7 @@
     </item>
     
     <item>
-      <title>Gedis</title>
+      <title>gedis</title>
       <link>http://onceme.me/tags/gedis/</link>
       <pubDate>Sun, 02 Sep 2018 10:00:00 +0800</pubDate>
       
@@ -49,7 +47,7 @@
     </item>
     
     <item>
-      <title>Golang</title>
+      <title>golang</title>
       <link>http://onceme.me/tags/golang/</link>
       <pubDate>Tue, 01 Jan 2019 22:04:00 +0800</pubDate>
       
@@ -58,7 +56,7 @@
     </item>
     
     <item>
-      <title>Google</title>
+      <title>google</title>
       <link>http://onceme.me/tags/google/</link>
       <pubDate>Thu, 17 Jan 2019 16:06:00 +0800</pubDate>
       
@@ -67,7 +65,7 @@
     </item>
     
     <item>
-      <title>Hadoop</title>
+      <title>hadoop</title>
       <link>http://onceme.me/tags/hadoop/</link>
       <pubDate>Tue, 15 Jan 2019 21:02:00 +0800</pubDate>
       
@@ -76,7 +74,7 @@
     </item>
     
     <item>
-      <title>Java</title>
+      <title>java</title>
       <link>http://onceme.me/tags/java/</link>
       <pubDate>Thu, 16 Aug 2018 00:00:00 +0800</pubDate>
       
@@ -85,7 +83,7 @@
     </item>
     
     <item>
-      <title>K8s</title>
+      <title>k8s</title>
       <link>http://onceme.me/tags/k8s/</link>
       <pubDate>Sun, 09 Dec 2018 15:56:00 +0800</pubDate>
       
@@ -94,7 +92,7 @@
     </item>
     
     <item>
-      <title>Mysql</title>
+      <title>mysql</title>
       <link>http://onceme.me/tags/mysql/</link>
       <pubDate>Mon, 01 Oct 2018 00:00:00 +0800</pubDate>
       
@@ -103,7 +101,7 @@
     </item>
     
     <item>
-      <title>Network</title>
+      <title>network</title>
       <link>http://onceme.me/tags/network/</link>
       <pubDate>Sun, 18 Nov 2018 00:00:00 +0800</pubDate>
       
@@ -112,7 +110,7 @@
     </item>
     
     <item>
-      <title>Nosql</title>
+      <title>nosql</title>
       <link>http://onceme.me/tags/nosql/</link>
       <pubDate>Tue, 01 Jan 2019 22:04:00 +0800</pubDate>
       
@@ -121,7 +119,7 @@
     </item>
     
     <item>
-      <title>Php</title>
+      <title>php</title>
       <link>http://onceme.me/tags/php/</link>
       <pubDate>Sun, 20 Jan 2019 09:56:00 +0800</pubDate>
       
@@ -130,7 +128,7 @@
     </item>
     
     <item>
-      <title>Php内核</title>
+      <title>php内核</title>
       <link>http://onceme.me/tags/php%E5%86%85%E6%A0%B8/</link>
       <pubDate>Sat, 19 Jan 2019 16:06:00 +0800</pubDate>
       
@@ -139,7 +137,16 @@
     </item>
     
     <item>
-      <title>Redis</title>
+      <title>python</title>
+      <link>http://onceme.me/tags/python/</link>
+      <pubDate>Sun, 17 Feb 2019 14:56:00 +0800</pubDate>
+      
+      <guid>http://onceme.me/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>redis</title>
       <link>http://onceme.me/tags/redis/</link>
       <pubDate>Sun, 17 Feb 2019 14:56:00 +0800</pubDate>
       
@@ -148,7 +155,7 @@
     </item>
     
     <item>
-      <title>Slim</title>
+      <title>slim</title>
       <link>http://onceme.me/tags/slim/</link>
       <pubDate>Sun, 26 Aug 2018 00:00:00 +0800</pubDate>
       
@@ -157,7 +164,7 @@
     </item>
     
     <item>
-      <title>Swoole</title>
+      <title>swoole</title>
       <link>http://onceme.me/tags/swoole/</link>
       <pubDate>Sun, 26 Aug 2018 00:00:00 +0800</pubDate>
       
@@ -166,7 +173,7 @@
     </item>
     
     <item>
-      <title>Zset</title>
+      <title>zset</title>
       <link>http://onceme.me/tags/zset/</link>
       <pubDate>Sun, 23 Sep 2018 00:00:00 +0800</pubDate>
       
