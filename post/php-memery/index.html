@@ -13,8 +13,8 @@
     <meta property="og:type" content="article">
 
     
-    <meta property="og:image" content="http://onceme.me//img/home-bg-jeep.jpg">
-    <meta property="twitter:image" content="http://onceme.me//img/home-bg-jeep.jpg" />
+    <meta property="og:image" content="http://onceme.me///img/home-bg-jeep.jpg">
+    <meta property="twitter:image" content="http://onceme.me///img/home-bg-jeep.jpg" />
     
 
     
@@ -350,7 +350,7 @@ FALSE、NULL三个常量在使用</li>
 <ul>
 <li><p>资源型变量
 在实际使用PHP中，开启对mysql，redis的长连接是很常见的优化措施，
-之前也思考过每次请求结束都会进行gc销毁变量的php-fpm是如何维持夸请求的长连接的，
+之前也思考过每次请求结束都会进行gc销毁变量的php-fpm是如何维持跨请求的长连接的，
 这里就要另外介绍php内核对资源型数据的存储</p>
 
 <ul>
@@ -361,7 +361,7 @@ FALSE、NULL三个常量在使用</li>
 <li><p>php数组的实现</p></li>
 </ul>
 
-<p>普通的hashtable是无序的，而php实现的数组功能却是有序的，这是因为php内核在实现数组功能时，根据key计算的哈希值索引定位到的是一个中间散列表，而不是直接定位到数组元素组成的数组中</p>
+<p>普通的hashtable是无序的，而php实现的数组功能却是有序的(保持插入数组的顺序)，这是因为php内核在实现数组功能时，根据key计算的哈希值索引定位到的是一个中间散列表，而不是直接定位到数组元素组成的数组中</p>
 
 <p>向数组添加元素的时候，会先顺序的吧新元素加入到数组中，而根据key进行寻址查找元素时，则是先定位到中间散列表的某个下标值，而这个值就是元素在数组中的下标</p>
 
@@ -402,7 +402,7 @@ alloc_globals-&gt;mm_heap = zend_mm_init();
 
 <p><strong>alloc_globals 是一个全局变量，即 AG宏</strong> ，它只有一个成员:mm_heap，保存着整个内
 存池的信息，所有内存的分配都是基于这个值，多线程模式下(ZTS)会有多个heap，也就是
-说每个线程都有一个独立的内存池，(php多线程的线程安全实现，就是简单粗暴的复制出独立内每次)</p>
+说每个线程都有一个独立的内存池，(php多线程的线程安全实现，就是简单粗暴的复制出独立内存池)</p>
 
 <ul>
 <li><p>内存的分配
@@ -427,16 +427,17 @@ $a = 2; //这时$b的值也为2
 </code></pre></li>
 </ul>
 
-<p>引用计数机制有一个缺陷，就是碰到循环引用时，refcount无法减到0，导致变量无法释放，具体来说就是变量内部的成员引用了变量本身，比如数组中的某个元素指向了数组
-    <code>
-    $a = [1];
+<p>引用计数机制有一个缺陷，就是碰到循环引用时，refcount无法减到0，导致变量无法释放，具体来说就是变量内部的成员引用了变量本身，比如数组中的某个元素指向了数组</p>
+
+<pre><code>    $a = [1];
     $a[] = &amp;$a;
     unset($a);
-</code>
-    针对这种情况，php引入了垃圾回收器来处理
-    变量是否加入垃圾检查buffer并不是根据zval的类型判断的，而是与前面介绍的是否用到引用计数一样通过 zval.u1.type_flag 记录的，只有包含 IS_TYPE_COLLECTABLE 的变量才会被GC收集</p>
+</code></pre>
 
-<pre><code>目前垃圾只会出现在array、object两种类型中,只有这两种类型的变量会出现成员引用自身的情况
+<pre><code>针对这种情况，php引入了垃圾回收器来处理
+变量是否加入垃圾检查buffer并不是根据zval的类型判断的，而是与前面介绍的是否用到引用计数一样通过 zval.u1.type_flag 记录的，只有包含 IS_TYPE_COLLECTABLE 的变量才会被GC收集
+
+目前垃圾只会出现在array、object两种类型中,只有这两种类型的变量会出现成员引用自身的情况
 
 如果当变量的refcount减少后大于0，PHP并不会立即进行对这个变量进行垃圾鉴定，而是放
 </code></pre>
@@ -453,6 +454,11 @@ zend_refcounted_h.gc_info 置为 GC_PURPLE ，即标为紫色，下次refcount�
 </code></pre>
 
 <h4 id="php对象在内存堆栈中的分配">PHP对象在内存堆栈中的分配</h4>
+
+<p>这里要注意内存中的堆栈与数据结构中的堆栈不是一回事
+内存中的堆栈：
+栈区（stack）— 由编译器自动分配释放 ，存放函数的参数值，局部变量的值等。其操作方式类似于数据结构中的栈。
+堆区（heap） — 一般由程序员分配释放， 若程序员不释放，程序结束时可能由OS回收 。</p>
 
 <p>对象在PHP里面和整型、浮点型一样，也是一种数据类，都是存储不同类型数据用的， 在运行的时候都要加载到内存中去用，那么对象在内存里面是怎么体现的呢？内存从逻辑上说大体上是分为4段，栈空间段、堆空间段、代码段、初始化静态段，程序里面不同的声明放在不同的内存段里面。</p>
 
@@ -573,6 +579,8 @@ PHP5的Zend Engine主要使用指向zval结构的指针来操作值,在很多地
                         
                         
                         
+                        
+                        
                         <a href="/tags/nosql" title="nosql">
                             nosql
                         </a>
@@ -586,6 +594,10 @@ PHP5的Zend Engine主要使用指向zval结构的指针来操作值,在很多地
                         
                         
                         
+                        
+                        <a href="/tags/python" title="python">
+                            python
+                        </a>
                         
                         
                         

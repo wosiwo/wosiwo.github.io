@@ -12,12 +12,21 @@
     
     
     <item>
-      <title>python的作用范围</title>
+      <title>Python语言特性的梳理</title>
+      <link>http://onceme.me/post/python-feature/</link>
+      <pubDate>Sat, 02 Mar 2019 14:56:00 +0800</pubDate>
+      
+      <guid>http://onceme.me/post/python-feature/</guid>
+      <description>&lt;p&gt;对python的语言特性，多线程机制，以及性能局限的梳理&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>python的的应用</title>
       <link>http://onceme.me/post/python-summary/</link>
       <pubDate>Sat, 02 Mar 2019 14:56:00 +0800</pubDate>
       
       <guid>http://onceme.me/post/python-summary/</guid>
-      <description>&lt;p&gt;对python在web开发，大数据分析，机器学习相关领域应用，以及python的性能局限的理解&lt;/p&gt;</description>
+      <description>&lt;p&gt;对python在web开发，数据分析，机器学习相关领域应用，以及python的性能局限的理解&lt;/p&gt;</description>
     </item>
     
     <item>

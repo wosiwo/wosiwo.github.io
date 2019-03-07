@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>python on Onceme Blog</title>
-    <link>http://onceme.me/tags/python/</link>
-    <description>Recent content in python on Onceme Blog</description>
+    <title>multithreading on Onceme Blog</title>
+    <link>http://onceme.me/tags/multithreading/</link>
+    <description>Recent content in multithreading on Onceme Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 02 Mar 2019 14:56:00 +0800</lastBuildDate>
     
-	<atom:link href="http://onceme.me/tags/python/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://onceme.me/tags/multithreading/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -18,15 +18,6 @@
       
       <guid>http://onceme.me/post/python-feature/</guid>
       <description>&lt;p&gt;对python的语言特性，多线程机制，以及性能局限的梳理&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>python的的应用</title>
-      <link>http://onceme.me/post/python-summary/</link>
-      <pubDate>Sat, 02 Mar 2019 14:56:00 +0800</pubDate>
-      
-      <guid>http://onceme.me/post/python-summary/</guid>
-      <description>&lt;p&gt;对python在web开发，数据分析，机器学习相关领域应用，以及python的性能局限的理解&lt;/p&gt;</description>
     </item>
     
   </channel>

@@ -18,15 +18,15 @@
     
 
     
-    <meta name="title" content="梳理bigdata大数据工具，及其定位" />
-    <meta property="og:title" content="梳理bigdata大数据工具，及其定位" />
-    <meta property="twitter:title" content="梳理bigdata大数据工具，及其定位" />
+    <meta name="title" content="" />
+    <meta property="og:title" content="" />
+    <meta property="twitter:title" content="" />
     
 
     
-    <meta name="description" content="梳理bigdata大数据工具，及其定位">
-    <meta property="og:description" content="梳理bigdata大数据工具，及其定位" />
-    <meta property="twitter:description" content="梳理bigdata大数据工具，及其定位" />
+    <meta name="description" content="我是我的程序世界探索">
+    <meta property="og:description" content="我是我的程序世界探索" />
+    <meta property="twitter:description" content="我是我的程序世界探索" />
     
 
     
@@ -37,9 +37,9 @@
     <meta name="keyword"  content="博客, 互联网, Web, Mysql, Redis Cluster,分布式, 大数据, Kubernetes, 微服务, Microservice">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>梳理bigdata大数据工具，及其定位-Onceme Blog</title>
+    <title>multithreading-Onceme Blog</title>
 
-    <link rel="canonical" href="/post/bigdata/">
+    <link rel="canonical" href="/tags/multithreading/">
 
     <link rel="stylesheet" href="/css/iDisqus.min.css"/>
 	
@@ -176,39 +176,14 @@
 
 
 
-
-<style type="text/css">
-    header.intro-header {
-        background-image: url('/img/home-bg-jeep.jpg')
-    }
-</style>
-<header class="intro-header">
+<header class="intro-header" style="background-image: url('/img/home-bg-jeep.jpg')">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="post-heading">
-                    <div class="tags">
-                        
-                        <a class="tag" href="/tags/bigdata" title="bigdata">
-                            bigdata
-                        </a>
-                        
-                        <a class="tag" href="/tags/hadoop" title="hadoop">
-                            hadoop
-                        </a>
-                        
-                    </div>
-                    <h1>梳理bigdata大数据工具，及其定位</h1>
-                    <h2 class="subheading"></h2>
-                    <span class="meta">
-			Posted by 
-			
-			    onceme
-			 
-			on 
-			Tuesday, January 15, 2019
-                        
-                    </span>
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
+                <div class="site-heading">
+                    <h1>Onceme Blog </h1>
+                    
+		    <span class="subheading">蓦然回首昔时顾，不是世间自如人</span>
                 </div>
             </div>
         </div>
@@ -217,218 +192,206 @@
 
 
 
-
-<article>
-    <div class="container">
-        <div class="row">
-
+  
+<div class="container">
+    <div class="row">
+        
+        
+   	    <div class="
+            col-lg-8 col-lg-offset-1
+            col-md-8 col-md-offset-1
+            col-sm-12
+            col-xs-12
+            post-container
+        ">
             
-            <div class="
-                col-lg-8 col-lg-offset-2
-                col-md-10 col-md-offset-1
-                post-container">
 
-                
-                <header>
-                    <h2>TOC</h2>
-                </header>
-                <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li>
-<ul>
-<li>
-<ul>
-<li>
-<ul>
-<li><a href="#谷歌老三篇分别是">谷歌老三篇分别是</a></li>
-<li><a href="#在谷歌04年发表这三篇论文后-开源社区据此演化出了相关产品实现">在谷歌04年发表这三篇论文后，开源社区据此演化出了相关产品实现</a></li>
-<li><a href="#在后来开源社区及大数据相关厂商又演化出来新的计算框架">在后来开源社区及大数据相关厂商又演化出来新的计算框架</a></li>
-</ul></li>
-</ul></li>
-</ul></li>
-</ul></li>
-</ul>
-</nav>
-                
-                <blockquote>
-<p>最近准备对分布式以及大数据相关领域做个整体梳理，包括被誉为开创大数据行业的谷歌『三驾马车』论文，开源社区基于这三篇论文的产品实现及其衍化</p>
-</blockquote>
-
-<h5 id="谷歌老三篇分别是">谷歌老三篇分别是</h5>
-
-<ul>
-<li>google file system： 分布式文件系统</li>
-<li>google bigtable： 半结构化分布式数据存储</li>
-<li>map reduce编程模型： 分布式计算思想的核心</li>
-</ul>
-
-<h5 id="在谷歌04年发表这三篇论文后-开源社区据此演化出了相关产品实现">在谷歌04年发表这三篇论文后，开源社区据此演化出了相关产品实现</h5>
-
-<ul>
-<li>HDFS 对应于GFS论文 分布式文件系统</li>
-<li>HBase 对应于Bigtable的 分布式数据存储系统</li>
-<li>map reduce  对于与同名论文的分布式计算框架</li>
-</ul>
-
-<h5 id="在后来开源社区及大数据相关厂商又演化出来新的计算框架">在后来开源社区及大数据相关厂商又演化出来新的计算框架</h5>
-
-<ul>
-<li>Hive 支持以sql方式对大数据进行分析查询，避免了对每个查询分析任务都要写map reduce模式程序的成本，很大程度上降低了大数据的应用门槛</li>
-<li>Spark 大大提高了分布式计算的运行速度</li>
-<li>storm</li>
-<li>flink 实时的流失分布式计算</li>
-<li>blink</li>
-</ul>
-
-                
-
-                <hr>
-                <ul class="pager">
-                    
-                    <li class="previous">
-                        <a href="/post/concurrency_map/" data-toggle="tooltip" data-placement="top" title="sync.map与手动维护的并发安全map">&larr;
-                            Previous Post</a>
-                    </li>
-                    
-                    
-                    <li class="next">
-                        <a href="/post/google-bigdata-paper/" data-toggle="tooltip" data-placement="top" title="对谷歌大数据&#34;老三篇&#34;论文的理解">Next
-                            Post &rarr;</a>
-                    </li>
-                    
-                </ul>
-
-                
-<div id="disqus-comment"></div>
-
-<div id="disqus_thread"></div>
-<script type="application/javascript">
-    var disqus_config = function () {
-    
-    
-    
-    };
-    (function() {
-        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
-            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
-            return;
-        }
-        var d = document, s = d.createElement('script'); s.async = true;
-        s.src = '//' + "oncemes-blog" + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-
-
-            </div>
-            
-            <div class="
-                col-lg-8 col-lg-offset-2
-                col-md-10 col-md-offset-1
-                sidebar-container">
-
-                
-                
-                <section>
-                    <hr class="hidden-sm hidden-xs">
-                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
-                    <div class="tags">
-                        
-                        
-                        
-                        <a href="/tags/bigdata" title="bigdata">
-                            bigdata
-                        </a>
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        <a href="/tags/golang" title="golang">
-                            golang
-                        </a>
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        <a href="/tags/nosql" title="nosql">
-                            nosql
-                        </a>
-                        
-                        
-                        
-                        <a href="/tags/php" title="php">
-                            php
-                        </a>
-                        
-                        
-                        
-                        
-                        
-                        <a href="/tags/python" title="python">
-                            python
-                        </a>
-                        
-                        
-                        
-                        <a href="/tags/redis" title="redis">
-                            redis
-                        </a>
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                    </div>
-                </section>
-                
-
-                
-                
-                <section>
-                    <hr>
-                    <h5>FRIENDS</h5>
-                    <ul class="list-inline">
-                        
-                        <li><a target="_blank" href=""></a></li>
-                        
-                    </ul>
-                </section>
-                
-            </div>
+<div class="post-preview">
+    <a href="http://onceme.me/post/python-feature/">
+        <h2 class="post-title">
+            Python语言特性的梳理
+        </h2>
+	
+        <div class="post-content-preview">
+	
+            对python的语言特性，多线程机制，以及性能局限的梳理
+        
         </div>
-    </div>
-</article>
+    </a>
+    <p class="post-meta">
+    Posted by onceme Saturday, March 2, 2019
+    </p>
+</div>
+<hr>
+
+
+            
+
+
+
+       	</div>
+        
+
+<div class="
+    col-lg-3 col-lg-offset-0
+    col-md-3 col-md-offset-0
+    col-sm-12
+    col-xs-12
+    sidebar-container
+">
+    
+    
+    <section>
+        <hr class="hidden-sm hidden-xs">
+        <h5>FEATURED TAGS</h5>
+        <div class="tags">
+             
+            
+                
+                    <a href="/tags/bigdata" title="bigdata">
+                        bigdata
+                    </a>
+                
+            
+                
+            
+                
+            
+                
+            
+                
+                    <a href="/tags/golang" title="golang">
+                        golang
+                    </a>
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+                    <a href="/tags/nosql" title="nosql">
+                        nosql
+                    </a>
+                
+            
+                
+                    <a href="/tags/php" title="php">
+                        php
+                    </a>
+                
+            
+                
+            
+                
+                    <a href="/tags/python" title="python">
+                        python
+                    </a>
+                
+            
+                
+                    <a href="/tags/redis" title="redis">
+                        redis
+                    </a>
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+        </div>
+    </section>
+    
+
+    
+    <section class="visible-md visible-lg">
+	<hr><h5><a href="/about/desc">ABOUT ME</a></h5>
+        <div class="short-about">
+            
+            <a href="/about/desc">
+               <img src="/img/avatar-ex.svg" alt="avatar" style="cursor: pointer" />
+            </a>
+            
+            
+                <p>Software Developer</p>
+            
+           
+           <ul class="list-inline"> 
+               
+               <li>
+                   <a href="http://onceme.me/tags/multithreading/index.xml" rel="alternate" type="application/rss+xml" title="Onceme Blog" >
+                       <span class="fa-stack fa-lg">
+                           <i class="fa fa-circle fa-stack-2x"></i>
+                           <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                       </span>
+                   </a>
+               </li>
+               
+               
+               <li>
+                   <a href="https://twitter.com/yanchaos">
+                       <span class="fa-stack fa-lg">
+                           <i class="fa fa-circle fa-stack-2x"></i>
+                           <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                       </span>
+                   </a>
+               </li>
+               
+               
+               
+               
+               
+               
+               <li>
+                   <a target="_blank" href="https://github.com/wosiwo">
+                       <span class="fa-stack fa-lg">
+                           <i class="fa fa-circle fa-stack-2x"></i>
+                           <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                       </span>
+                   </a>
+               </li>
+               
+               
+               
+                </ul>
+            </div>
+    </section>
+    
+    
+    <section>
+        <hr class="hidden-sm hidden-xs">
+        <h5>FRIENDS</h5>
+        <ul class="list-inline">
+            
+            <li><a target="_blank" href=""></a></li>
+            
+        </ul>
+    </section>
+    
+
+    
+    
+</div>
+
+	</div>
+</div>
+
 
 
 
@@ -440,7 +403,7 @@
                 <ul class="list-inline text-center">
                    
                    <li>
-                       <a href="" rel="alternate" type="application/rss+xml" title="Onceme Blog" >
+                       <a href="http://onceme.me/tags/multithreading/index.xml" rel="alternate" type="application/rss+xml" title="Onceme Blog" >
                            <span class="fa-stack fa-lg">
                                <i class="fa fa-circle fa-stack-2x"></i>
                                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>

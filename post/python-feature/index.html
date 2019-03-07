@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta name="google-site-verification" content="9vIieCe-Qpd78QOmBl63rGtIVbhY6sYyuxX3j8XWBA4" />
+    <meta name="baidu-site-verification" content="LRrmH41lz7" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="Onceme Blog">
+    <meta property="og:type" content="article">
+
+    
+    <meta property="og:image" content="http://onceme.me///img/home-bg-jeep.jpg">
+    <meta property="twitter:image" content="http://onceme.me///img/home-bg-jeep.jpg" />
+    
+
+    
+    <meta name="title" content="Python语言特性的梳理" />
+    <meta property="og:title" content="Python语言特性的梳理" />
+    <meta property="twitter:title" content="Python语言特性的梳理" />
+    
+
+    
+    <meta name="description" content="对python的语言特性，多线程机制，以及性能局限的梳理">
+    <meta property="og:description" content="对python的语言特性，多线程机制，以及性能局限的梳理" />
+    <meta property="twitter:description" content="对python的语言特性，多线程机制，以及性能局限的梳理" />
+    
+
+    
+    <meta property="twitter:card" content="summary" />
+    
+    
+
+    <meta name="keyword"  content="博客, 互联网, Web, Mysql, Redis Cluster,分布式, 大数据, Kubernetes, 微服务, Microservice">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>Python语言特性的梳理-Onceme Blog</title>
+
+    <link rel="canonical" href="/post/python-feature/">
+
+    <link rel="stylesheet" href="/css/iDisqus.min.css"/>
+	
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+
+    
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    
+    
+    <script src="/js/jquery.min.js"></script>
+    
+    
+    <script src="/js/bootstrap.min.js"></script>
+    
+    
+    <script src="/js/hux-blog.min.js"></script>
+	
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/docco.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Onceme Blog</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/categories/algorithm">algorithm</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/categories/nosql">nosql</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/categories/swoole">swoole</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/categories/%E5%90%8E%E7%AB%AF%E8%AF%AD%E8%A8%80">后端语言</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/categories/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE">开源项目</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/categories/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96">性能优化</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8">数据存储</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/categories/%E6%96%87">文</a>
+                    </li>
+                    
+                    
+		    
+                        <li><a href="/about/desc">ABOUT</a></li>
+                    
+
+                    
+		    <li>
+                        <a href="/search">SEARCH <img src="/img/search.png" height="15" style="cursor: pointer;" alt="Search"></a>
+		    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/home-bg-jeep.jpg')
+    }
+</style>
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/python" title="python">
+                            python
+                        </a>
+                        
+                        <a class="tag" href="/tags/multithreading" title="multithreading">
+                            multithreading
+                        </a>
+                        
+                    </div>
+                    <h1>Python语言特性的梳理</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+			Posted by 
+			
+			    onceme
+			 
+			on 
+			Saturday, March 2, 2019
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <header>
+                    <h2>TOC</h2>
+                </header>
+                <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#运行环境">运行环境</a></li>
+</ul></li>
+<li><a href="#pythonic">Pythonic</a>
+<ul>
+<li>
+<ul>
+<li><a href="#上下文管理器">上下文管理器</a></li>
+<li><a href="#装饰器">装饰器</a></li>
+<li><a href="#生成器">生成器</a></li>
+<li><a href="#描述符">描述符</a></li>
+<li><a href="#元类">元类</a></li>
+<li><a href="#其他">其他</a></li>
+</ul></li>
+<li><a href="#代码组织与包管理机制">代码组织与包管理机制</a></li>
+<li><a href="#数据结构">数据结构</a></li>
+<li><a href="#多线程编程">多线程编程</a></li>
+<li><a href="#解释器-多线程gil-与性能优化">解释器,多线程GIL 与性能优化</a>
+<ul>
+<li>
+<ul>
+<li><a href="#参考">参考</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                
+                <p>对python的语言特性，多线程机制，以及性能局限的梳理</p>
+
+<h4 id="运行环境">运行环境</h4>
+
+<p>由于Python不同版本，尤其是Python2与Pyhton3之间差异明显，所以运行不同项目时往往需要不同版本的运行环境，这种情况下，就需要能快速切换版本的运行环境
+现在存在着virtualenv pyenv conda anaconda等虚拟环境
+* Anaconda 一个科学计算环境，Python的发行版本 ：包括了Conda
+* Conda &ndash;包和虚拟环境管理工具
+* virtualenv 轻量级第三方虚拟环境管理工具,没有Anaconda好用
+* pyenv 　　python版本管理工具</p>
+
+<h3 id="pythonic">Pythonic</h3>
+
+<blockquote>
+<p>Pythonic就是以Python的方式写出简洁优美的代码</p>
+</blockquote>
+
+<h5 id="上下文管理器">上下文管理器</h5>
+
+<p>上下文管理器就算在想要执行的目标代码前做一些预处理工作，然后再目标代码执行后，做一些后续扫尾工作
+ 在上下文管理协议中，有两个方法<strong>enter</strong>和<strong>exit</strong>，分别实现上述两个功能。
+ 使用with语句，以及一个支持上下文协议的对象，就可以使用上下文管理器
+&gt;装饰器contextmanager 将一个函数中yield语句之前的代码当做<strong>enter</strong>方法执行，yield语句之后的代码当做<strong>exit</strong>方法执行。同时yield返回值赋值给as后的变量。</p>
+
+<pre><code>@contextlib.contextmanager
+def open_func(file_name):
+    # __enter__方法
+    print('open file:', file_name, 'in __enter__')
+    file_handler = open(file_name, 'r')
+
+    yield file_handler
+
+    # __exit__方法
+    print('close file:', file_name, 'in __exit__')
+    file_handler.close()
+    return
+
+with open_func('python_base.py') as file_in:
+    for line in file_in:
+        print(line)
+</code></pre>
+
+<h5 id="装饰器">装饰器</h5>
+
+<p>装饰器实际上就是给其他函数和类附加额外功能
+值得注意的是使用装饰器后代码的执行顺序
+&gt;装饰器的逻辑是，将被装饰的函数传入装饰器，返回一个装饰器的函数对象。在这个对象里面猜实际执行被装饰的方法</p>
+
+<p>下面的例子，把foo函数传入的装饰器函数中去，装饰器函数返回一个可执行的wrapper函数，wrapper函数里面再执行foo函数</p>
+
+<pre><code>import logging
+
+def use_logging(func):
+
+    def wrapper(*args, **kwargs):
+        logging.warn(&quot;%s is running&quot; % func.__name__)
+        return func(*args, **kwargs)   # 把 foo 当做参数传递进来时，执行func()就相当于执行foo()
+    return wrapper
+
+@use_logging    # 装饰器的逻辑是，把foo函数传入的装饰器函数中去，装饰器函数返回一个可执行的wrapper函数，wrapper函数里面再执行foo函数
+def foo():
+    print(&quot;i am foo&quot;)
+
+
+foo()
+</code></pre>
+
+<h5 id="生成器">生成器</h5>
+
+<p>生成器与列表推导有点类似，区别在于，列表推导一开始就执行完计算，返回的就是一个列表，而生成器返回的是一个生成器对象，里面保存的是生产数据的算法，可以步进的执行里面的逻辑</p>
+
+<pre><code>&gt;&gt;&gt; L = [x * x for x in range(10)]   # 列表
+&gt;&gt;&gt; L
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+&gt;&gt;&gt; g = (x * x for x in range(10))  # 生成器对象
+&gt;&gt;&gt; g
+&lt;generator object &lt;genexpr&gt; at 0x7fbea411e9a8&gt;
+</code></pre>
+
+<p>可以用next(g)来获得生成器的下一次结果，但一般使用迭代,generator也是可迭代对象</p>
+
+<pre><code>&gt;&gt;&gt; g = (x * x for x in range(10))
+&gt;&gt;&gt; for n in g:
+...     print(n)
+... 
+0
+1
+4
+...
+</code></pre>
+
+<p>可以使用yield将函数变成生成器</p>
+
+<pre><code>def fib(max):
+    n, a, b = 0, 0, 1
+    while n &lt; max:
+        yield b
+        a, b = b, a + b
+        n = n + 1
+    return 'done'
+</code></pre>
+
+<pre><code>&gt;&gt;&gt; f = fib(6)
+&gt;&gt;&gt; f
+&lt;generator object fib at 0x7fbea411ea20&gt;
+</code></pre>
+
+<h5 id="描述符">描述符</h5>
+
+<blockquote>
+<p>使用描述符的类中，多次实例化描述，不同变量保存的描述符是独立的，但是类被多次实例化的话，不同实例的同名描述符变量之间是共享实例的
+下面的例子说明，对描述符变量的读写都会被转接到对象内部的<strong>get</strong>与<strong>set</strong>方法</p>
+</blockquote>
+
+<pre><code>from weakref import WeakKeyDictionary
+
+class NonNegative(object):
+    def __init__(self, default):
+        self.default = default
+        self.data = WeakKeyDictionary()
+        self.value = default
+
+    def __get__(self, instance, owner):
+        return self.data.get(instance, self.default)
+
+    def __set__(self, instance, value):
+        if value &lt; 0:
+            raise ValueError(&quot;Negative value not allowed: %s&quot; % value)
+        self.data[instance] = value
+
+
+class Movie(object):
+    View = NonNegative(0)
+
+    def __init__(self, View):
+        self.View = View
+
+    def profit(self):
+        return self.View +1
+
+m = Movie(9)
+
+# 
+print(m.View)  # calls Movie.View.__get__(m, Movie)
+m.View = 100  # calls Movie.View.__set__(m, 100)
+</code></pre>
+
+<h5 id="元类">元类</h5>
+
+<p>python中类不但可以创建对象，而且本身就是一个对象 (python这种类的实现方式，感觉有点想javascirpt)</p>
+
+<ul>
+<li><p>可以像操作普通对象一样操作类对象</p>
+
+<pre><code>&gt;&gt;&gt; class ObjectCreator(object):
+...     pass
+...
+&gt;&gt;&gt; ObjectCreator
+&lt;class '__main__.ObjectCreator'&gt;
+&gt;&gt;&gt; ObjectCreator.new_attribute = 'foo'  # 添加属性
+&gt;&gt;&gt; print(ObjectCreator.new_attribute)
+foo
+&gt;&gt;&gt; ObjectCreatorMirror = ObjectCreator  # 赋值给其他变量
+&gt;&gt;&gt; print(ObjectCreatorMirror)
+&lt;class '__main__.ObjectCreator'&gt; 
+</code></pre></li>
+
+<li><p>动态地创建类
+&gt;type有一种完全不同的能力，它也能动态的创建类。type可以接受一个类的描述作为参数，然后返回一个类</p>
+
+<pre><code># 使用方式
+type(类名, 父类的元组（针对继承的情况，可以为空），包含属性的字典（名称和值）)
+</code></pre>
+
+<p>例如这样的类定义</p>
+
+<pre><code>&gt;&gt;&gt; class MyShinyClass(object):
+…       bar = True
+</code></pre>
+
+<p>可以用type来实现,type 接受一个字典来为类定义属性</p>
+
+<pre><code>&gt;&gt;&gt; MyShinyClass = type('MyShinyClass', (), {'bar':True})  # 返回一个类对象
+&gt;&gt;&gt; print MyShinyClass
+&lt;class '__main__.MyShinyClass'&gt;
+&gt;&gt;&gt; print MyShinyClass()  #  创建一个该类的实例
+&lt;__main__.MyShinyClass object at 0x8997cec&gt;
+</code></pre></li>
+</ul>
+
+<blockquote>
+<p>元类可以理解为创建类的类,主要目的是为了当创建类时能够自动地改变类。</p>
+
+<p>Python中所有的东西都是对象。包括整数、字符串、函数以及类。而且它们都是从元类type衍生而来</p>
+
+<pre><code>&gt;&gt;&gt; language = 'Python'
+&gt;&gt;&gt; language.__class__
+&lt;class 'str'&gt;
+&gt;&gt;&gt; language.__class__.__class__
+&lt;class 'type'&gt;
+</code></pre>
+</blockquote>
+
+<ul>
+<li><p>元类的实际应用 <strong>metaclass</strong>属性
+<strong>metaclass</strong>属性 可以指定使用什么元类来创建当前类对象，它可以设置在类中，也可以在设置在模块这一层级上</p>
+
+<pre><code>
+class Foo(object):
+__metaclass__ = something…
+
+</code></pre></li>
+
+<li><p>自定义元类</p>
+
+<pre><code># 元类会自动将你通常传给‘type’的参数作为自己的参数传入
+def upper_attr(future_class_name, future_class_parents, future_class_attr):
+'''返回一个类对象，将属性都转为大写形式'''
+#  选择所有不以'__'开头的属性
+attrs = ((name, value) for name, value in future_class_attr.items() if not name.startswith('__'))
+
+# 将它们转为大写形式
+uppercase_attr = dict((name.upper(), value) for name, value in attrs)
+ 
+# 通过'type'来做类对象的创建
+return type(future_class_name, future_class_parents, uppercase_attr)
+ 
+__metaclass__ = upper_attr  #  这会作用到这个模块中的所有类
+ 
+class Foo(object):
+# 我们也可以只在这里定义__metaclass__，这样就只会作用于这个类中
+bar = 'bip'
+    
+print hasattr(Foo, 'bar')
+# 输出: False
+print hasattr(Foo, 'BAR')
+# 输出:True
+
+f = Foo()
+print f.BAR
+# 输出:'bip'
+</code></pre></li>
+</ul>
+
+<h5 id="其他">其他</h5>
+
+<ul>
+<li><p>python的特殊语法：变量交换</p>
+
+<pre><code>a, b = b, a   # 快速交换变量值
+</code></pre></li>
+
+<li><p>列表推导  这个其实类似于生成器了，只是会直接进行计算，返回计算结果</p>
+
+<pre><code>[ i*i for i in range(30, 41) if i% 2 == 0 ]
+
+</code></pre></li>
+</ul>
+
+<h4 id="代码组织与包管理机制">代码组织与包管理机制</h4>
+
+<p>Python工程目录结构
+&gt; <a href="https://zhuanlan.zhihu.com/p/36221226">https://zhuanlan.zhihu.com/p/36221226</a>
+模块与包的引入与管理</p>
+
+<ul>
+<li>python 引入模块要注意避免循环引用</li>
+<li>包 ：只要一个文件夹下面有个 <strong>init</strong>.py 文件，那么这个文件夹就可以看做是一个包</li>
+<li>python使用pip进行包管理，包下载后，当前版本的执行环境下都可以进行引用，这区别与php comporsor 将包引入项目内部</li>
+</ul>
+
+<blockquote>
+<p>TODO 与go,php composor的包管理机制的对比</p>
+</blockquote>
+
+<h4 id="数据结构">数据结构</h4>
+
+<p>python中的元组 tuple，可以认为是一种特殊的列表，只是一经创建，内容不可修改</p>
+
+<pre><code>tup1 = ('physics', 'chemistry', 1997, 2000)
+</code></pre>
+
+<p>不过对于tuple中的引用类型数据(借用静态语言的概念)，在不修改引用本身的情况下，是可以对这个引用内部的数据进行修改的
+tuple中相当于保存的是指针，无需改变指针，就可以对指向的数据进行修改</p>
+
+<pre><code>&gt;&gt;&gt; t = ('a', 'b', ['A', 'B'])
+&gt;&gt;&gt; t[2][0] = 'X'
+&gt;&gt;&gt; t[2][1] = 'Y'
+&gt;&gt;&gt; t
+('a', 'b', ['X', 'Y'])
+</code></pre>
+
+<h4 id="多线程编程">多线程编程</h4>
+
+<p>python的多线程编程会用到一些内置特性来进行线程间通信，与并发安全控制(虽然默认的CPython不会真正的并行，但是在多个线程间切换执行，仍绕会面临并发安全问题)
+* 线程间通信
+    event与queue，锁
+* 线程安全 -锁机制
+* 子线程启动后，
+    * 有join,主线程阻塞在join的位置
+    * 没有join,主线程与子线程并发执行，主线程执行完所有逻辑后，子线程仍然能继续执行(主线程执行完退出)
+下面的例子，在多个线程操作同一变量时使用锁来保证线程安全</p>
+
+<pre><code>import time, threading
+from threading import Thread
+
+num = 0
+lock = threading.Lock() #使用锁来协调线程的并发执行
+
+class tWork(Thread):
+    def __init__(self,step=0):
+        Thread.__init__(self)
+        self.step = step
+
+    def run(self):
+        global num
+        for i in range(10):
+            lock.acquire() # 先要获取锁:
+
+            print(str(num) + '+'+str(self.step))
+            num = num+self.step
+            print(str(num) + '-' + str(self.step))
+            num = num-self.step
+
+            lock.release()
+
+threadSer = tWork(5)
+threadSer2 = tWork(8)
+
+threadSer.start()
+threadSer2.start()
+</code></pre>
+
+<h4 id="解释器-多线程gil-与性能优化">解释器,多线程GIL 与性能优化</h4>
+
+<p>python的性能一直挺受诟病，一个是默认的cpyton解释器的执行效率确实不高，另外一个就是鼎鼎大名的GIL全局锁导致python的多线程直接是互斥执行的，同一时间只会有一个线程在执行</p>
+
+<ul>
+<li>解释器慢的问题，有 Pypy, Jython等第三方解释器
+其中pypy的性能优化做的挺不错，使用了JIT，我的实测对比，pypy的速度大致是cpython的5倍，另外由于使用了JIT,对一个变量不停的追加内容，会导致明显的性能下降
+Jython则是在jvm中执行python，看到一些测评，性能并不如意</li>
+<li>CPython 使用带condition的互斥锁来实现GIL，并且在线程执行碰到阻塞时，会释放锁，交给其他线程继续支持</li>
+<li>针对CPython解释器GIL的问题  Jython与IronPython中实现了真正的多线程并发，PyPy也有独立的分支版本PyPy-stm来支持多线程
+&gt; 从单核性能来看，首选pypy来执行，考虑多线程的时候，可以使用PyPy-stm</li>
+</ul>
+
+<blockquote>
+<p>更多实例代码可以我的github项目 <a href="https://github.com/wosiwo/pythonic">https://github.com/wosiwo/pythonic</a></p>
+</blockquote>
+
+<h6 id="参考">参考</h6>
+
+<p><a href="https://www.zhihu.com/question/21408921">https://www.zhihu.com/question/21408921</a>
+<a href="https://zhuanlan.zhihu.com/p/24709718">https://zhuanlan.zhihu.com/p/24709718</a>
+<a href="http://python.jobbole.com/81899/">http://python.jobbole.com/81899/</a>
+<a href="http://blog.jobbole.com/21351/">http://blog.jobbole.com/21351/</a>
+<a href="http://www.newsmth.net/nForum/#!article/Programming/118874">http://www.newsmth.net/nForum/#!article/Programming/118874</a>
+<a href="https://cyrusin.github.io/2016/04/27/python-gil-implementaion/">https://cyrusin.github.io/2016/04/27/python-gil-implementaion/</a></p>
+
+                
+
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/post/python-summary/" data-toggle="tooltip" data-placement="top" title="python的的应用">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                </ul>
+
+                
+<div id="disqus-comment"></div>
+
+<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "oncemes-blog" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+            </div>
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        <a href="/tags/bigdata" title="bigdata">
+                            bigdata
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/golang" title="golang">
+                            golang
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/nosql" title="nosql">
+                            nosql
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/php" title="php">
+                            php
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/python" title="python">
+                            python
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/redis" title="redis">
+                            redis
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+                <section>
+                    <hr>
+                    <h5>FRIENDS</h5>
+                    <ul class="list-inline">
+                        
+                        <li><a target="_blank" href=""></a></li>
+                        
+                    </ul>
+                </section>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                   
+                   <li>
+                       <a href="" rel="alternate" type="application/rss+xml" title="Onceme Blog" >
+                           <span class="fa-stack fa-lg">
+                               <i class="fa fa-circle fa-stack-2x"></i>
+                               <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                           </span>
+                       </a>
+                   </li>
+                   
+                    
+                    <li>
+                        <a href="mailto:onceatease@gmail.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    <li>
+                        <a href="https://twitter.com/yanchaos">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+
+                    
+
+		    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/wosiwo">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; Onceme Blog , 2019
+                    <br>
+                    <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=zhaohuabing&repo=hugo-theme-cleanwhite&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+Ï
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -13,14 +13,14 @@
     <meta property="og:type" content="article">
 
     
-    <meta property="og:image" content="http://onceme.me//img/home-bg-jeep.jpg">
-    <meta property="twitter:image" content="http://onceme.me//img/home-bg-jeep.jpg" />
+    <meta property="og:image" content="http://onceme.me///img/home-bg-jeep.jpg">
+    <meta property="twitter:image" content="http://onceme.me///img/home-bg-jeep.jpg" />
     
 
     
-    <meta name="title" content="python的作用范围" />
-    <meta property="og:title" content="python的作用范围" />
-    <meta property="twitter:title" content="python的作用范围" />
+    <meta name="title" content="python的的应用" />
+    <meta property="og:title" content="python的的应用" />
+    <meta property="twitter:title" content="python的的应用" />
     
 
     
@@ -37,7 +37,7 @@
     <meta name="keyword"  content="博客, 互联网, Web, Mysql, Redis Cluster,分布式, 大数据, Kubernetes, 微服务, Microservice">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>python的作用范围-Onceme Blog</title>
+    <title>python的的应用-Onceme Blog</title>
 
     <link rel="canonical" href="/post/python-summary/">
 
@@ -194,7 +194,7 @@
                         </a>
                         
                     </div>
-                    <h1>python的作用范围</h1>
+                    <h1>python的的应用</h1>
                     <h2 class="subheading"></h2>
                     <span class="meta">
 			Posted by 
@@ -234,14 +234,6 @@
 <ul>
 <li>
 <ul>
-<li><a href="#python代码的书写规范">python代码的书写规范</a></li>
-<li><a href="#python的性能局限">python的性能局限</a>
-<ul>
-<li>
-<ul>
-<li><a href="#解释器慢的问题-有-pypy-jython等第三方解释器">解释器慢的问题，有 Pypy, Jython等第三方解释器</a></li>
-</ul></li>
-</ul></li>
 <li><a href="#python的各种框架">python的各种框架</a></li>
 <li><a href="#数据分析与科学计算">数据分析与科学计算</a></li>
 <li><a href="#机器学习">机器学习</a></li>
@@ -250,28 +242,9 @@
 </ul>
 </nav>
                 
-                <p>对python在web开发，大数据分析，机器学习相关领域应用，以及python的性能局限的理解</p>
+                <p>对python在web开发，数据分析，机器学习相关领域应用，以及python的性能局限的理解</p>
 
-<p>写一篇对python整体概述总结的文章，包括python的gil全局锁,多限制机制，python2,python3的区别，django,flask,twisted框架，不同解释器的性能区别，机器学习tensorflow，pytorch框架，numpa等数学工具，以及再量化交易领域的应用</p>
-
-<h3 id="python代码的书写规范">python代码的书写规范</h3>
-
-<ul>
-<li>Pythonic就是以Python的方式写出简洁优美的代码</li>
-<li>代码的组织结构，包的引入与管理，与go的包管理机制的对比</li>
-<li>python独特的包管理机制，与php的composor对比</li>
-<li>python的特殊语法：变量交换，列表推导等</li>
-<li>with 这个上下文管理器，wrapper装饰器</li>
-</ul>
-
-<h3 id="python的性能局限">python的性能局限</h3>
-
-<p>python的性能一直挺受诟病，一个是默认的cpyton解释器的执行效率确实不高，另外一个就是鼎鼎大名的GIL全局锁导致python的多线程直接是互斥执行的，同一时间只会有一个线程在执行</p>
-
-<h5 id="解释器慢的问题-有-pypy-jython等第三方解释器">解释器慢的问题，有 Pypy, Jython等第三方解释器</h5>
-
-<p>其中pypy的性能优化做的挺不错，使用了JIT，我的实测对比，pypy的速度大致是cpython的5倍，另外由于使用了JIT,对一个变量不停的追加内容，会导致明显的性能下降
-Jython则是在jvm中执行python，用的比较少</p>
+<p>写一篇对python整体概述总结的文章，包括python的gil全局锁,多限制机制，python2,python3的区别，django,flask,twisted,Tornado,gevent框架，不同解释器的性能区别，机器学习tensorflow，pytorch框架，numpa等数学工具，以及再量化交易领域的应用</p>
 
 <h3 id="python的各种框架">python的各种框架</h3>
 
@@ -312,6 +285,9 @@ Jython则是在jvm中执行python，用的比较少</p>
 </ul></li>
 </ul>
 
+<p>参考
+<a href="https://zhuanlan.zhihu.com/p/24709718">https://zhuanlan.zhihu.com/p/24709718</a></p>
+
                 
 
                 <hr>
@@ -322,6 +298,11 @@ Jython则是在jvm中执行python，用的比较少</p>
                             Previous Post</a>
                     </li>
                     
+                    
+                    <li class="next">
+                        <a href="/post/python-feature/" data-toggle="tooltip" data-placement="top" title="Python语言特性的梳理">Next
+                            Post &rarr;</a>
+                    </li>
                     
                 </ul>
 
@@ -397,6 +378,8 @@ Jython则是在jvm中执行python，用的比较少</p>
                         
                         
                         
+                        
+                        
                         <a href="/tags/nosql" title="nosql">
                             nosql
                         </a>
@@ -410,6 +393,10 @@ Jython则是在jvm中执行python，用的比较少</p>
                         
                         
                         
+                        
+                        <a href="/tags/python" title="python">
+                            python
+                        </a>
                         
                         
                         
