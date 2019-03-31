@@ -372,7 +372,7 @@ aeCreateFileEvent(server.reactors[reactor_id].el,connfd,AE_READABLE,reactorReadH
 int ret = readQueryFromClient(el, connfd, privdata, mask);
 //通过管道通知worker线程
 int pipeWriteFd = server.worker[0].pipMasterFd;
- //将客户端信息添加到worker线程的队列中
+ //将客户端信息添加到当前reactor线程的队列中
 atomListAddNodeTail(server.reactors[c-&gt;reactor_id].clients,c);
 //worker线程循环读取队列，可以判断worker线程状态来决定是否通过管道通知worker线程
 //避免大量的管道读写带来的开销
