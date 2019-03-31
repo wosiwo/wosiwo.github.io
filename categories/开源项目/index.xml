@@ -6,10 +6,19 @@
     <description>Recent content in 开源项目 on Onceme Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 02 Sep 2018 10:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 30 Mar 2019 22:56:00 +0800</lastBuildDate>
     
 	<atom:link href="http://onceme.me/categories/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>多线程redis的设计思路，与实践笔记</title>
+      <link>http://onceme.me/post/redis-multithreading-implement/</link>
+      <pubDate>Sat, 30 Mar 2019 22:56:00 +0800</pubDate>
+      
+      <guid>http://onceme.me/post/redis-multithreading-implement/</guid>
+      <description>由来 &amp;emsp;&amp;emsp;Redis以其极高的性能以及支持丰富的数据结构而著称，在互联网行业应用广泛，尤其是KV缓存，以及类似索引的zse</description>
+    </item>
     
     <item>
       <title>gedis-redis-like-demo-with-go</title>

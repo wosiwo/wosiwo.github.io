@@ -336,6 +336,27 @@ def foo():
 foo()
 </code></pre>
 
+<p>property装饰器把函数调用伪装成对属性的访问</p>
+
+<pre><code>class Topic(object):
+    def __init__(self, View):
+        self._View = None
+        self.View = View
+ 
+    @property
+    def budget(self):
+        return self._budget
+ 
+    @budget.setter
+    def budget(self, value):
+        if value &lt; 0:
+            raise ValueError(&quot;Negative value not allowed: %s&quot; % value)
+        self._budget = value
+
+t = Topic(1)
+print(t.budget) # 实际访问的是
+</code></pre>
+
 <h5 id="生成器">生成器</h5>
 
 <p>生成器与列表推导有点类似，区别在于，列表推导一开始就执行完计算，返回的就是一个列表，而生成器返回的是一个生成器对象，里面保存的是生产数据的算法，可以步进的执行里面的逻辑</p>
@@ -638,6 +659,11 @@ Jython则是在jvm中执行python，看到一些测评，性能并不如意</li>
                             Previous Post</a>
                     </li>
                     
+                    
+                    <li class="next">
+                        <a href="/post/redis-multithreading-implement/" data-toggle="tooltip" data-placement="top" title="多线程redis的设计思路，与实践笔记">Next
+                            Post &rarr;</a>
+                    </li>
                     
                 </ul>
 

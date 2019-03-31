@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://onceme.me/post/redis-multithreading-implement/</loc>
+    <lastmod>2019-03-30T22:56:00+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://onceme.me/post/python-feature/</loc>
     <lastmod>2019-03-07T20:29:00+08:00</lastmod>
   </url>
@@ -118,13 +123,13 @@
   
   <url>
     <loc>http://onceme.me/</loc>
-    <lastmod>2019-03-07T20:29:00+08:00</lastmod>
+    <lastmod>2019-03-30T22:56:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://onceme.me/post/</loc>
-    <lastmod>2019-03-07T20:29:00+08:00</lastmod>
+    <lastmod>2019-03-30T22:56:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -243,7 +248,7 @@
   
   <url>
     <loc>http://onceme.me/tags/redis/</loc>
-    <lastmod>2019-02-17T14:56:00+08:00</lastmod>
+    <lastmod>2019-03-30T22:56:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -279,7 +284,7 @@
   
   <url>
     <loc>http://onceme.me/categories/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/</loc>
-    <lastmod>2018-09-02T10:00:00+08:00</lastmod>
+    <lastmod>2019-03-30T22:56:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   

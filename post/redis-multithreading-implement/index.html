@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta name="google-site-verification" content="9vIieCe-Qpd78QOmBl63rGtIVbhY6sYyuxX3j8XWBA4" />
+    <meta name="baidu-site-verification" content="LRrmH41lz7" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="Onceme Blog">
+    <meta property="og:type" content="article">
+
+    
+    <meta property="og:image" content="http://onceme.me///img/home-bg-jeep.jpg">
+    <meta property="twitter:image" content="http://onceme.me///img/home-bg-jeep.jpg" />
+    
+
+    
+    <meta name="title" content="多线程redis的设计思路，与实践笔记" />
+    <meta property="og:title" content="多线程redis的设计思路，与实践笔记" />
+    <meta property="twitter:title" content="多线程redis的设计思路，与实践笔记" />
+    
+
+    
+    <meta name="description" content="多线程redis的设计思路，与实践笔记">
+    <meta property="og:description" content="多线程redis的设计思路，与实践笔记" />
+    <meta property="twitter:description" content="多线程redis的设计思路，与实践笔记" />
+    
+
+    
+    <meta property="twitter:card" content="summary" />
+    
+    
+
+    <meta name="keyword"  content="博客, 互联网, Web, Mysql, Redis Cluster,分布式, 大数据, Kubernetes, 微服务, Microservice">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>多线程redis的设计思路，与实践笔记-Onceme Blog</title>
+
+    <link rel="canonical" href="/post/redis-multithreading-implement/">
+
+    <link rel="stylesheet" href="/css/iDisqus.min.css"/>
+	
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+
+    
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    
+    
+    <script src="/js/jquery.min.js"></script>
+    
+    
+    <script src="/js/bootstrap.min.js"></script>
+    
+    
+    <script src="/js/hux-blog.min.js"></script>
+	
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/docco.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Onceme Blog</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/categories/algorithm">algorithm</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/categories/nosql">nosql</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/categories/swoole">swoole</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/categories/%E5%90%8E%E7%AB%AF%E8%AF%AD%E8%A8%80">后端语言</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/categories/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE">开源项目</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/categories/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96">性能优化</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8">数据存储</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/categories/%E6%96%87">文</a>
+                    </li>
+                    
+                    
+		    
+                        <li><a href="/about/desc">ABOUT</a></li>
+                    
+
+                    
+		    <li>
+                        <a href="/search">SEARCH <img src="/img/search.png" height="15" style="cursor: pointer;" alt="Search"></a>
+		    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/home-bg-jeep.jpg')
+    }
+</style>
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/redis" title="redis">
+                            redis
+                        </a>
+                        
+                    </div>
+                    <h1>多线程redis的设计思路，与实践笔记</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+			Posted by 
+			
+			    onceme
+			 
+			on 
+			Saturday, March 30, 2019
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <header>
+                    <h2>TOC</h2>
+                </header>
+                <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#由来">由来</a></li>
+<li><a href="#redis内部实现">Redis内部实现</a>
+<ul>
+<li>
+<ul>
+<li><a href="#redis的各个逻辑链">Redis的各个逻辑链</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#几种多线程模型的对比">几种多线程模型的对比</a></li>
+<li><a href="#多reactor单worker线程模型">多reactor单worker线程模型</a></li>
+<li><a href="#redis拆分多线程后线程安全问题梳理">Redis拆分多线程后线程安全问题梳理</a>
+<ul>
+<li>
+<ul>
+<li><a href="#客户端对象">客户端对象</a></li>
+<li><a href="#字典扩容">字典扩容</a></li>
+<li><a href="#频道订阅">频道订阅</a></li>
+<li><a href="#server-全局变量">server 全局变量</a></li>
+<li><a href="#事务">事务</a></li>
+<li><a href="#集群">集群</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#性能优化措施">性能优化措施</a></li>
+<li><a href="#压测对比">压测对比</a>
+<ul>
+<li><a href="#todo">TODO</a></li>
+<li><a href="#引用">引用</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                
+                
+
+<h4 id="由来">由来</h4>
+
+<p>&emsp;&emsp;Redis以其极高的性能以及支持丰富的数据结构而著称，在互联网行业应用广泛，尤其是KV缓存，以及类似索引的zset有序集合。然而随着服务器CPU核数的增加，Redis单线程的设计也被大家所诟病。因此也萌生了自己实现一个多线程版redis的想法，不过感觉工作量不少，所以一直没有动手<br />
+&emsp;&emsp;其实在去年就用go实现过一个类似redis的nosql数据库，支持了主要的几种数据结构。不过完成度还不高，还没有主从与集群功能。</p>
+
+<p>&emsp;&emsp;前几个星期在知乎看到阿里云的多线程版Redis实现,感觉是个不错的简化方案，而且之前实践过自己的gedis项目，积累了一定的经验，所以就决定自己也薅一个多线程redis出来</p>
+
+<h4 id="redis内部实现">Redis内部实现</h4>
+
+<blockquote>
+<p>工欲善其事必先利其器，动手改造之前先要梳理好redis本身的设计思路</p>
+</blockquote>
+
+<h6 id="redis的各个逻辑链">Redis的各个逻辑链</h6>
+
+<p>&emsp;&emsp;一直觉得接触一个大项目需要抓好切入点(一个是提高效率，一个是容易建立正反馈)，虽然代码可读性一直都是大家的追求，不过程序语言到底还是处在人的语言和机器语言中间，通读代码来理出逻辑肯定不是一个高效的办法。<br />
+&emsp;&emsp;基于之前的实践，感觉从逻辑链入手，是一个比较好的办法，一开始不要把自己困在一个个逻辑实现的细节总，人大脑的并行能力其实很有限，不同层次的逻辑混在一起看，难度就大了很多</p>
+
+<pre><code>//一次Redis请求的执行流程
+main();                                    //入口函数
+listenToPort();                           //端口监听
+aeCreateFileEvent();                        //事件触发绑定
+aeMain();                                   //主事件循环
+acceptTcpHandler();acceptUnixHandler();     //创建tcp/本地 连接
+createClient();                           //创建一个新客户端
+readQueryFromClient();                    //读取客户端的查询缓冲区内容
+processInputBuffer();                        //处理客户端输入的命令内容
+processCommand();                         //执行命令
+addReply();                               //将客户端连接描述符的写事件，绑定到指定的事件循环中
+sendReplyToClient();                      //reactor线程中将内容输出给客户端
+</code></pre>
+
+<h4 id="几种多线程模型的对比">几种多线程模型的对比</h4>
+
+<blockquote>
+<p>了解了Redis本身的逻辑链，下面就可以思考应该应用那种多线程模型</p>
+</blockquote>
+
+<ul>
+<li><p>首先是阿里云Redis采用的简化方案，增加多个reactor线程(IO线程)和一个worker线程</p>
+
+<pre><code>这个方案采取了折中的方式，只有一个worker线程负责所有的对数据库的读写操作，
+这个就避免了很并行操作数据库的多线程安全问题
+</code></pre></li>
+
+<li><p>第二个方案是多个reactor线程,多个worker线程</p>
+
+<pre><code>后面实验性版本，对GET命令做了压测，性能虽然对比第一个方案有一定的提升，
+不过对数据库的并行操作如何保障线程安全，又是需要好好考虑的问题了，
+而且这样reactor线程+worker线程不能明显超过CPU核心数(或者说线程数)，CPU频繁的切换线程，
+还是会带来可观的性能损耗的，所以说不如第三个方案
+</code></pre></li>
+
+<li><p>第三个方案就是多线程不区分IO线程和工作线程，从IO到命令执行都在同一个线程  (开了实验性的分支，只支持对GET命令的压测)</p>
+
+<pre><code>这个方案的最后的压测效果最好，不过通样也是有并发操作数据库的线程安全问题，对数据库的并行操作，
+很显然是没法彻底避免使用锁的，下面会有专门的锻炼来尝试设计一个尽量减少互斥的数据库并行操作的方案  
+</code></pre></li>
+
+<li><p>第四个方案是综合了第一第三个方案，多个reactor线程，一个worker线程，不过只有写入操作会分配个worker线程，读取命令由reactor线程直接执行</p>
+
+<pre><code>这个方案实现起来会相对简单一些(这个方案还处于TODO状态，不过大体上应该能猜的出，
+读取性能指标接近第三个方案，写入的性能接近第一个方案)
+</code></pre></li>
+
+<li><p>在开工实现第一个方案的时候还意外发现了唯品会实现的多线程版redis：vire</p>
+
+<pre><code>vire的多线程模型类似于方案3，对数据库的并行操作同个一个比较粗粒度的锁来保证线程安全，
+(不过vire这个就是一个按照redis思路的一个全新实现了)
+</code></pre></li>
+</ul>
+
+<h4 id="多reactor单worker线程模型">多reactor单worker线程模型</h4>
+
+<blockquote>
+<p>目前实现的是第一个方案，这里做一个详细的介绍,先借用阿里云Redis的模型图
+<img src="/post/img/multi_thread.jpg" alt="" /></p>
+</blockquote>
+
+<ul>
+<li><p>主线程监听端口，当有请求到来时从accepted队列从取出已经就绪的连接描述符，将之加入到某个reactor线程的事件循环中，并指定可读时触发事件，与回调函数</p>
+
+<pre><code>void dispatch2Reactor(int connfd,redisClient *c){
+int reactor_id = connfd%server.reactorNum; //连接fd对REACTOR_NUM取余，决定抛给哪个reactor线程
+//将connfd加入到指定reactor线程的事件循环中
+//reactor线程的事件驱动器被触发后，AE_READABLE类型的事件会被分发到reactorReadHandle函数
+aeCreateFileEvent(server.reactors[reactor_id].el,connfd,AE_READABLE,reactorReadHandle, c);
+}
+</code></pre></li>
+
+<li><p>有多个reactor线程，里面都有各自的事件循环，从主线程绑定过来的连接描述符connfd可读时，会执行绑定的回调函数，在回调函数里读取数据，写入到c-&gt;querybuf中，并将连接对象添加到线程的无锁队列中，然后使用管道(socketpair)通知worker线程</p>
+
+<pre><code>void reactorReadHandle(aeEventLoop *el,int connfd, void *privdata, int mask){
+int ret = readQueryFromClient(el, connfd, privdata, mask);
+//通过管道通知worker线程
+int pipeWriteFd = server.worker[0].pipMasterFd;
+ //将客户端信息添加到worker线程的队列中
+atomListAddNodeTail(server.reactors[c-&gt;reactor_id].clients,c);
+//worker线程循环读取队列，可以判断worker线程状态来决定是否通过管道通知worker线程
+//避免大量的管道读写带来的开销
+if(0==server.worker[0].loopStatus){
+    ret = write(pipeWriteFd, str, 5);
+    redisLog(REDIS_NOTICE,&quot;reactorReadHandle reactor_id %s write %d connfd %d&quot;,str,ret,connfd);
+}
+}
+</code></pre></li>
+
+<li><p>一个worker线程，也带有事件循环，绑定管道的可读事件，当reactor线程写管道时，会触发可读事件绑定的回调函数，回调函数中，从无锁队列中取出redisclient *c 对象，执行c-&gt;querybuf中的请求，将结果写入c-&gt;buf，最后将连接connfd再以可写触发类型绑定到reactor线程，由reactor将结果write(connfd)输出给客户端</p></li>
+
+<li><p>考虑到管道读写的开销，worker线程会循环的拉取队列内容，直到所有线程的队列都为空，同时worker线程会标记自己的运行状态，尽量避免不必要的管道通信</p>
+
+<pre><code>void workerPipeReadHandle(aeEventLoop *el,int pipfd, void *privdata, int mask){
+  void *node;int nullNodes = 0;
+  do{     //轮询各个线程的队列，循环弹出所有节点
+      reactor_id = i%(server.reactorNum);
+      //从无锁队列从取出client信息
+      redisClient *c = atomListPop(server.reactors[reactor_id].clients);
+      if(NULL==node) nullNodes++;
+
+      processInputBuffer(c);  //执行客户端操作命令
+  }while(nullNodes&lt;server.reactorNum); //循环取队列     
+}
+</code></pre></li>
+
+<li><p>一开始还用过使用connfd可写事件来触发worker线程，虽然epoll默认是水平触发，可以多次触发可写事件，不过之前测试下来qps好像只有原来的十分之一（还需要更彻底的了解触发机制）</p></li>
+</ul>
+
+<h4 id="redis拆分多线程后线程安全问题梳理">Redis拆分多线程后线程安全问题梳理</h4>
+
+<blockquote>
+<p>先就第一个方案来梳理拆分后遇到的线程安全问题</p>
+</blockquote>
+
+<h6 id="客户端对象">客户端对象</h6>
+
+<p>redisClient *c ,在主线程，reactor线程，woker线程都有可能被操作</p>
+
+<ul>
+<li>主线程里面负责创建这个结构体，还有有定时任务会清理所有客户端的c-&gt;querybuf空闲空间，以及关闭超时连接
+
+<ul>
+<li>缩小客户端查询缓冲区的大小
+
+<ul>
+<li>查询缓冲区的大小大于 BIG_ARG 以及 querybuf_peak</li>
+<li>客户端不活跃，并且缓冲区大于 1k</li>
+<li>这里定时任务的缩小缓存区的操作有可能触发线程安全问题</li>
+</ul></li>
+</ul></li>
+<li>reactor线程负责从连接描述符connfd中读取请求内容到c-&gt;querybuf</li>
+<li>每个reactor线程有一个无锁队列，在reactor中将 redisClient *c添加到队列中，在worker线程中取出</li>
+<li>worker线程会从c-&gt;querybuf读取请求命令并执行</li>
+<li>最后会由reactor线程将c-&gt;buf或c-&gt;reply中的内容输出给客户端</li>
+<li>同一个连接，上一次请求没处理完，下一次请求又到来的话，会操作同一个redisClient *c结构体(主从同步的时候会碰到这种情况)</li>
+</ul>
+
+<h6 id="字典扩容">字典扩容</h6>
+
+<p>在数据库字典dict满的时候，会对字典进行扩容，这个时候会有线程安全问题</p>
+
+<h6 id="频道订阅">频道订阅</h6>
+
+<p>对channel订阅，与取消订阅的操作，需要改造为无锁队列(pubsubUnsubscribeChannel())</p>
+
+<h6 id="server-全局变量">server 全局变量</h6>
+
+<ul>
+<li>关闭连接时，从server.clients删除连接信息 ln = listSearchKey(server.clients,c);</li>
+<li>关闭连接时 删除客户端的阻塞信息 ln = listSearchKey(server.unblocked_clients,c);</li>
+<li>命令执行次数计数server.stat_numcommands</li>
+<li>server.clients 的处理
+
+<ul>
+<li>创建客户端对象 c时，添加到链表尾部 listAddNodeTail(server.clients,c);<br /></li>
+<li>连接关闭时，从链表删除 freeClient(redisClient *c)</li>
+<li>即使单线程情况下，定时任务也有可能会清理掉执行完，而未输出给客户端的连接信息，&mdash;因为单线程下，从读取connfd内容，写入querybuf到命令执行完毕都是连续的，命令执行完后，c-&gt;querybuf就可以回收了
+<br /></li>
+</ul></li>
+</ul>
+
+<h6 id="事务">事务</h6>
+
+<p>TODO 验证多线程对事务是否有影响</p>
+
+<h6 id="集群">集群</h6>
+
+<p>多线程下的集群 也是TODO状态</p>
+
+<h4 id="性能优化措施">性能优化措施</h4>
+
+<blockquote>
+<p>对线程模型进行优化，以充分利用多核，以及尽可能减少线程间的互斥</p>
+</blockquote>
+
+<ul>
+<li><p>无锁队列<br />
+先对无锁队列做一个梳理<br />
+进队列操作</p>
+
+<pre><code>EnQueue(list,x) //进队列改良版
+{
+node = new record();
+node-&gt;value = x;
+node-&gt;next = NULL;
+ 
+p = list-&gt;tail;
+oldp = p
+
+//判断是否空表
+if(CAS(&amp;list-&gt;tail, NULL, node) == true){ //表尾指针为空
+    //这里有个需要特别注意的地方，不能直接把node节点赋值给list-&gt;head
+    //因为当出队速度快于入队速速，是会把队列取空的，一旦队列取空，是无法原子的同时吧list-&gt;head和list-&gt;tail原子的置空的
+    //所以就需要给原队列留下一个种子，保证队列不会完全被置空
+    //无锁队列的设计很巧妙的通过在初始化队列时，给head指针赋值一个空节点，这个空节点的next指针再指向真正的当前节点
+    //这样即使在取空队列的时候，仍然会有一个节点被留下来
+    headNode = new record();
+    headNode-&gt;next = NULL;
+    headNode-&gt;prev = NULL;
+    list-&gt;head = headNode;
+    if(CAS(&amp;list-&gt;head-&gt;next, NULL, node)!=true){
+        //printf(&quot;list-&gt;head shoud be null except\n&quot;);
+    }
+}else{
+  do {
+      while (p-&gt;next != NULL) //加这个while循环是因为tail节点是不能保证一定指向最后一个节点的
+          p = p-&gt;next;
+  } while( CAS(&amp;p.next, NULL, node) != TRUE); //如果没有把结点链在尾上，再试
+  //p.next 表示当前节点已经是事实上的最后一个节点
+
+  CAS(&amp;list-&gt;tail, oldp, node); //置尾结点
+  //如果tail指针指向的仍然是循环之前的节点，则将其指向新加入的节点
+  //tail指针没有变化，说明这中间没有其他线程对链表进行入队操作
+  //不论是否发生了变化，其实都不能保证tail指针指向的是最后的节点，只是能够在执行这段代码时没有其他线程插入的情况下将tail指针更新到较新的节点
+
+}
+    
+}
+</code></pre>
+
+<p>出队列操作</p>
+
+<pre><code>DeQueue(list) //出队列
+{
+  do{
+      p = list-&gt;head;
+      if (p-&gt;next == NULL){
+          return ERR_EMPTY_QUEUE;
+      }
+  while( CAS(&amp;list-&gt;head, p, p-&gt;next) != TRUE );
+  return p-&gt;next-&gt;value;  //返回的是下一个节点的内容
+}
+</code></pre></li>
+
+<li><p>每个reactor线程维持一个无锁队列，worker线程循环读取各个队列，取空才退出等待下一次通信，大大减少了同个管道进行通信的次数</p></li>
+
+<li><p>TODO：线程模型的优化： 也就是前面提到的线程模型方案三，方案四</p></li>
+
+<li><p>TODO:  数据库并行操作的方案  ：使用原子操作来使得多线程支持SET</p></li>
+
+<li><p>TODO：其他复杂数据结构的并行操作(集合，列表，有续集)</p></li>
+</ul>
+
+<h4 id="压测对比">压测对比</h4>
+
+<blockquote>
+<p>对各种线程模型的压测对比(后面的两种方案只是实验性质的拉了分支，并没有处理线程安全问题，所以只能对get命令压测)</p>
+</blockquote>
+
+<p>机器环境</p>
+
+<table>
+<thead>
+<tr>
+<th>cpu</th>
+<th>内存</th>
+<th>操作系统</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Intel&reg; Xeon&reg; CPU E5-1650 0 @ 3.20GHz (6核12线程)</td>
+<td>DDR3 32G</td>
+<td>Ubuntu 16.04.4 LTS</td>
+</tr>
+</tbody>
+</table>
+
+<p>压测结果</p>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>原版redis3.0</th>
+<th>多reactor单worker</th>
+<th>多reactor（io线程直接执行命令）</th>
+<th>多reactor多worker(*)</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>GET</td>
+<td><sup>110533</sup>&frasl;<sub>107540</sub></td>
+<td><sup>304697</sup>&frasl;<sub>208500</sub></td>
+<td>427069.456</td>
+<td>350202.9</td>
+</tr>
+
+<tr>
+<td>SET</td>
+<td>104119.06</td>
+<td>217941.196</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>HSET</td>
+<td>101584.73</td>
+<td>181488.2</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>HGET</td>
+<td>98058.45</td>
+<td>180018</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>ZADD</td>
+<td>87382.03</td>
+<td>132996.41</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<pre><code>//这里直接使用了vire的多线程压测客户端
+//e.g get命令的压测  -T 表示压测程序开启的线程数
+./tests/vire-benchmark -p 6381 -c 600 -T 12 -t get -n 1000000
+</code></pre>
+
+<pre><code>GET命令的压测会有两个值，斜杆&quot;/&quot;前是直接对空数据库的GET请求，另一个是有数据情况下的GET请求  
+</code></pre>
+
+<p>&emsp;&emsp;从压测对比上看，目前实现的多reactor单worker线程模型(虽然只在空数据集的情况下进行压测)，在大部分命令中性能大概是原版redis是两倍，不过还是直接多个工作线程的方案三性能最好</p>
+
+<h5 id="todo">TODO</h5>
+
+<ul>
+<li>内存满的时候将淘汰的key落地</li>
+<li>压测，找出瓶颈，向C10M方向优化</li>
+<li>加上磁盘搜索功能，让redis不再局限与一个内存数据库(待定)</li>
+</ul>
+
+<h5 id="引用">引用</h5>
+
+<p><a href="https://coolshell.cn/articles/8239.html">https://coolshell.cn/articles/8239.html</a><br />
+<a href="https://zhuanlan.zhihu.com/p/43422624">https://zhuanlan.zhihu.com/p/43422624</a></p>
+
+
+                
+
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/post/python-feature/" data-toggle="tooltip" data-placement="top" title="Python语言特性的梳理">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                </ul>
+
+                
+<div id="disqus-comment"></div>
+
+<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "oncemes-blog" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+            </div>
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        <a href="/tags/bigdata" title="bigdata">
+                            bigdata
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/golang" title="golang">
+                            golang
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/nosql" title="nosql">
+                            nosql
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/php" title="php">
+                            php
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/python" title="python">
+                            python
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/redis" title="redis">
+                            redis
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+                <section>
+                    <hr>
+                    <h5>FRIENDS</h5>
+                    <ul class="list-inline">
+                        
+                        <li><a target="_blank" href=""></a></li>
+                        
+                    </ul>
+                </section>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                   
+                   <li>
+                       <a href="" rel="alternate" type="application/rss+xml" title="Onceme Blog" >
+                           <span class="fa-stack fa-lg">
+                               <i class="fa fa-circle fa-stack-2x"></i>
+                               <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                           </span>
+                       </a>
+                   </li>
+                   
+                    
+                    <li>
+                        <a href="mailto:onceatease@gmail.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    <li>
+                        <a href="https://twitter.com/yanchaos">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+
+                    
+
+		    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/wosiwo">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; Onceme Blog , 2019
+                    <br>
+                    <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=zhaohuabing&repo=hugo-theme-cleanwhite&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+Ï
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
