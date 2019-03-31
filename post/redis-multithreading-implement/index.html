@@ -279,6 +279,8 @@
 
 <p>&emsp;&emsp;前几个星期在知乎看到阿里云的多线程版Redis实现,感觉是个不错的简化方案，而且之前实践过自己的gedis项目，积累了一定的经验，所以就决定自己也薅一个多线程redis出来</p>
 
+<p>有兴趣可以移步github看具体的项目： <a href="https://github.com/wosiwo/redis-multithreading">https://github.com/wosiwo/redis-multithreading</a></p>
+
 <h4 id="redis内部实现">Redis内部实现</h4>
 
 <blockquote>
@@ -303,6 +305,8 @@ processCommand();                         //执行命令
 addReply();                               //将客户端连接描述符的写事件，绑定到指定的事件循环中
 sendReplyToClient();                      //reactor线程中将内容输出给客户端
 </code></pre>
+
+<p>更详细的调用链梳理：<a href="https://github.com/wosiwo/redis-multithreading/blob/master/CallChain.md">CallChain.md</a></p>
 
 <h4 id="几种多线程模型的对比">几种多线程模型的对比</h4>
 
@@ -629,6 +633,7 @@ if(CAS(&amp;list-&gt;tail, NULL, node) == true){ //表尾指针为空
 <h5 id="todo">TODO</h5>
 
 <ul>
+<li>多线程下的集群</li>
 <li>内存满的时候将淘汰的key落地</li>
 <li>压测，找出瓶颈，向C10M方向优化</li>
 <li>加上磁盘搜索功能，让redis不再局限与一个内存数据库(待定)</li>
