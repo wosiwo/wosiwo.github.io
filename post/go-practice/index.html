@@ -228,9 +228,24 @@
                 <header>
                     <h2>TOC</h2>
                 </header>
+                <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#变量">变量</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
                 
                 
-                <ul>
+
+<ul>
 <li><p>使用recover()捕捉panic时，只能捕捉直接调用的方法，通过go命令调用的代码块中抛出的panic，则无法捕捉</p>
 
 <pre><code>package main
@@ -256,6 +271,115 @@ go func() {
 fmt.Println(&quot;Exit function main.&quot;)
 }
 </code></pre></li>
+
+<li><p>不能循环引用</p></li>
+
+<li><p>默认按值传递</p></li>
+
+<li><p>Golang 交叉编译，编译可以在其他系统运行的目标文件</p></li>
+
+<li></li>
+</ul>
+
+<h4 id="变量">变量</h4>
+
+<ul>
+<li><p>整数相除，默认得到向下取整的整数</p>
+
+<pre><code>func main(){
+var a int = 10;
+var b int = 6;
+//整数相除，默认得到向下取整的整数
+c := float64(a/b)
+//c := float64(float64(a)/float64(b))
+
+
+fmt.Println(c)
+}
+</code></pre></li>
+
+<li><p>map数据结构类似于java中的HashMap，能够自动扩容，非并发安全，并且key是无序的</p></li>
+
+<li><p>外部有同名变量的情况下，重新定义，会自动生成局部变量</p>
+
+<pre><code>var a int;
+if(1){
+a := 1; //这里的变量a是if代码块内部的局部变量
+}
+</code></pre></li>
+
+<li><p>string与byte slice 转换</p>
+
+<pre><code>str := []byte(&quot;string ...&quot;)
+</code></pre></li>
+
+<li><p>变量作用域</p>
+
+<ul>
+<li>go中函数可以直接使用全局变量，不像php中需要用global $var来引入</li>
+<li>所以在函数中不经声明直接使用变量时，一定要确定自己是不是要用全局变量</li>
+<li>文件中的变量声明会在main函数之前执行，要考虑这个是否符合预期，尤其是声明的时候依赖main函数初始化的全局变量时</li>
+</ul></li>
+
+<li><p>使用协程时，要考虑如果要既要使用全局变量，又要做不同协程间的隔离,那么就要借用面向对象中this这个概念，就是每次先初始化一个对象，然后再把这个实例放入协程中，这样不同的协程就是不同的实例了</p>
+
+<pre><code>obj := newObj()
+go obj.run()
+</code></pre></li>
+
+<li><p>可以使用 json.Marshal() 来讲多层嵌套的数据结构转为json</p>
+
+<ul>
+<li>不过decode的时候只能一层层进行反向操作了</li>
+</ul></li>
+
+<li><p>使用bufio 来进行输出缓冲，避免频繁的磁盘io代理的性能损失</p></li>
+
+<li><p>不同的包要避免互相引用，会造成死循环，导致报错</p></li>
+
+<li><p>日志输出</p>
+
+<ul>
+<li>对每一条日志设置一个等级</li>
+<li>对当前输出，设置一个等级</li>
+<li>输出等级大于日志等级才输出</li>
+<li>这样就避免调试信息需要手动的进行开关</li>
+</ul></li>
+
+<li><p>需要暴露到包外的变量与方法，首字母必须大写</p></li>
+
+<li><p>判断字典是否存在某个key</p>
+
+<pre><code>if _, ok := m[key]; ok {
+    return m[key]
+}
+</code></pre></li>
+
+<li><p>go的变量声明比较怪异，类型放在变量名的后面</p>
+
+<pre><code>var num int32  
+
+//对于被基本数据类型，需要显性的进行实例化才能使用
+
+//map
+var UserMap map[string]string
+
+//使用make分配内存
+UserMap = make(map[string]string)
+//类型加花括号来实例化
+UserMap = map[string]string{}
+
+//自定义类型
+var UserRow StructUser
+UserRow = new(StructUser)
+
+
+UserRow = StructUser{}
+</code></pre></li>
+
+<li><p>用 new 分配内存 内建函数 new 本质上说跟其他语言中的同名函数功能一样：new(T) 分配了零值填充的 T 类型的内存空间，并且返回其地址，一个 *T 类型的值。用 Go 的术语说，它返回了一个指针，指向新分配的类型 T 的零值。记住这点非常重要。 这意味着使用者可以用 new 创建一个数据结构的实例并且可以直接工作。</p></li>
+
+<li><p>务必记得 make 仅适用于 map，slice 和 channel，并且返回的不是指针。应当用 new获得特定的指针。</p></li>
 </ul>
 
 
@@ -467,7 +591,7 @@ fmt.Println(&quot;Exit function main.&quot;)
                     
                 </ul>
 		<p class="copyright text-muted">
-                    Copyright &copy; Onceme Blog , 2018
+                    Copyright &copy; Onceme Blog 2019
                     <br>
                     <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
                     <iframe
